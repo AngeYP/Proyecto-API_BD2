@@ -5,6 +5,16 @@
  */
 package Deliverys;
 
+import CRUD.CRUDEmpleadoRecarga;
+import Conexion.Conexion;
+import java.awt.Color;
+import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 /**
  *
  * @author angel
@@ -14,6 +24,9 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   /**
    * Creates new form VEmpleadoRecarga
    */
+  Conexion conexion = new Conexion();
+  CRUDEmpleadoRecarga recargacliente = new CRUDEmpleadoRecarga(conexion.conectar());
+  String textoerror = null;
   String cedulaCliente;
   String cedulaEmpleado;
   
@@ -26,6 +39,9 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     cedulaCliente = cedulaC;
     cedulaEmpleado = cedulaE;
     this.tf_cedulaC.setText(cedulaCliente);
+    Date date=new Date();
+    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+    this.tf_fecha.setText(sdf.format(date));
   }
 
   /**
@@ -43,8 +59,8 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     btn_aceptar = new javax.swing.JButton();
     btn_cancelar = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
-    jTextField3 = new javax.swing.JTextField();
-    jTextField1 = new javax.swing.JTextField();
+    tf_monto = new javax.swing.JTextField();
+    tf_fecha = new javax.swing.JTextField();
     jLabel2 = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
 
@@ -98,15 +114,16 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     jPanel2.setBackground(new java.awt.Color(57, 62, 70));
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    jTextField3.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField3.setForeground(new java.awt.Color(34, 40, 49));
-    jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
+    tf_monto.setBackground(new java.awt.Color(238, 238, 238));
+    tf_monto.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_monto.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
 
-    jTextField1.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField1.setForeground(new java.awt.Color(34, 40, 49));
-    jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 220, 40));
+    tf_fecha.setEditable(false);
+    tf_fecha.setBackground(new java.awt.Color(238, 238, 238));
+    tf_fecha.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_fecha.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 220, 40));
 
     jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel2.setForeground(new java.awt.Color(238, 238, 238));
@@ -135,8 +152,25 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
+//    private JPanel getPanel() {
+//        JPanel panel = new JPanel();
+//        JLabel label = new JLabel(textoerror);
+//        Font font = new Font("Helvetica", Font.BOLD, 14);
+//        panel.setBackground(new Color(34,40,49));
+//        panel.setFont(font);
+//        panel.setSize(420, 120);
+//
+//        return panel;
+//    }
+  
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-
+    if(!this.tf_monto.getText().equals("")){
+      this.recargacliente.insertarDatos(cedulaCliente, cedulaEmpleado, Float.parseFloat(this.tf_monto.getText()));
+    } else {
+      //JPanel errormessage = this.getPanel();
+      //this.textoerror = "Llene todos los campos";
+      JOptionPane.showMessageDialog(null,"Llene todos los campos");
+    }
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
@@ -187,8 +221,8 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JTextField jTextField1;
-  private javax.swing.JTextField jTextField3;
   private javax.swing.JTextField tf_cedulaC;
+  private javax.swing.JTextField tf_fecha;
+  private javax.swing.JTextField tf_monto;
   // End of variables declaration//GEN-END:variables
 }

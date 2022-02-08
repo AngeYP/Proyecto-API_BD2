@@ -14,7 +14,7 @@ public class CRUDEmpleadoCliente {
         this.conexion = conexion;
   }
   
-  public String[] buscarEmpleado(String CICliente) {
+  public String[] buscarCliente(String CICliente) {
         
     String[] datosCliente = new String[11];
 
@@ -22,6 +22,7 @@ public class CRUDEmpleadoCliente {
       String SQL = "SELECT * FROM Clientes WHERE identificacionC = ?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CICliente);
+      System.out.println("Consulta exitosa");
       ResultSet resultado = consulta.executeQuery();
 
       while (resultado.next()) {
@@ -38,8 +39,66 @@ public class CRUDEmpleadoCliente {
           datosCliente[10] = resultado.getString("cod_pais");
       }                            
     } catch (HeadlessException | SQLException e) {
-        JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
+        System.out.println("Fallo en la consulta" + e.getMessage());
     }
     return datosCliente;
+  }
+  
+  public void insertarDatos(String CICliente, char Nacionalidad, String Nombre, String Apellido, String Email, String Telefono1, String Telefono2, 
+      float Saldo, String Pais, String Estado, String Ciudad) {
+    try {
+      String SQL = "INSERT INTO Clientes(identificacionC,nacionalidadC,nombreC,apellidoC,emailC,telefono1C,telefono2C,saldoC,cod_ciudades,cod_estados,cod_pais) "
+              + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CICliente);
+      consulta.setString(2, String.valueOf(Nacionalidad));
+      consulta.setString(3, Nombre);
+      consulta.setString(4, Apellido);
+      consulta.setString(5, Email);
+      consulta.setString(6, Telefono1);
+      consulta.setString(7, Telefono2);
+      consulta.setFloat(8, Saldo);
+      consulta.setString(9, Pais);
+      consulta.setString(10, Estado);
+      consulta.setString(11, Ciudad);
+      consulta.execute();
+      System.out.println("Registro insertado exitosamente");
+    } catch (HeadlessException | SQLException e) {
+      JOptionPane.showMessageDialog(null, "Error al insertar registro: " + e.getMessage());
+    }
+  }
+  
+  public void actualizarDatos(String CICliente, char Nacionalidad, String Nombre, String Apellido, String Email,
+      String Telefono1, String Telefono2, String Pais, String Estado, String Ciudad) {
+    try {
+      String SQL = "UPDATE Clientes SET nacionalidadC=?,nombreC=?,apellidoC=?,emailC=?,telefono1C=?,telefono2C=?,cod_ciudades=?,cod_estados=?,cod_pais=? WHERE identificacionC=?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, String.valueOf(Nacionalidad));
+      consulta.setString(2, Nombre);
+      consulta.setString(3, Apellido);
+      consulta.setString(4, Email);
+      consulta.setString(5, Telefono1);
+      consulta.setString(6, Telefono2);
+      consulta.setString(7, Ciudad);
+      consulta.setString(8, Estado);
+      consulta.setString(9, Pais);
+      consulta.setString(10, CICliente);
+      consulta.execute();
+      System.out.println("Registro editado exitosamente");
+    } catch (Exception e) {
+      System.out.println("Error al editar el registro" + e.getMessage());
+    }
+  }
+  
+  public void eliminarRegistro(String CICliente) {
+    String SQL = "DELETE FROM Clientes WHERE identificacionC=?";
+    try {
+      PreparedStatement consulta = conexion.prepareStatement(SQL);
+      consulta.setString(1, CICliente);
+      consulta.executeUpdate();
+      System.out.println("Registro eliminado exitosamente");
+    } catch (Exception e) {
+      System.out.println("Error al eliminar registro " + e.getMessage());
+    }
   }
 }
