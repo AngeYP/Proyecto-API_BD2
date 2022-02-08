@@ -5,17 +5,19 @@
  */
 package Deliverys;
 
-/**
- *
- * @author angel
- */
+import Conexion.Conexion;
+
 public class VEmpleadoCliente extends javax.swing.JFrame {
 
-  /**
-   * Creates new form VEmpleadoCliente
-   */
+  Conexion conexion = new Conexion();
+  String cedulaE;
+  
   public VEmpleadoCliente() {
     initComponents();
+  }
+  public VEmpleadoCliente(String cedulaEmp) {
+    initComponents();
+    cedulaE = cedulaEmp;
   }
 
   /**
@@ -27,19 +29,16 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
+    buttonGroup1 = new javax.swing.ButtonGroup();
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
     jButton1 = new javax.swing.JButton();
     jButton2 = new javax.swing.JButton();
-    jButton3 = new javax.swing.JButton();
-    jButton4 = new javax.swing.JButton();
-    jTextField1 = new javax.swing.JTextField();
-    jButton5 = new javax.swing.JButton();
-    jPanel3 = new javax.swing.JPanel();
-    jButton6 = new javax.swing.JButton();
-    jButton7 = new javax.swing.JButton();
-    jButton8 = new javax.swing.JButton();
+    btn_transportistas = new javax.swing.JButton();
+    btn_encomiendas = new javax.swing.JButton();
+    tf_identificacionC = new javax.swing.JTextField();
+    btn_buscar = new javax.swing.JButton();
     jPanel4 = new javax.swing.JPanel();
     jLabel2 = new javax.swing.JLabel();
     jLabel3 = new javax.swing.JLabel();
@@ -48,14 +47,25 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     jLabel6 = new javax.swing.JLabel();
     jLabel7 = new javax.swing.JLabel();
     jLabel8 = new javax.swing.JLabel();
-    jTextField2 = new javax.swing.JTextField();
-    jTextField3 = new javax.swing.JTextField();
-    jTextField4 = new javax.swing.JTextField();
-    jTextField5 = new javax.swing.JTextField();
-    jTextField6 = new javax.swing.JTextField();
-    jTextField7 = new javax.swing.JTextField();
-    jTextField8 = new javax.swing.JTextField();
-    jButton9 = new javax.swing.JButton();
+    tf_identificacion = new javax.swing.JTextField();
+    tf_nombre = new javax.swing.JTextField();
+    tf_apellido = new javax.swing.JTextField();
+    tf_email = new javax.swing.JTextField();
+    tf_telefono = new javax.swing.JTextField();
+    tf_saldo = new javax.swing.JTextField();
+    btn_recargar = new javax.swing.JButton();
+    jLabel9 = new javax.swing.JLabel();
+    cb_ciudad = new javax.swing.JComboBox<>();
+    cb_pais = new javax.swing.JComboBox<>();
+    cb_estado = new javax.swing.JComboBox<>();
+    rbtn_nacional = new javax.swing.JRadioButton();
+    rbtn_internacional = new javax.swing.JRadioButton();
+    jLabel10 = new javax.swing.JLabel();
+    tf_telefonosecu = new javax.swing.JTextField();
+    jPanel3 = new javax.swing.JPanel();
+    btn_eliminar = new javax.swing.JButton();
+    btn_aceptar = new javax.swing.JButton();
+    btn_actualizar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,157 +99,237 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
 
     jButton2.setBackground(new java.awt.Color(253, 112, 20));
     jButton2.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton2.setForeground(new java.awt.Color(238, 238, 238));
+    jButton2.setForeground(new java.awt.Color(34, 40, 49));
     jButton2.setText("Clientes");
     jButton2.setBorderPainted(false);
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2ActionPerformed(evt);
+      }
+    });
     jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
 
-    jButton3.setBackground(new java.awt.Color(253, 112, 20));
-    jButton3.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton3.setForeground(new java.awt.Color(238, 238, 238));
-    jButton3.setText("Transportistas");
-    jButton3.setBorderPainted(false);
-    jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 180, 60));
+    btn_transportistas.setBackground(new java.awt.Color(253, 112, 20));
+    btn_transportistas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_transportistas.setForeground(new java.awt.Color(238, 238, 238));
+    btn_transportistas.setText("Transportistas");
+    btn_transportistas.setBorderPainted(false);
+    jPanel2.add(btn_transportistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 180, 60));
 
-    jButton4.setBackground(new java.awt.Color(253, 112, 20));
-    jButton4.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton4.setForeground(new java.awt.Color(238, 238, 238));
-    jButton4.setText("Encomiendas");
-    jButton4.setBorderPainted(false);
-    jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+    btn_encomiendas.setBackground(new java.awt.Color(253, 112, 20));
+    btn_encomiendas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_encomiendas.setForeground(new java.awt.Color(238, 238, 238));
+    btn_encomiendas.setText("Encomiendas");
+    btn_encomiendas.setBorderPainted(false);
+    btn_encomiendas.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_encomiendasActionPerformed(evt);
+      }
+    });
+    jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
-    jTextField1.setBackground(new java.awt.Color(57, 62, 70));
-    jTextField1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField1.setForeground(new java.awt.Color(238, 238, 238));
-    jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    jTextField1.setText("jTextField1");
-    jTextField1.setBorder(null);
-    jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
+    tf_identificacionC.setBackground(new java.awt.Color(57, 62, 70));
+    tf_identificacionC.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_identificacionC.setForeground(new java.awt.Color(238, 238, 238));
+    tf_identificacionC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+    tf_identificacionC.setText("Cedula");
+    tf_identificacionC.setBorder(null);
+    tf_identificacionC.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    tf_identificacionC.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        clearText(evt);
+      }
+    });
+    jPanel1.add(tf_identificacionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
 
-    jButton5.setBackground(new java.awt.Color(57, 62, 70));
-    jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
-    jButton5.setBorderPainted(false);
-    jButton5.setFocusPainted(false);
-    jButton5.setFocusable(false);
-    jButton5.setOpaque(false);
-    jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 40, 40));
-
-    jPanel3.setBackground(new java.awt.Color(57, 62, 70));
-    jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-    jButton6.setBackground(new java.awt.Color(253, 112, 20));
-    jButton6.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jButton6.setForeground(new java.awt.Color(238, 238, 238));
-    jButton6.setText("Eliminar");
-    jButton6.setFocusPainted(false);
-    jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
-
-    jButton7.setBackground(new java.awt.Color(253, 112, 20));
-    jButton7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jButton7.setForeground(new java.awt.Color(238, 238, 238));
-    jButton7.setText("Aceptar");
-    jButton7.setFocusPainted(false);
-    jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 40));
-
-    jButton8.setBackground(new java.awt.Color(253, 112, 20));
-    jButton8.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jButton8.setForeground(new java.awt.Color(238, 238, 238));
-    jButton8.setText("Actualizar");
-    jButton8.setFocusPainted(false);
-    jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
-
-    jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
+    btn_buscar.setBackground(new java.awt.Color(57, 62, 70));
+    btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
+    btn_buscar.setBorderPainted(false);
+    btn_buscar.setFocusPainted(false);
+    btn_buscar.setFocusable(false);
+    btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_buscarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 40, 40));
 
     jPanel4.setBackground(new java.awt.Color(57, 62, 70));
     jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel2.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel2.setText("jLabel2");
+    jLabel2.setText("Identificación");
     jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
 
     jLabel3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel3.setText("jLabel2");
+    jLabel3.setText("Nacionalidad");
     jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 290, 40));
 
     jLabel4.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel4.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel4.setText("jLabel2");
+    jLabel4.setText("Nombre");
     jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 290, 40));
 
     jLabel5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel5.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel5.setText("jLabel2");
+    jLabel5.setText("Apellido");
     jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 290, 40));
 
     jLabel6.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel6.setText("jLabel2");
+    jLabel6.setText("Correo electrónico");
     jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 290, 40));
 
     jLabel7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel7.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel7.setText("jLabel2");
+    jLabel7.setText("Teléfono");
     jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 290, 40));
 
     jLabel8.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel8.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel8.setText("jLabel2");
-    jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 290, 40));
+    jLabel8.setText("Saldo");
+    jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 290, 40));
 
-    jTextField2.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField2.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField2.setText("jTextField2");
-    jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 320, 40));
+    tf_identificacion.setBackground(new java.awt.Color(238, 238, 238));
+    tf_identificacion.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_identificacion.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_identificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 320, 40));
 
-    jTextField3.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField3.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField3.setText("jTextField2");
-    jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 320, 40));
+    tf_nombre.setBackground(new java.awt.Color(238, 238, 238));
+    tf_nombre.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_nombre.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
 
-    jTextField4.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField4.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField4.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField4.setText("jTextField2");
-    jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
+    tf_apellido.setBackground(new java.awt.Color(238, 238, 238));
+    tf_apellido.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_apellido.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
 
-    jTextField5.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField5.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField5.setText("jTextField2");
-    jPanel4.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
+    tf_email.setBackground(new java.awt.Color(238, 238, 238));
+    tf_email.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_email.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, 40));
 
-    jTextField6.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField6.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField6.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField6.setText("jTextField2");
-    jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, 40));
+    tf_telefono.setBackground(new java.awt.Color(238, 238, 238));
+    tf_telefono.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_telefono.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 320, 40));
 
-    jTextField7.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField7.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField7.setText("jTextField2");
-    jPanel4.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 320, 40));
+    tf_saldo.setBackground(new java.awt.Color(238, 238, 238));
+    tf_saldo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_saldo.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 320, 40));
 
-    jTextField8.setBackground(new java.awt.Color(238, 238, 238));
-    jTextField8.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField8.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField8.setText("jTextField2");
-    jPanel4.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 320, 40));
+    btn_recargar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_recargar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    btn_recargar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_recargar.setText("Recargar");
+    btn_recargar.setFocusPainted(false);
+    btn_recargar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_recargarActionPerformed(evt);
+      }
+    });
+    jPanel4.add(btn_recargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, 170, 40));
 
-    jButton9.setBackground(new java.awt.Color(253, 112, 20));
-    jButton9.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jButton9.setForeground(new java.awt.Color(238, 238, 238));
-    jButton9.setText("Recargar");
-    jButton9.setFocusPainted(false);
-    jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 170, 40));
+    jLabel9.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    jLabel9.setForeground(new java.awt.Color(238, 238, 238));
+    jLabel9.setText("Dirección");
+    jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 290, 40));
 
-    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 500));
+    cb_ciudad.setBackground(new java.awt.Color(238, 238, 238));
+    cb_ciudad.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    cb_ciudad.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(cb_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, 320, 40));
+
+    cb_pais.setBackground(new java.awt.Color(238, 238, 238));
+    cb_pais.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    cb_pais.setForeground(new java.awt.Color(34, 40, 49));
+    cb_pais.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cb_paisActionPerformed(evt);
+      }
+    });
+    jPanel4.add(cb_pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 320, 40));
+
+    cb_estado.setBackground(new java.awt.Color(238, 238, 238));
+    cb_estado.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    cb_estado.setForeground(new java.awt.Color(34, 40, 49));
+    cb_estado.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cb_estadoActionPerformed(evt);
+      }
+    });
+    jPanel4.add(cb_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 320, 40));
+
+    rbtn_nacional.setBackground(new java.awt.Color(57, 62, 70));
+    buttonGroup1.add(rbtn_nacional);
+    rbtn_nacional.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    rbtn_nacional.setForeground(new java.awt.Color(238, 238, 238));
+    rbtn_nacional.setText("Nacional");
+    rbtn_nacional.setBorder(null);
+    jPanel4.add(rbtn_nacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 40));
+
+    rbtn_internacional.setBackground(new java.awt.Color(57, 62, 70));
+    buttonGroup1.add(rbtn_internacional);
+    rbtn_internacional.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    rbtn_internacional.setForeground(new java.awt.Color(238, 238, 238));
+    rbtn_internacional.setText("Extranjero");
+    jPanel4.add(rbtn_internacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, 40));
+
+    jLabel10.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    jLabel10.setForeground(new java.awt.Color(238, 238, 238));
+    jLabel10.setText("Telefono secundario");
+    jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 290, 40));
+
+    tf_telefonosecu.setBackground(new java.awt.Color(238, 238, 238));
+    tf_telefonosecu.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_telefonosecu.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel4.add(tf_telefonosecu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 320, 40));
+
+    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 670));
+
+    jPanel3.setBackground(new java.awt.Color(57, 62, 70));
+    jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    btn_eliminar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_eliminar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    btn_eliminar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_eliminar.setText("Eliminar");
+    btn_eliminar.setEnabled(false);
+    btn_eliminar.setFocusPainted(false);
+    btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_eliminarActionPerformed(evt);
+      }
+    });
+    jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
+
+    btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_aceptar.setText("Aceptar");
+    btn_aceptar.setFocusPainted(false);
+    jPanel3.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 40));
+
+    btn_actualizar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_actualizar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    btn_actualizar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_actualizar.setText("Actualizar");
+    btn_actualizar.setEnabled(false);
+    btn_actualizar.setFocusPainted(false);
+    btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_actualizarActionPerformed(evt);
+      }
+    });
+    jPanel3.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
+
+    jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -249,7 +339,7 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
     );
 
     pack();
@@ -259,6 +349,78 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_jButton1ActionPerformed
+
+  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    this.tf_identificacionC.setText("Cedula");
+    this.tf_identificacion.setText("");
+    this.tf_nombre.setText("");
+    this.tf_apellido.setText("");
+    this.tf_email.setText("");
+    this.tf_saldo.setText("");
+    this.tf_telefono.setText("");
+    this.tf_telefonosecu.setText("");
+    this.btn_actualizar.setEnabled(false);
+    this.btn_eliminar.setEnabled(false);
+  }//GEN-LAST:event_jButton2ActionPerformed
+
+  private void clearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearText
+
+  }//GEN-LAST:event_clearText
+
+  private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+    this.btn_actualizar.setEnabled(true);
+    this.btn_eliminar.setEnabled(true);
+    this.btn_recargar.setEnabled(true);
+    this.tf_identificacionC.setEditable(false);
+    this.tf_identificacionC.setEditable(false);
+    this.tf_saldo.setEditable(false);
+  }//GEN-LAST:event_btn_buscarActionPerformed
+
+  private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btn_actualizarActionPerformed
+
+  private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+    this.tf_identificacionC.setText("Cedula");
+    this.tf_identificacion.setText("");
+    this.tf_nombre.setText("");
+    this.tf_apellido.setText("");
+    this.tf_email.setText("");
+    this.tf_saldo.setText("");
+    this.tf_telefono.setText("");
+    this.tf_telefonosecu.setText("");
+    this.btn_actualizar.setEnabled(false);
+    this.btn_eliminar.setEnabled(false);
+  }//GEN-LAST:event_btn_eliminarActionPerformed
+
+  private void cb_paisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_paisActionPerformed
+    String item = (String)this.cb_pais.getSelectedItem();
+
+    if (item == null) {
+      this.cb_estado.setModel(null);
+    } else {
+      //cargar el combobox con los registros de estados que coincidan con el pais
+    }
+  }//GEN-LAST:event_cb_paisActionPerformed
+
+  private void cb_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_estadoActionPerformed
+    String item = (String)this.cb_estado.getSelectedItem();
+
+    if (item == null) {
+      this.cb_ciudad.setModel(null);
+    } else {
+      //cargar el combobox con los registros de ciudaddes que coincidan con el estado
+    }
+  }//GEN-LAST:event_cb_estadoActionPerformed
+
+  private void btn_recargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_recargarActionPerformed
+    new VEmpleadoRecarga(this.tf_identificacion.getText(), cedulaE).setVisible(true);
+  }//GEN-LAST:event_btn_recargarActionPerformed
+
+  private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
+    new VEmpleadoEncom(cedulaE).setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_encomiendasActionPerformed
 
   /**
    * @param args the command line arguments
@@ -296,16 +458,21 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btn_aceptar;
+  private javax.swing.JButton btn_actualizar;
+  private javax.swing.JButton btn_buscar;
+  private javax.swing.JButton btn_eliminar;
+  private javax.swing.JButton btn_encomiendas;
+  private javax.swing.JButton btn_recargar;
+  private javax.swing.JButton btn_transportistas;
+  private javax.swing.ButtonGroup buttonGroup1;
+  private javax.swing.JComboBox<String> cb_ciudad;
+  private javax.swing.JComboBox<String> cb_estado;
+  private javax.swing.JComboBox<String> cb_pais;
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
-  private javax.swing.JButton jButton3;
-  private javax.swing.JButton jButton4;
-  private javax.swing.JButton jButton5;
-  private javax.swing.JButton jButton6;
-  private javax.swing.JButton jButton7;
-  private javax.swing.JButton jButton8;
-  private javax.swing.JButton jButton9;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
@@ -313,17 +480,20 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
+  private javax.swing.JLabel jLabel9;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
-  private javax.swing.JTextField jTextField1;
-  private javax.swing.JTextField jTextField2;
-  private javax.swing.JTextField jTextField3;
-  private javax.swing.JTextField jTextField4;
-  private javax.swing.JTextField jTextField5;
-  private javax.swing.JTextField jTextField6;
-  private javax.swing.JTextField jTextField7;
-  private javax.swing.JTextField jTextField8;
+  private javax.swing.JRadioButton rbtn_internacional;
+  private javax.swing.JRadioButton rbtn_nacional;
+  private javax.swing.JTextField tf_apellido;
+  private javax.swing.JTextField tf_email;
+  private javax.swing.JTextField tf_identificacion;
+  private javax.swing.JTextField tf_identificacionC;
+  private javax.swing.JTextField tf_nombre;
+  private javax.swing.JTextField tf_saldo;
+  private javax.swing.JTextField tf_telefono;
+  private javax.swing.JTextField tf_telefonosecu;
   // End of variables declaration//GEN-END:variables
 }

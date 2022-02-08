@@ -14,8 +14,18 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   /**
    * Creates new form VEmpleadoRecarga
    */
+  String cedulaCliente;
+  String cedulaEmpleado;
+  
   public VEmpleadoRecarga() {
     initComponents();
+  }
+  
+  public VEmpleadoRecarga(String cedulaC, String cedulaE) {
+    initComponents();
+    cedulaCliente = cedulaC;
+    cedulaEmpleado = cedulaE;
+    this.tf_cedulaC.setText(cedulaCliente);
   }
 
   /**
@@ -29,9 +39,9 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
 
     jPanel1 = new javax.swing.JPanel();
     jLabel4 = new javax.swing.JLabel();
-    jTextField2 = new javax.swing.JTextField();
-    Btn_Ingresar1 = new javax.swing.JButton();
-    Btn_Ingresar2 = new javax.swing.JButton();
+    tf_cedulaC = new javax.swing.JTextField();
+    btn_aceptar = new javax.swing.JButton();
+    btn_cancelar = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
     jTextField3 = new javax.swing.JTextField();
     jTextField1 = new javax.swing.JTextField();
@@ -51,40 +61,39 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     jLabel4.setOpaque(true);
     jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 80));
 
-    jTextField2.setEditable(false);
-    jTextField2.setBackground(new java.awt.Color(57, 62, 70));
-    jTextField2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jTextField2.setForeground(new java.awt.Color(238, 238, 238));
-    jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    jTextField2.setText("jTextField1");
-    jTextField2.setBorder(null);
-    jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 200, 40));
+    tf_cedulaC.setEditable(false);
+    tf_cedulaC.setBackground(new java.awt.Color(57, 62, 70));
+    tf_cedulaC.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_cedulaC.setForeground(new java.awt.Color(238, 238, 238));
+    tf_cedulaC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+    tf_cedulaC.setBorder(null);
+    jPanel1.add(tf_cedulaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 200, 40));
 
-    Btn_Ingresar1.setBackground(new java.awt.Color(253, 112, 20));
-    Btn_Ingresar1.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-    Btn_Ingresar1.setForeground(new java.awt.Color(238, 238, 238));
-    Btn_Ingresar1.setText("Aceptar");
-    Btn_Ingresar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
-    Btn_Ingresar1.setBorderPainted(false);
-    Btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
+    btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_aceptar.setText("Aceptar");
+    btn_aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+    btn_aceptar.setBorderPainted(false);
+    btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        Btn_Ingresar1ActionPerformed(evt);
+        btn_aceptarActionPerformed(evt);
       }
     });
-    jPanel1.add(Btn_Ingresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
+    jPanel1.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 140, 40));
 
-    Btn_Ingresar2.setBackground(new java.awt.Color(253, 112, 20));
-    Btn_Ingresar2.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-    Btn_Ingresar2.setForeground(new java.awt.Color(238, 238, 238));
-    Btn_Ingresar2.setText("Cancelar");
-    Btn_Ingresar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
-    Btn_Ingresar2.setBorderPainted(false);
-    Btn_Ingresar2.addActionListener(new java.awt.event.ActionListener() {
+    btn_cancelar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_cancelar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    btn_cancelar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_cancelar.setText("Cancelar");
+    btn_cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+    btn_cancelar.setBorderPainted(false);
+    btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        Btn_Ingresar2ActionPerformed(evt);
+        btn_cancelarActionPerformed(evt);
       }
     });
-    jPanel1.add(Btn_Ingresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 140, 40));
+    jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 140, 40));
 
     jPanel2.setBackground(new java.awt.Color(57, 62, 70));
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,23 +101,21 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     jTextField3.setBackground(new java.awt.Color(238, 238, 238));
     jTextField3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jTextField3.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField3.setText("jTextField1");
     jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
 
     jTextField1.setBackground(new java.awt.Color(238, 238, 238));
     jTextField1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jTextField1.setForeground(new java.awt.Color(34, 40, 49));
-    jTextField1.setText("jTextField1");
     jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 220, 40));
 
     jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel2.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel2.setText("jLabel1");
+    jLabel2.setText("Monto");
     jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
 
     jLabel1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel1.setText("jLabel1");
+    jLabel1.setText("Fecha");
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, 40));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 440, 140));
@@ -128,13 +135,14 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void Btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar1ActionPerformed
+  private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
 
-  }//GEN-LAST:event_Btn_Ingresar1ActionPerformed
+  }//GEN-LAST:event_btn_aceptarActionPerformed
 
-  private void Btn_Ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar2ActionPerformed
-
-  }//GEN-LAST:event_Btn_Ingresar2ActionPerformed
+  private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+    new VEmpleadoCliente(cedulaEmpleado).setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_cancelarActionPerformed
 
   /**
    * @param args the command line arguments
@@ -172,15 +180,15 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton Btn_Ingresar1;
-  private javax.swing.JButton Btn_Ingresar2;
+  private javax.swing.JButton btn_aceptar;
+  private javax.swing.JButton btn_cancelar;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JTextField jTextField1;
-  private javax.swing.JTextField jTextField2;
   private javax.swing.JTextField jTextField3;
+  private javax.swing.JTextField tf_cedulaC;
   // End of variables declaration//GEN-END:variables
 }

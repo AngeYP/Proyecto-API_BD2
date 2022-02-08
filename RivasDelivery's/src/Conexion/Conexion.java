@@ -10,7 +10,7 @@ public class Conexion {
     public Connection conectar() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectado = DriverManager.getConnection(jdbc+"bd2_202225_grupo3", "bd2_202125_25512833", "25512833");
+            conectado = DriverManager.getConnection(jdbc+"bd2_202215_grupo3", "bd2_202215_25512833", "25512833");
             System.out.println("conexion exitosa");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("error de conexion "+e.getMessage());
