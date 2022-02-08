@@ -58,6 +58,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
     jComboBox1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jComboBox1.setForeground(new java.awt.Color(238, 238, 238));
     jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    jComboBox1.setBorder(null);
     jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 240, 40));
 
     jTable1.setBackground(new java.awt.Color(57, 62, 70));
@@ -85,6 +86,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
     jComboBox3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jComboBox3.setForeground(new java.awt.Color(238, 238, 238));
     jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    jComboBox3.setBorder(null);
     jComboBox3.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jComboBox3ActionPerformed(evt);
