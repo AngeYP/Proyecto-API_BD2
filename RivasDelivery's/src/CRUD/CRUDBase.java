@@ -150,33 +150,37 @@ public class CRUDBase {
     }
   }
   
-  /********LLENAR EL COMBOBOX DE ESTADOS*********/
-  public void obtenerEstado(JComboBox cb, String CodPais) {
+  /*********LLENAR COMBOBOX DE PAISES*********/
+  public void comboboxPaises(JComboBox cb) {
     try {
-      String SQL = "SELECT * FROM Estados WHERE cod_pais = ? ORDER BY nombre_estados ASC";
-      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      String SQL = "SELECT * FROM Paises ORDER BY nombre_pais ASC";
+      PreparedStatement consulta = conexion.prepareStatement(SQL);
       ResultSet resultado = consulta.executeQuery();
       cb.addItem("Seleccione una opcion");
       while (resultado.next()) {
-          cb.addItem(resultado.getString("nombre_estados"));
+        cb.addItem(resultado.getString("nombre_pais"));
       }
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Fallo: " + ex.getMessage());
+      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
     }
   }
   
-  /********LLENAR EL COMBOBOX DE CIUDADES*********/
-  public void obtenerCiudad(JComboBox cb) {
+  /*********LLENAR COMBOBOX DE ESTADOS*********/
+  public void comboboxEstados(JComboBox cb, String codpais) {
+
     try {
-      String SQL = "SELECT * FROM lineasuministros ORDER BY NombLS ASC";
-      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      String SQL = "SELECT * FROM Estados WHERE cod_pais = ? ORDER BY nombre_estados ASC";
+      PreparedStatement consulta = conexion.prepareStatement(SQL);
+      consulta.setString(1, codpais);
       ResultSet resultado = consulta.executeQuery();
       cb.addItem("Seleccione una opcion");
       while (resultado.next()) {
-          cb.addItem(resultado.getString("NombLS"));
+        cb.addItem(resultado.getString("nombre_estados"));
       }
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Fallo: " + ex.getMessage());
+      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
     }
   }
+  
+  /*********LLENAR COMBOBOX DE CIUDADES*********/
 }
