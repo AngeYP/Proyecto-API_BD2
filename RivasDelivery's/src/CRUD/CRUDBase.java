@@ -79,7 +79,7 @@ public class CRUDBase {
     String CodEstado = null;
 
     try {
-      String SQL = "SELECT cod_estados FROM Estados WHERE nombre_pais = ? AND cod_pais = ?";
+      String SQL = "SELECT cod_estados FROM Estados WHERE nombre_estados = ? AND cod_pais = ?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, NombEstado);
       consulta.setString(2, CodPais);
@@ -183,4 +183,21 @@ public class CRUDBase {
   }
   
   /*********LLENAR COMBOBOX DE CIUDADES*********/
+  public void comboboxCiudad(JComboBox cb, String codpais, String codestado) {
+
+    try {
+      String SQL = "SELECT * FROM Ciudades WHERE cod_pais = ? AND cod_estados = ? ORDER BY nombre_ciudades ASC";
+      PreparedStatement consulta = conexion.prepareStatement(SQL);
+      consulta.setString(1, codpais);
+      consulta.setString(2, codestado);
+      ResultSet resultado = consulta.executeQuery();
+      cb.addItem("Seleccione una opcion");
+      while (resultado.next()) {
+        cb.addItem(resultado.getString("nombre_ciudades"));
+      }
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
+    }
+  }
+  
 }
