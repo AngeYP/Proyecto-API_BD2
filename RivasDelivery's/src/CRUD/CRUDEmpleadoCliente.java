@@ -41,6 +41,8 @@ public class CRUDEmpleadoCliente {
     } catch (HeadlessException | SQLException e) {
         System.out.println("Fallo en la consulta" + e.getMessage());
     }
+    
+//    System.out.println("["+datosCliente[10]+"]");
     return datosCliente;
   }
   
@@ -58,9 +60,9 @@ public class CRUDEmpleadoCliente {
       consulta.setString(6, Telefono1);
       consulta.setString(7, Telefono2);
       consulta.setFloat(8, Saldo);
-      consulta.setString(9, Pais);
+      consulta.setString(9, Ciudad);
       consulta.setString(10, Estado);
-      consulta.setString(11, Ciudad);
+      consulta.setString(11, Pais);
       consulta.execute();
       System.out.println("Registro insertado exitosamente");
     } catch (HeadlessException | SQLException e) {
