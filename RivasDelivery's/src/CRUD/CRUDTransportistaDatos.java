@@ -21,7 +21,7 @@ public class CRUDTransportistaDatos {
     
     public String []datos(String id){
         
-        String []tabla=new String[6];
+        String []tabla=new String[7];
                        
         try {
             String SQL = "SELECT * FROM Transportistas WHERE identificacionT = ?";
@@ -37,6 +37,7 @@ public class CRUDTransportistaDatos {
                 tabla[3] = resultado.getString("telefono1T");
                 tabla[4] = resultado.getString("saldoT");
                 tabla[5] = resultado.getString("nombre_nucleos");
+                tabla[6] = resultado.getString("codigo_curso");
             }
         } catch (Exception e) {
             System.out.println("Fallo en la consulta: "+e.getMessage());
