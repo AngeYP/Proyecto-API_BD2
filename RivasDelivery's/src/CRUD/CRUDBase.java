@@ -200,4 +200,60 @@ public class CRUDBase {
     }
   }
   
+  /*******************Insert Pais********************/
+  public void insertPais(String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Paises (cod_pais,nombre_pais) " +
+            "VALUES" +
+            "(?,?)";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, cod);
+          consulta.setString(2, nombre);
+          ResultSet rest = consulta.executeQuery();
+          while (rest.next()) {              
+              
+          }
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
+  /*******************Insert Estado********************/
+  public void insertEstado(String codPais,String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Estados (cod_pais,cod_estados" +
+            "nombre_estados) " +
+            "VALUES" +
+            "(?,?,?)";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codPais);
+          consulta.setString(2, cod);
+          consulta.setString(3, nombre);
+          consulta.executeQuery();
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
+  /*******************Insert Ciudades********************/
+  public void insertciudades(String codPais,String codEstado,String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Ciudades (cod_pais,cod_estados,cod_ciudades" +
+            "nombre_ciudades) " +
+            "VALUES" +
+            "(?,?,?,?)";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codPais);
+          consulta.setString(2, codEstado);
+          consulta.setString(3, cod);
+          consulta.setString(4, nombre);
+          consulta.executeQuery();
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
 }

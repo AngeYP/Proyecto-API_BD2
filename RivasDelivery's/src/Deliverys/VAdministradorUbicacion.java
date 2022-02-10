@@ -196,7 +196,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
                 agregarActionPerformed(evt);
             }
         });
-        jPanel4.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, 50));
+        jPanel4.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, 50));
 
         textCod.setEditable(false);
         jPanel4.add(textCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 320, -1));
@@ -363,6 +363,23 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         // TODO add your handling code here:
+        if ((cb_estado.getSelectedIndex()>0)&&(cb_estado.getSelectedIndex()==cb_estado.getItemCount()-1)) {
+            crud.insertEstado(crud.buscarCodPais(cb_pais.getSelectedItem().toString()),textCod.getText(), textNombre.getText());
+            textCod.setText("");
+            textNombre.setText("");
+        }
+        if ((cb_pais.getSelectedIndex()>0)&&(cb_pais.getSelectedIndex()==cb_pais.getItemCount()-1)) {
+            crud.insertPais(textCod.getText(), textNombre.getText());
+            textCod.setText("");
+            textNombre.setText("");
+        }
+        if ((cb_ciudad.getSelectedIndex()>0)&&(cb_ciudad.getSelectedIndex()==cb_ciudad.getItemCount()-1)) {
+            String pais=crud.buscarCodPais(cb_pais.getSelectedItem().toString());
+            crud.insertciudades(pais,crud.buscarCodEstado(cb_estado.getSelectedItem().toString(), pais),textCod.getText(), textNombre.getText());
+            textCod.setText("");
+            textNombre.setText("");
+        }
+        
     }//GEN-LAST:event_agregarActionPerformed
 
   /**
