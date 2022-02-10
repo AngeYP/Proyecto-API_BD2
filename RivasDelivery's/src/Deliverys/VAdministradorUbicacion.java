@@ -39,7 +39,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
-        btn_clientes = new javax.swing.JButton();
         btn_transportistas = new javax.swing.JButton();
         btn_encomiendas = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -58,6 +57,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         btn_aceptar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
+        BTN_Nucleos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,17 +89,17 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         });
         jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
-        btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
-        btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        btn_clientes.setForeground(new java.awt.Color(238, 238, 238));
-        btn_clientes.setText("Nucleos");
-        btn_clientes.setBorderPainted(false);
-        btn_clientes.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Nucleos.setBackground(new java.awt.Color(253, 112, 20));
+        BTN_Nucleos.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        BTN_Nucleos.setForeground(new java.awt.Color(238, 238, 238));
+        BTN_Nucleos.setText("Nucleos");
+        BTN_Nucleos.setBorderPainted(false);
+        BTN_Nucleos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clientesActionPerformed(evt);
+                BTN_NucleosActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
+        jPanel2.add(BTN_Nucleos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
 
         btn_transportistas.setBackground(new java.awt.Color(253, 112, 20));
         btn_transportistas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
@@ -273,9 +273,10 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     // TODO add your handling code here:
   }//GEN-LAST:event_btn_salirActionPerformed
 
-  private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-
-  }//GEN-LAST:event_btn_clientesActionPerformed
+  private void BTN_NucleosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_NucleosActionPerformed
+      new VAdmistradorNucleo().setVisible(true);
+      this.dispose();
+  }//GEN-LAST:event_BTN_NucleosActionPerformed
 
   private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
 
@@ -421,7 +422,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private javax.swing.JButton agregar;
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_clientes;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_encomiendas;
     private javax.swing.JButton btn_salir;
@@ -442,4 +442,5 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private javax.swing.JTextField textCod;
     private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.JButton BTN_Nucleos;
 }
