@@ -52,7 +52,7 @@ public class CRUDTransportistaDatos {
             PreparedStatement insert = this.conexion.prepareStatement(sql);
             insert.setString(1, id);
             insert.setString(2, codigoEncomienda);
-            insert.executeQuery();
+            insert.executeUpdate();
             return true;
         } catch (Exception e) {
             System.out.println("Fallo en insercion: "+e.getMessage());
