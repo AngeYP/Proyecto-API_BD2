@@ -19,12 +19,20 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
     Conexion conexion = new Conexion();
     CRUDBase datosBase = new CRUDBase(conexion.conectar());
     CRUDAdministradorNucleo crudAdmNucleo = new CRUDAdministradorNucleo(conexion.conectar());
-
+    String cedulaE;
+    
   /**
    * Creates new form VAdmistradorNucleo
    */
   public VAdmistradorNucleo() {
     initComponents();
+    this.datosBase.comboboxPaises(JCB_cod_pais);
+  }
+  
+  public VAdmistradorNucleo(String cedulaEmp) {
+    initComponents();
+    cedulaE = cedulaEmp;
+    this.datosBase.comboboxPaises(JCB_cod_pais);
   }
 
   /**
@@ -139,7 +147,6 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
         JLB_cod_nucleo.setText("Codigo :");
         jPanel4.add(JLB_cod_nucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
 
-        JTF_cod_nucleo.setEditable(false);
         JTF_cod_nucleo.setBackground(new java.awt.Color(238, 238, 238));
         JTF_cod_nucleo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_cod_nucleo.setForeground(new java.awt.Color(34, 40, 49));
@@ -150,7 +157,6 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
         JLB_num_telefonoN.setText("Número de teléfono :");
         jPanel4.add(JLB_num_telefonoN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 290, 40));
 
-        JTF_num_telefonoN.setEditable(false);
         JTF_num_telefonoN.setBackground(new java.awt.Color(238, 238, 238));
         JTF_num_telefonoN.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_num_telefonoN.setForeground(new java.awt.Color(34, 40, 49));
@@ -161,7 +167,6 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
         JLB_identificacionE.setText("Cédula Empleado :");
         jPanel4.add(JLB_identificacionE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 290, 40));
 
-        JTF_identificacionE.setEditable(false);
         JTF_identificacionE.setBackground(new java.awt.Color(238, 238, 238));
         JTF_identificacionE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_identificacionE.setForeground(new java.awt.Color(34, 40, 49));
@@ -216,7 +221,6 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
         JLB_nombre_nucleo.setText("Nombre :");
         jPanel4.add(JLB_nombre_nucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 290, 40));
 
-        JTF_nombre_nucleo.setEditable(false);
         JTF_nombre_nucleo.setBackground(new java.awt.Color(238, 238, 238));
         JTF_nombre_nucleo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_nombre_nucleo.setForeground(new java.awt.Color(34, 40, 49));
@@ -340,10 +344,14 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
     String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(),CodPais);
     String CodCiudad = this.datosBase.buscarCodCiudad(CodPais,CodEstado,this.JCB_cod_ciudades.getSelectedItem().toString());
     
-    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && this.JTF_identificacionE.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
+    }else{
+        if(this.JTF_identificacionE.getText().equals(""))
+            this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null,CodCiudad,CodEstado,CodPais);
+        else
+            this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(),CodCiudad,CodEstado,CodPais);
     }
-    this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodPais, CodEstado, CodCiudad);
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -352,10 +360,14 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
     String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(),CodPais);
     String CodCiudad = this.datosBase.buscarCodCiudad(CodPais,CodEstado,this.JCB_cod_ciudades.getSelectedItem().toString());
     
-    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && this.JTF_identificacionE.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
+    }else{
+        if(this.JTF_identificacionE.getText().equals(""))
+            this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null,CodCiudad,CodEstado,CodPais);
+        else
+            this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(),CodCiudad,CodEstado,CodPais);
     }
-    this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodPais, CodEstado, CodCiudad);
   }//GEN-LAST:event_btn_actualizarActionPerformed
 
   private void JTF_cod_nucleo_BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTF_cod_nucleo_BMouseClicked

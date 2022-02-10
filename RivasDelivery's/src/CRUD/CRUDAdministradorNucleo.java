@@ -27,7 +27,7 @@ public class CRUDAdministradorNucleo {
 
       while (resultado.next()) {
           datosNucleo[0] = resultado.getString("cod_nucleo");
-          datosNucleo[1] = resultado.getString("nombre_nucleos");
+          datosNucleo[1] = resultado.getString("nombre_nucleo");
           datosNucleo[2] = resultado.getString("num_telefonoN");
           datosNucleo[3] = resultado.getString("identificacionE");
           datosNucleo[4] = resultado.getString("cod_ciudades");
@@ -42,13 +42,13 @@ public class CRUDAdministradorNucleo {
     return datosNucleo;
   }
   
-  public void insertarDatos(String cod_nucleo, String nombre_nucleos, String num_telefonoN, String identificacionE, String cod_ciudades, String cod_estados, String cod_pais) {
+  public void insertarDatos(String cod_nucleo, String nombre_nucleo, String num_telefonoN, String identificacionE, String cod_ciudades, String cod_estados, String cod_pais) {
     try {
-      String SQL = "INSERT INTO Clientes(cod_nucleo,nombre_nucleos,num_telefonoN,identificacionE,cod_ciudades,cod_estados,cod_pais) "
+      String SQL = "INSERT INTO Nucleos(cod_nucleo,nombre_nucleo,num_telefonoN,identificacionE,cod_ciudades,cod_estados,cod_pais) "
               + " VALUES (?,?,?,?,?,?,?)";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, cod_nucleo);
-      consulta.setString(2, nombre_nucleos);
+      consulta.setString(2, nombre_nucleo);
       consulta.setString(3, num_telefonoN);
       consulta.setString(4, identificacionE);
       consulta.setString(5, cod_ciudades);
@@ -61,11 +61,11 @@ public class CRUDAdministradorNucleo {
     }
   }
   
-  public void actualizarDatos(String cod_nucleo, String nombre_nucleos, String num_telefonoN, String identificacionE, String cod_ciudades, String cod_estados, String cod_pais) {
+  public void actualizarDatos(String cod_nucleo, String nombre_nucleo, String num_telefonoN, String identificacionE, String cod_ciudades, String cod_estados, String cod_pais) {
     try {
-      String SQL = "UPDATE Nucelos SET nombre_nucleos=?,num_telefonoN=?,identificacionE=?,cod_ciudades=?,cod_estados=?,cod_pais=? WHERE cod_nucleo";
+      String SQL = "UPDATE Nucleos SET nombre_nucleo=?,num_telefonoN=?,identificacionE=?,cod_ciudades=?,cod_estados=?,cod_pais=? WHERE cod_nucleo=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
-      consulta.setString(1, nombre_nucleos);
+      consulta.setString(1, nombre_nucleo);
       consulta.setString(2, num_telefonoN);
       consulta.setString(3, identificacionE);
       consulta.setString(4, cod_ciudades);

@@ -441,7 +441,6 @@
         </Container>
         <Component class="javax.swing.JTextField" name="JTF_identificacionE_B">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="46" green="3e" red="39" type="rgb"/>
             </Property>
@@ -452,6 +451,7 @@
               <Color blue="ee" green="ee" red="ee" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Cedula de Empleado"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

@@ -22,6 +22,8 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
 
     public VEmpleadoMenu() {
         initComponents();
+        this.JTF_identificacionE_B.setText(cedulaE);
+        datosEmp();
     }
 
     public VEmpleadoMenu(String cedulaEmp) {
@@ -46,7 +48,7 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Por favor rellene los campos faltantes", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-        this.JTF_identificacionE_B.setEditable(false);
+        //this.JTF_identificacionE_B.setEditable(false);
     }
 
 //  scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -235,11 +237,11 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 490));
 
-        JTF_identificacionE_B.setEditable(false);
         JTF_identificacionE_B.setBackground(new java.awt.Color(57, 62, 70));
         JTF_identificacionE_B.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_identificacionE_B.setForeground(new java.awt.Color(238, 238, 238));
         JTF_identificacionE_B.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTF_identificacionE_B.setText("Cedula de Empleado");
         JTF_identificacionE_B.setBorder(null);
         jPanel1.add(JTF_identificacionE_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 310, 40));
 
