@@ -200,4 +200,40 @@ public class CRUDBase {
     }
   }
   
+  /*********BUSCAR EL NUCLEO DEL EMPLEADO*********/
+  public String buscarNucleoEmp(String CIEmpleado) {
+        
+    String NucleoEmp = null;
+
+    try {
+      String SQL = "SELECT cod_nucleos FROM Empleados WHERE identificacionE = ?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CIEmpleado);
+      ResultSet resultado = consulta.executeQuery();
+      while (resultado.next()) {
+        NucleoEmp = resultado.getString("cod_nucleos");
+      }                            
+    } catch (HeadlessException | SQLException e) {
+      JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
+    }
+    return NucleoEmp;
+  }
+  
+  public String buscarNombNucleo(String CodNucleo) {
+        
+    String NombNucleo = null;
+
+    try {
+      String SQL = "SELECT nombre_nucleo FROM Nucleo WHERE cod_nucleo = ?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CodNucleo);
+      ResultSet resultado = consulta.executeQuery();
+      while (resultado.next()) {
+        NombNucleo = resultado.getString("nombre_nucleo");
+      }                            
+    } catch (HeadlessException | SQLException e) {
+      JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
+    }
+    return NombNucleo;
+  }
 }

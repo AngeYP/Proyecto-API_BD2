@@ -81,6 +81,7 @@ CREATE TABLE `Estados` (
 /*Table structure for table `Nucleos` */
 
 CREATE TABLE `Nucleos` (
+  `cod_nucleo` varchar(50) NOT NULL,
   `nombre_nucleos` varchar(50) NOT NULL,
   `num_telefonoN` varchar(15) NOT NULL,
   `identificacionE` varchar(10) DEFAULT NULL,
