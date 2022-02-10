@@ -45,13 +45,15 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        textCodigo = new javax.swing.JTextField();
-        textNombre = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cb_pais = new javax.swing.JComboBox<>();
         cb_estado = new javax.swing.JComboBox<>();
         cb_ciudad = new javax.swing.JComboBox<>();
         agregar = new javax.swing.JButton();
+        textCod = new javax.swing.JTextField();
+        textNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btn_eliminar = new javax.swing.JButton();
         btn_aceptar = new javax.swing.JButton();
@@ -138,18 +140,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         jLabel5.setText("Paises");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 40));
 
-        textCodigo.setEditable(false);
-        textCodigo.setBackground(new java.awt.Color(238, 238, 238));
-        textCodigo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        textCodigo.setForeground(new java.awt.Color(34, 40, 49));
-        jPanel4.add(textCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 320, 40));
-
-        textNombre.setEditable(false);
-        textNombre.setBackground(new java.awt.Color(238, 238, 238));
-        textNombre.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        textNombre.setForeground(new java.awt.Color(34, 40, 49));
-        jPanel4.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 320, 40));
-
         jLabel8.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(238, 238, 238));
         jLabel8.setText("Ciudades");
@@ -199,8 +189,28 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         });
         jPanel4.add(cb_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 220, 40));
 
-        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
-        jPanel4.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        agregar.setBackground(new java.awt.Color(253, 112, 20));
+        agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, 50));
+
+        textCod.setEditable(false);
+        jPanel4.add(textCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 320, -1));
+
+        textNombre.setEditable(false);
+        jPanel4.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 310, -1));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
+        jLabel3.setText("Codigo");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
+        jLabel4.setText("Nombre");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 400));
 
@@ -292,16 +302,23 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         if (this.cb_pais.getSelectedIndex() > 0) {
             int size= cb_pais.getItemCount()-1;
             if (this.cb_pais.getSelectedIndex()==size) {
-                this.textCodigo.setEnabled(true);
-                this.textNombre.setEnabled(true);
+                this.cb_estado.removeAllItems();
+                this.cb_ciudad.removeAllItems();
+                this.textCod.setEditable(true);
+                this.textNombre.setEditable(true);
             }else{
                 this.cb_estado.removeAllItems();
                 this.cb_estado.setEnabled(true);
                 crud.comboboxEstados(this.cb_estado, paisito);
+                this.cb_estado.addItem("Agregar nuevo");
+                textCod.setEditable(false);
+                textNombre.setEditable(false);
             }
         }
         else {
             this.cb_estado.removeAllItems();
+            textCod.setEditable(false);
+            textNombre.setEditable(false);
         }
     }//GEN-LAST:event_cb_paisItemStateChanged
 
@@ -312,14 +329,18 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private void cb_estadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_estadoItemStateChanged
         if (this.cb_estado.getSelectedIndex() > 0) {
             if (cb_estado.getSelectedIndex()==cb_estado.getItemCount()-1) {
-                this.textCodigo.setEnabled(true);
-                this.textNombre.setEnabled(true);
+                this.textCod.setEditable(true);
+                this.textNombre.setEditable(true);
+                this.cb_ciudad.removeAllItems();
             }else{
                 String paisito = crud.buscarCodPais(this.cb_pais.getSelectedItem().toString());
                 String estadito = crud.buscarCodEstado(this.cb_estado.getSelectedItem().toString(), paisito);
                 this.cb_ciudad.removeAllItems();
                 this.cb_ciudad.setEnabled(true);
                 crud.comboboxCiudad(this.cb_ciudad, paisito, estadito);
+                this.cb_ciudad.addItem("Agregar nuevo");
+                textCod.setEditable(false);
+                textNombre.setEditable(false);
             }
         } else {
             this.cb_ciudad.removeAllItems();
@@ -332,10 +353,17 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
 
     private void cb_ciudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_ciudadItemStateChanged
         if (cb_ciudad.getSelectedIndex()==cb_ciudad.getItemCount()-1) {
-            textCodigo.setEnabled(true);
-            textNombre.setEnabled(true);
+            textCod.setEditable(true);
+            textNombre.setEditable(true);
+        }else{
+            textCod.setEditable(false);
+            textNombre.setEditable(false);
         }
     }//GEN-LAST:event_cb_ciudadItemStateChanged
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarActionPerformed
 
   /**
    * @param args the command line arguments
@@ -386,13 +414,15 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_pais;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField textCodigo;
+    private javax.swing.JTextField textCod;
     private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
 }
