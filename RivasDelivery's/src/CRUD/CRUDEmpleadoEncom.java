@@ -114,11 +114,11 @@ public class CRUDEmpleadoEncom {
     }
   }
   
-  public void eliminarRegistro(String CICliente) {
-    String SQL = "DELETE FROM Clientes WHERE identificacionC=?";
+  public void eliminarRegistro(String CodEncomienda) {
+    String SQL = "DELETE FROM Encomiendas WHERE cod_encomienda=?";
     try {
       PreparedStatement consulta = conexion.prepareStatement(SQL);
-      consulta.setString(1, CICliente);
+      consulta.setString(1, CodEncomienda);
       consulta.executeUpdate();
       System.out.println("Registro eliminado exitosamente");
     } catch (SQLException e) {
