@@ -15,11 +15,7 @@ public class CRUDEmpleadoRecarga {
         this.conexion = conexion;
   }
   
-  public void insertarDatos(String CICliente, String CIEmpleado, float Saldo) {
-//    Date date=new Date();
-//    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-//    sdf.format(date);
-    
+  public void insertarDatos(String CICliente, String CIEmpleado, float Saldo) { 
     java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     try {
       String SQL = "INSERT INTO Recargas(identificacionC,identificacionE,fecha_recarga,saldo_recarga)"

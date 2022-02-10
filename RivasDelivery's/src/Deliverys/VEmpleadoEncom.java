@@ -386,7 +386,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     tf_distancia.setEnabled(false);
     jPanel4.add(tf_distancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, 320, 40));
 
-    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 680));
+    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 710));
 
     jPanel3.setBackground(new java.awt.Color(57, 62, 70));
     jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -397,6 +397,11 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     btn_eliminar.setText("Eliminar");
     btn_eliminar.setEnabled(false);
     btn_eliminar.setFocusPainted(false);
+    btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_eliminarActionPerformed(evt);
+      }
+    });
     jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
 
     btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
@@ -418,6 +423,11 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     btn_actualizar.setText("Actualizar");
     btn_actualizar.setEnabled(false);
     btn_actualizar.setFocusPainted(false);
+    btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_actualizarActionPerformed(evt);
+      }
+    });
     jPanel3.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
 
     jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
@@ -505,30 +515,31 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
       String[] auxEncomienda = new String[8];
       String[] datosCliente = new String[2];
       auxEncomienda = this.datosEncomienda.buscarEncomienda(this.tf_CrearEncomienda.getText());
-      this.tf_ClientCedula.setText(auxEncomienda[0]);
-      datosCliente = this.datosEncomienda.buscarCliente(this.tf_ClientCedula.getText());
-      this.tf_ClientNombre.setText(datosCliente[0]);
-      this.tf_ClientApellido.setText(datosCliente[1]);
-      this.tf_CrearEncomienda.setText(auxEncomienda[1]);
-      if(auxEncomienda[2] != null)
-        switch (auxEncomienda[2]) {
-        case "D" -> this.rb_deudor.setSelected(true);
-        case "P" -> this.rb_porasignar.setSelected(true);
-        case "T" -> this.rb_transito.setSelected(true);
-        case "A" -> this.rb_arribo.setSelected(true);
-        case "R" -> this.rb_recibido.setSelected(true);
-        default -> {
+      if(!auxEncomienda[0].equals("")) {
+        this.tf_ClientCedula.setText(auxEncomienda[0]);
+        datosCliente = this.datosEncomienda.buscarCliente(this.tf_ClientCedula.getText());
+        this.tf_ClientNombre.setText(datosCliente[0]);
+        this.tf_ClientApellido.setText(datosCliente[1]);
+        this.tf_CrearEncomienda.setText(auxEncomienda[1]);
+        if(auxEncomienda[2] != null)
+          switch (auxEncomienda[2]) {
+          case "D" -> this.rb_deudor.setSelected(true);
+          case "P" -> this.rb_porasignar.setSelected(true);
+          case "T" -> this.rb_transito.setSelected(true);
+          case "A" -> this.rb_arribo.setSelected(true);
+          case "R" -> this.rb_recibido.setSelected(true);
+          default -> {
+          }
         }
-      }
-      this.tf_distancia.setText(auxEncomienda[3]);
-      this.tf_CostoTotal.setText(auxEncomienda[4]);
-      this.tf_destinatario.setText(auxEncomienda[5]);
-      this.cb_pais.setSelectedItem(auxEncomienda[6]);
-      this.cb_estado.setSelectedItem(auxEncomienda[7]);
-      this.cb_ciudad.setSelectedItem(auxEncomienda[8]);
+        this.tf_distancia.setText(auxEncomienda[3]);
+        this.tf_CostoTotal.setText(auxEncomienda[4]);
+        this.tf_destinatario.setText(auxEncomienda[5]);
+        this.cb_pais.setSelectedItem(auxEncomienda[6]);
+        this.cb_estado.setSelectedItem(auxEncomienda[7]);
+        this.cb_ciudad.setSelectedItem(auxEncomienda[8]);
       
-      if(!this.tf_ClientCedula.getText().equals("")) {
         this.tf_ClientCedula.setEnabled(false);
+        this.tf_CrearEncomienda.setEnabled(false);
         this.tf_destinatario.setEnabled(true);
         this.cb_pais.setEnabled(true);
         this.cb_estado.setEnabled(true);
@@ -561,7 +572,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         }
       } else {
         JOptionPane.showMessageDialog(null, "No se consiguio encomienda");
-      }
+      } 
     }
   }//GEN-LAST:event_btn_BuscarEncomiendaActionPerformed
 
@@ -657,6 +668,49 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
       this.cb_ciudad.removeAllItems();
     }
   }//GEN-LAST:event_cb_estadoItemStateChanged
+
+  private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+    String CodPais = this.datosBase.buscarCodPais(this.cb_pais.getSelectedItem().toString());
+    String CodEstado = this.datosBase.buscarCodEstado(this.cb_estado.getSelectedItem().toString(),CodPais);
+    String CodCiudad = this.datosBase.buscarCodCiudad(CodPais,CodEstado,this.cb_ciudad.getSelectedItem().toString());
+    char Estatus = ' ';
+    if (this.rb_deudor.isSelected())
+      Estatus = 'D';
+    if(this.rb_porasignar.isSelected())
+      Estatus = 'P';
+    if(this.rb_transito.isSelected())
+      Estatus = 'T';
+    if(this.rb_arribo.isSelected())
+      Estatus = 'A';
+    if(this.rb_recibido.isSelected())
+      Estatus = 'R';
+    
+    if (this.tf_CrearEncomienda.getText().equals("") && Estatus==' ' && this.tf_ClientCedula.getText().equals("") && this.tf_destinatario.getText().equals("") && this.tf_distancia.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+      JOptionPane.showMessageDialog(null, "Llene todos los campos");
+    }
+    this.datosEncomienda.actualizarDatos(this.tf_CrearEncomienda.getText(), Estatus, Float.parseFloat(this.tf_distancia.getText()), this.tf_destinatario.getText(), CodPais, CodEstado, CodCiudad);
+  }//GEN-LAST:event_btn_actualizarActionPerformed
+
+  private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+    this.datosEncomienda.eliminarRegistro(this.tf_CrearEncomienda.getText());
+    this.tf_CodEncomienda.setText("Codigo encomienda");
+    this.tf_ClientCedula.setText("Cedula");
+    this.rb_deudor.setSelected(true);
+    this.rb_porasignar.setSelected(false);
+    this.rb_recibido.setSelected(false);
+    this.rb_arribo.setSelected(false);
+    this.rb_transito.setSelected(false);
+    this.datosBase.comboboxPaises(this.cb_pais);
+    this.tf_ClientNombre.setText("");
+    this.tf_ClientApellido.setText("");
+    this.tf_CostoTotal.setText("0");
+    this.tf_destinatario.setText("");
+    this.tf_distancia.setText("");
+    this.tf_CrearEncomienda.setEnabled(false);
+    this.btn_actualizar.setEnabled(false);
+    this.btn_eliminar.setEnabled(false);
+    this.btn_aceptar.setEnabled(true);
+  }//GEN-LAST:event_btn_eliminarActionPerformed
 
   /**
    * @param args the command line arguments
