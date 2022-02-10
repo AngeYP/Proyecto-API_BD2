@@ -28,16 +28,12 @@ public class VEmpleadoAsignarEcom extends javax.swing.JFrame {
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
-    jPanel4 = new javax.swing.JPanel();
-    jLabel2 = new javax.swing.JLabel();
-    jLabel3 = new javax.swing.JLabel();
-    jLabel4 = new javax.swing.JLabel();
-    tf_nombreE = new javax.swing.JTextField();
-    tf_apellidoE = new javax.swing.JTextField();
-    tf_nucleoE = new javax.swing.JTextField();
-    tf_cedulaEmp = new javax.swing.JTextField();
     jLabel1 = new javax.swing.JLabel();
-    jButton1 = new javax.swing.JButton();
+    jComboBox1 = new javax.swing.JComboBox<>();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    jTable1 = new javax.swing.JTable();
+    btn_aceptar = new javax.swing.JButton();
+    btn_cancelar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,67 +43,51 @@ public class VEmpleadoAsignarEcom extends javax.swing.JFrame {
     jPanel1.setPreferredSize(new java.awt.Dimension(1080, 720));
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    jPanel4.setBackground(new java.awt.Color(57, 62, 70));
-    jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-    jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jLabel2.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel2.setText("Nombre");
-    jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
-
-    jLabel3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jLabel3.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel3.setText("Apellido");
-    jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 290, 40));
-
-    jLabel4.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    jLabel4.setForeground(new java.awt.Color(238, 238, 238));
-    jLabel4.setText("Nucleo");
-    jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 290, 40));
-
-    tf_nombreE.setBackground(new java.awt.Color(238, 238, 238));
-    tf_nombreE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    tf_nombreE.setForeground(new java.awt.Color(34, 40, 49));
-    jPanel4.add(tf_nombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 320, 40));
-
-    tf_apellidoE.setBackground(new java.awt.Color(238, 238, 238));
-    tf_apellidoE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    tf_apellidoE.setForeground(new java.awt.Color(34, 40, 49));
-    jPanel4.add(tf_apellidoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 320, 40));
-
-    tf_nucleoE.setBackground(new java.awt.Color(238, 238, 238));
-    tf_nucleoE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    tf_nucleoE.setForeground(new java.awt.Color(34, 40, 49));
-    jPanel4.add(tf_nucleoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
-
-    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 740, 200));
-
-    tf_cedulaEmp.setEditable(false);
-    tf_cedulaEmp.setBackground(new java.awt.Color(57, 62, 70));
-    tf_cedulaEmp.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    tf_cedulaEmp.setForeground(new java.awt.Color(238, 238, 238));
-    tf_cedulaEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    tf_cedulaEmp.setBorder(null);
-    jPanel1.add(tf_cedulaEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 310, 40));
-
     jLabel1.setBackground(new java.awt.Color(253, 112, 20));
     jLabel1.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(238, 238, 238));
     jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    jLabel1.setText("Menu");
+    jLabel1.setText("Asignar encomiendas");
     jLabel1.setOpaque(true);
-    jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 80));
+    jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 80));
 
-    jButton1.setBackground(new java.awt.Color(204, 0, 0));
-    jButton1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton1.setForeground(new java.awt.Color(238, 238, 238));
-    jButton1.setText("Salir");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
+    jComboBox1.setBackground(new java.awt.Color(57, 62, 70));
+    jComboBox1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    jComboBox1.setForeground(new java.awt.Color(238, 238, 238));
+    jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 310, 40));
+
+    jTable1.setBackground(new java.awt.Color(57, 62, 70));
+    jTable1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    jTable1.setForeground(new java.awt.Color(238, 238, 238));
+    jScrollPane1.setViewportView(jTable1);
+
+    jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1080, 490));
+
+    btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_aceptar.setText("Aceptar");
+    btn_aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+    btn_aceptar.setBorderPainted(false);
+    btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
+        btn_aceptarActionPerformed(evt);
       }
     });
-    jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 620, 180, 60));
+    jPanel1.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 670, 140, 40));
+
+    btn_cancelar.setBackground(new java.awt.Color(253, 112, 20));
+    btn_cancelar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    btn_cancelar.setForeground(new java.awt.Color(238, 238, 238));
+    btn_cancelar.setText("Cancelar");
+    btn_cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+    btn_cancelar.setBorderPainted(false);
+    btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_cancelarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 670, 140, 40));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -121,11 +101,16 @@ public class VEmpleadoAsignarEcom extends javax.swing.JFrame {
     );
 
     pack();
+    setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+  private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
+    this.dispose();
+  }//GEN-LAST:event_btn_aceptarActionPerformed
+
+  private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_jButton1ActionPerformed
+  }//GEN-LAST:event_btn_cancelarActionPerformed
 
   /**
    * @param args the command line arguments
@@ -163,16 +148,12 @@ public class VEmpleadoAsignarEcom extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
+  private javax.swing.JButton btn_aceptar;
+  private javax.swing.JButton btn_cancelar;
+  private javax.swing.JComboBox<String> jComboBox1;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
-  private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
-  private javax.swing.JPanel jPanel4;
-  private javax.swing.JTextField tf_apellidoE;
-  private javax.swing.JTextField tf_cedulaEmp;
-  private javax.swing.JTextField tf_nombreE;
-  private javax.swing.JTextField tf_nucleoE;
+  private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JTable jTable1;
   // End of variables declaration//GEN-END:variables
 }
