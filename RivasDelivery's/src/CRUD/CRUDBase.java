@@ -204,16 +204,13 @@ public class CRUDBase {
   public void insertPais(String cod,String nombre){
       
       try {
-          String SQL = "INSERT INTO Paises (cod_pais,nombre_pais) " +
-            "VALUES" +
-            "(?,?)";
+          String SQL = "INSERT INTO Paises (cod_pais,nombre_pais) VALUES(?,?)";
+            
           PreparedStatement consulta = conexion.prepareStatement(SQL);
           consulta.setString(1, cod);
           consulta.setString(2, nombre);
-          ResultSet rest = consulta.executeQuery();
-          while (rest.next()) {              
-              
-          }
+          consulta.executeUpdate();
+          
       } catch (Exception e) {
           System.out.println("Insercion fallida: "+e.getMessage());
       }
@@ -231,7 +228,7 @@ public class CRUDBase {
           consulta.setString(1, codPais);
           consulta.setString(2, cod);
           consulta.setString(3, nombre);
-          consulta.executeQuery();
+          consulta.executeUpdate();
       } catch (Exception e) {
           System.out.println("Insercion fallida: "+e.getMessage());
       }
@@ -250,7 +247,7 @@ public class CRUDBase {
           consulta.setString(2, codEstado);
           consulta.setString(3, cod);
           consulta.setString(4, nombre);
-          consulta.executeQuery();
+          consulta.executeUpdate();
       } catch (Exception e) {
           System.out.println("Insercion fallida: "+e.getMessage());
       }
