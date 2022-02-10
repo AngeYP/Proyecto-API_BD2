@@ -386,7 +386,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     tf_distancia.setEnabled(false);
     jPanel4.add(tf_distancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, 320, 40));
 
-    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 710));
+    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 520));
 
     jPanel3.setBackground(new java.awt.Color(57, 62, 70));
     jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -452,7 +452,9 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
+      .addGroup(layout.createSequentialGroup()
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 0, Short.MAX_VALUE))
     );
 
     pack();
