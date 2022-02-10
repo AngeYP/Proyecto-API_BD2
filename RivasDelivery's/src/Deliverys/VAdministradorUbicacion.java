@@ -299,7 +299,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void cb_paisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_paisItemStateChanged
-        String paisito = crud.buscarCodPais(cb_pais.getSelectedItem().toString());
+        
         if (this.cb_pais.getSelectedIndex() > 0) {
             int size= cb_pais.getItemCount()-1;
             if (this.cb_pais.getSelectedIndex()==size) {
@@ -310,6 +310,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
             }else{
                 this.cb_estado.removeAllItems();
                 this.cb_estado.setEnabled(true);
+                String paisito = crud.buscarCodPais(cb_pais.getSelectedItem().toString());
                 crud.comboboxEstados(this.cb_estado, paisito);
                 this.cb_estado.addItem("Agregar nuevo");
                 textCod.setEditable(false);
@@ -368,17 +369,29 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
             crud.insertEstado(crud.buscarCodPais(cb_pais.getSelectedItem().toString()),textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            this.cb_estado.removeAllItems();
+            crud.comboboxEstados(cb_estado, crud.buscarCodPais(cb_pais.getSelectedItem().toString()));
+            this.cb_estado.addItem("Agregar nuevo");
         }
         if ((cb_pais.getSelectedIndex()>0)&&(cb_pais.getSelectedIndex()==cb_pais.getItemCount()-1)) {
             crud.insertPais(textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            cb_pais.removeAllItems();
+            crud.comboboxPaises(cb_pais);
+            cb_pais.addItem("Agregar nuevo");
         }
         if ((cb_ciudad.getSelectedIndex()>0)&&(cb_ciudad.getSelectedIndex()==cb_ciudad.getItemCount()-1)) {
             String pais=crud.buscarCodPais(cb_pais.getSelectedItem().toString());
             crud.insertciudades(pais,crud.buscarCodEstado(cb_estado.getSelectedItem().toString(), pais),textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            String paisito = crud.buscarCodPais(this.cb_pais.getSelectedItem().toString());
+            String estadito = crud.buscarCodEstado(this.cb_estado.getSelectedItem().toString(), paisito);
+            this.cb_ciudad.removeAllItems();
+            this.cb_ciudad.setEnabled(true);
+            crud.comboboxCiudad(this.cb_ciudad, paisito, estadito);
+            this.cb_ciudad.addItem("Agregar nuevo");
         }
         
     }//GEN-LAST:event_agregarActionPerformed

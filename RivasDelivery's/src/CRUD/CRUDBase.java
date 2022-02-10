@@ -220,7 +220,7 @@ public class CRUDBase {
   public void insertEstado(String codPais,String cod,String nombre){
       
       try {
-          String SQL = "INSERT INTO Estados (cod_pais,cod_estados" +
+          String SQL = "INSERT INTO Estados (cod_pais,cod_estados," +
             "nombre_estados) " +
             "VALUES" +
             "(?,?,?)";
