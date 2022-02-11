@@ -25,7 +25,7 @@ public class CRUDEmpleadoMenu {
   
   public String[] buscarEmpleado(String identificacionE) {
         
-    String[] datosCliente = new String[11];
+    String[] datosCliente = new String[7];
 
     try {
       String SQL = "SELECT * FROM Empleados WHERE identificacionE = ?";
