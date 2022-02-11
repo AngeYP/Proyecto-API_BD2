@@ -509,7 +509,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
   }//GEN-LAST:event_cb_estadoActionPerformed
 
   private void btn_paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paquetesActionPerformed
-//    this.setVisible(false);
+    new VEmpleadoPaq(this.tf_CrearEncomienda.getText(),cedulaE,this.tf_ClientCedula.getText()).setVisible(true);
   }//GEN-LAST:event_btn_paquetesActionPerformed
 
   private void btn_BuscarEncomiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarEncomiendaActionPerformed
