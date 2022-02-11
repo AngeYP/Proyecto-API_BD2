@@ -244,7 +244,6 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
         jPanel1.add(JTF_identificacionE_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 310, 40));
 
         btn_buscar.setBackground(new java.awt.Color(57, 62, 70));
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
         btn_buscar.setBorderPainted(false);
         btn_buscar.setFocusPainted(false);
         btn_buscar.setFocusable(false);

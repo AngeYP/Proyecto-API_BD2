@@ -30,8 +30,9 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
   SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
   public VEmpleadoTransportista() {
     initComponents();
+    cedula="V-26599849";
     this.tf_TransIngreso.setText(sdf.format(date));
-    this.tf_TransNucleo.setText(this.datosBase.buscarNucleoEmp(cedula));
+    this.comboNucleo.addItem(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
   }
   
   /*public VEmpleadoTransportista(String cedulaEmp) {
@@ -82,7 +83,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         tf_TransIngreso = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        tf_TransNucleo = new javax.swing.JTextField();
         tf_TransSaldo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         tf_TransCurso = new javax.swing.JTextField();
@@ -92,6 +92,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         tf_TransCorreo = new javax.swing.JTextField();
         btn_vehiculos = new javax.swing.JButton();
+        comboNucleo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         btn_eliminar = new javax.swing.JButton();
         btn_aceptar = new javax.swing.JButton();
@@ -179,7 +180,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         jPanel1.add(tf_CITransportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
 
         btn_BuscarTransportista.setBackground(new java.awt.Color(57, 62, 70));
-        btn_BuscarTransportista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
         btn_BuscarTransportista.setBorderPainted(false);
         btn_BuscarTransportista.setFocusPainted(false);
         btn_BuscarTransportista.setFocusable(false);
@@ -275,6 +275,11 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         rb_TransNacional.setText("Nacional");
         rb_TransNacional.setBorder(null);
         rb_TransNacional.setContentAreaFilled(false);
+        rb_TransNacional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_TransNacionalMouseClicked(evt);
+            }
+        });
         rb_TransNacional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rb_TransNacionalActionPerformed(evt);
@@ -319,12 +324,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(238, 238, 238));
         jLabel13.setText("Nucleo adscrito:");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 820, 290, 40));
-
-        tf_TransNucleo.setBackground(new java.awt.Color(238, 238, 238));
-        tf_TransNucleo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        tf_TransNucleo.setForeground(new java.awt.Color(34, 40, 49));
-        tf_TransNucleo.setEnabled(false);
-        jPanel4.add(tf_TransNucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 820, 320, 40));
 
         tf_TransSaldo.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransSaldo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -382,9 +381,13 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         });
         jPanel4.add(btn_vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 940, 170, 40));
 
+        comboNucleo.setBackground(new java.awt.Color(238, 238, 238));
+        comboNucleo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jPanel4.add(comboNucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 830, 320, -1));
+
         jScrollPane2.setViewportView(jPanel4);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 770, 510));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 770, 520));
 
         jPanel3.setBackground(new java.awt.Color(57, 62, 70));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -464,7 +467,8 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
     this.tf_TransTelefonoSecu.setText("");
     this.tf_TransLicencia.setText("");
     this.tf_TransIngreso.setText(sdf.format(date));
-    this.tf_TransNucleo.setText(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
+    this.comboNucleo.removeAllItems();
+    this.comboNucleo.addItem(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
     this.tf_TransSaldo.setText("0");
     this.tf_TransCantPedidos.setText("0");
     this.tf_TransCedula.setEnabled(true);
@@ -502,7 +506,8 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
     this.tf_TransTelefonoSecu.setText("");
     this.tf_TransLicencia.setText("");
     this.tf_TransIngreso.setText(sdf.format(date));
-    this.tf_TransNucleo.setText(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
+    this.comboNucleo.removeAllItems();
+    this.comboNucleo.addItem(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
     this.tf_TransSaldo.setText("0");
     this.tf_TransCantPedidos.setText("0");
     this.tf_TransCedula.setEnabled(true);
@@ -521,7 +526,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
     else if (this.rb_TransExtranjero.isSelected())
       Naci = 'E';
     
-    if (this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci==' ' && this.tf_TransCorreo.getText().equals("") && this.tf_TransIngreso.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransSaldo.getText().equals("") && this.tf_TransCantPedidos.getText().equals("") && this.tf_TransNucleo.getText().equals("")) {
+    if (this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci==' ' && this.tf_TransCorreo.getText().equals("") && this.tf_TransIngreso.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransSaldo.getText().equals("") && this.tf_TransCantPedidos.getText().equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
     } else {
       this.CRUDTransportista.insertarDatos(this.tf_TransCedula.getText(), Naci, this.tf_TransNombre.getText(), this.tf_TransApellido.getText(), this.tf_TransCorreo.getText(), this.tf_TransTelefono.getText(), this.tf_TransTelefonoSecu.getText(), this.tf_TransLicencia.getText(), this.ta_TransAntecedentes.getText(), this.datosBase.buscarNucleoEmp(cedula));
@@ -529,27 +534,28 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-    char Naci = ' ';
+    String Naci ="";
     if (this.rb_TransNacional.isSelected())
-      Naci = 'N';
-    else if (this.rb_TransExtranjero.isSelected())
-      Naci = 'E';
-    if(this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci==' ' && this.tf_TransCorreo.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransLicencia.getText().equals("") && this.ta_TransAntecedentes.getText().equals("")) {
+      Naci ="N";
+    if (this.rb_TransExtranjero.isSelected())
+      Naci ="E";
+    if(this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci=="" && this.tf_TransCorreo.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransLicencia.getText().equals("") && this.ta_TransAntecedentes.getText().equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
     } else {
-      this.CRUDTransportista.actualizarDatos(this.tf_TransCedula.getText(), Naci, this.tf_TransNombre.getText(), this.tf_TransApellido.getText(), this.tf_TransCorreo.getText(), this.tf_TransTelefono.getText(), this.tf_TransTelefonoSecu.getText(), this.tf_TransLicencia.getText(), this.ta_TransAntecedentes.getText());
+      this.CRUDTransportista.actualizarDatos(this.tf_TransCedula.getText(), Naci, this.tf_TransNombre.getText(), this.tf_TransApellido.getText(), this.tf_TransCorreo.getText(), this.tf_TransTelefono.getText(), this.tf_TransTelefonoSecu.getText(), this.tf_TransLicencia.getText(), this.ta_TransAntecedentes.getText(),datosBase.buscarCodNucleo(this.comboNucleo.getSelectedItem().toString()));
     }
   }//GEN-LAST:event_btn_actualizarActionPerformed
 
   private void btn_BuscarTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarTransportistaActionPerformed
-    if(!this.tf_CITransportista.getText().equals("")){
+    
+      if(!this.tf_CITransportista.getText().equals("")){
       String[] datosTransportista = new String[14];
       datosTransportista = this.CRUDTransportista.buscarTrasportista(this.tf_CITransportista.getText());
       if(!datosTransportista[0].equals("")) {
         this.tf_TransCedula.setText(datosTransportista[0]);
-        if(datosTransportista[1].equals('N')) 
+        if(datosTransportista[1].equals("N")) 
           this.rb_TransNacional.setSelected(true);
-        if(datosTransportista[1].equals('E')) 
+        if(datosTransportista[1].equals("E")) 
           this.rb_TransExtranjero.setSelected(true);
         this.tf_TransCedula.setText(datosTransportista[0]);
         this.tf_TransNombre.setText(datosTransportista[2]);
@@ -563,8 +569,16 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         this.tf_TransCantPedidos.setText(datosTransportista[10]);
         this.tf_TransSaldo.setText(datosTransportista[11]);
         this.tf_TransCurso.setText(datosTransportista[12]);
-        if(datosTransportista[13].equals(""))
-          this.tf_TransNucleo.setText("Aún no realizado");
+        if(datosTransportista[12]==null){
+            this.tf_TransCurso.setText("Aún no realizado");
+        }else{
+            this.tf_TransCurso.setText(datosTransportista[12]);
+        }
+        this.comboNucleo.removeAllItems();
+        this.comboNucleo.addItem(datosBase.buscarNombNucleo(datosTransportista[13]));
+          if (datosBase.buscarCodNucleo(comboNucleo.getSelectedItem().toString())!=datosBase.buscarNucleoEmp(cedula)) {
+              this.comboNucleo.addItem(datosBase.buscarNombNucleo(datosBase.buscarNucleoEmp(cedula)));
+          }
         this.tf_TransCedula.setEnabled(false);
         this.btn_actualizar.setEnabled(true);
         this.btn_eliminar.setEnabled(true);
@@ -581,11 +595,17 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
 
   private void rb_TransExtranjeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_TransExtranjeroActionPerformed
 
+      rb_TransNacional.setSelected(false);
   }//GEN-LAST:event_rb_TransExtranjeroActionPerformed
 
   private void btn_vehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vehiculosActionPerformed
     //La lal lllallallalalalalalalalalal
   }//GEN-LAST:event_btn_vehiculosActionPerformed
+
+    private void rb_TransNacionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_TransNacionalMouseClicked
+        // TODO add your handling code here:
+        rb_TransExtranjero.setSelected(false);
+    }//GEN-LAST:event_rb_TransNacionalMouseClicked
 
   /**
    * @param args the command line arguments
@@ -633,6 +653,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
     private javax.swing.JButton btn_salir;
     private javax.swing.JButton btn_transportistas;
     private javax.swing.JButton btn_vehiculos;
+    private javax.swing.JComboBox<String> comboNucleo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -666,7 +687,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
     private javax.swing.JTextField tf_TransIngreso;
     private javax.swing.JTextField tf_TransLicencia;
     private javax.swing.JTextField tf_TransNombre;
-    private javax.swing.JTextField tf_TransNucleo;
     private javax.swing.JTextField tf_TransSaldo;
     private javax.swing.JTextField tf_TransTelefono;
     private javax.swing.JTextField tf_TransTelefonoSecu;
