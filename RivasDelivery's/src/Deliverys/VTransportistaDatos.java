@@ -14,7 +14,7 @@ import Conexion.Conexion;
  * @author angel
  */
 public class VTransportistaDatos extends javax.swing.JFrame {
-    String id;
+    String id="V-26599849";
     Conexion conexion = new Conexion();
     public static CRUDTransportistaDatos crud ;
     CRUD.CRUDBase base;
@@ -32,9 +32,14 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     txt_name.setText(info[1]);
     txt_email.setText(info[2]);
     txt_tlf.setText(info[3]);
-    txt_nucleo.setText(info[4]);
-    txt_saldo.setText(info[5]);
-    txt_curso.setText(info[6]);
+    txt_nucleo.setText(base.buscarNombNucleo(info[5]));
+    txt_saldo.setText(info[4]);
+      if (info[6]==null) {
+          txt_curso.setText("No tiene curso realizado");
+      }else{
+          txt_curso.setText(info[6]);
+      }
+    
     cb_nucleo.removeAllItems();
     cb_nucleo.addItem("Selecciona");
     base.comboNucleo(cb_nucleo);
