@@ -11,6 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,17 +25,20 @@ public class CRUDEmpleadoAsignarEncom {
         this.conexion = conexion;
   }
   
-  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin) {
+  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin) throws ParseException {
     String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
+    
     try {
+        Date date1= Date.valueOf(FechaIni);
+        Date date2 = Date.valueOf(FechaFin);
       String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada BETWEEN ? AND ?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
-      consulta.setString(3, FechaIni);
-      consulta.setString(4, FechaFin);
+      consulta.setDate(3, date1);
+      consulta.setDate(4, date2);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
         registros[0] = resultado.getString("cod_encomienda");
