@@ -278,7 +278,7 @@ public class CRUDBase {
     String NombNucleo = null;
 
     try {
-      String SQL = "SELECT nombre_nucleo FROM Nucleo WHERE cod_nucleo = ?";
+      String SQL = "SELECT nombre_nucleo FROM Nucleos WHERE cod_nucleo = ?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodNucleo);
       ResultSet resultado = consulta.executeQuery();
@@ -304,6 +304,24 @@ public class CRUDBase {
           }
       } catch (Exception e) {
           System.out.println("Error en consulta: "+e.getMessage());
+      }
+  }
+  
+  public String buscarNombreNucleo(String nombre){
+      String cod="";
+      try {
+          String SQL = "SELECT * FROM Nucleos WHERE nombre_nucleo= ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, nombre);
+          ResultSet resultado = consulta.executeQuery();
+          
+          while (resultado.next()) {              
+              cod = resultado.getString("cod_nucleo");
+          }
+      } catch (Exception e) {
+          System.out.println("Error en consulta: "+e.getMessage());
+      }finally{
+          return cod;
       }
   }
   

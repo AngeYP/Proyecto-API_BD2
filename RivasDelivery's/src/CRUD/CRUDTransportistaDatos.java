@@ -35,8 +35,8 @@ public class CRUDTransportistaDatos {
                 tabla[1] = resultado.getString("nombreT")+" "+resultado.getString("apellidoT");
                 tabla[2] = resultado.getString("emailT");
                 tabla[3] = resultado.getString("telefono1T");
-                tabla[4] = resultado.getString("saldoT");
-                tabla[5] = resultado.getString("nombre_nucleos");
+                tabla[4] = String.valueOf(resultado.getFloat("saldoT"));
+                tabla[5] = resultado.getString("cod_nucleos");
                 tabla[6] = resultado.getString("codigo_curso");
             }
         } catch (Exception e) {
