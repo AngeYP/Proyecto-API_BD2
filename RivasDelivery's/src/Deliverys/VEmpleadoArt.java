@@ -21,9 +21,8 @@ public class VEmpleadoArt extends javax.swing.JFrame {
     initComponents();
   }
   
-  public VEmpleadoArt(String CIEmp, String CITrans, String CodEncom, String CodPaq) {
+  public VEmpleadoArt(String CITrans, String CodEncom, String CodPaq) {
     initComponents();
-    ciEmpleado = CIEmp;
     ciTransportista = CITrans;
     codEncomienda = CodEncom;
     codPaquete = CodPaq;

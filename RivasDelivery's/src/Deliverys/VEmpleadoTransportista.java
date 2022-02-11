@@ -450,7 +450,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_salirActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-    new VEmpleadoCliente(cedulaE).setVisible(true);
+    new VEmpleadoCliente().setVisible(true);
     this.dispose();
   }//GEN-LAST:event_btn_clientesActionPerformed
 

@@ -19,21 +19,18 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
     Conexion conexion = new Conexion();
     CRUDEmpleadoMenu crudEpmMenu = new CRUDEmpleadoMenu(conexion.conectar());
 
-    String cedulaE;
-
     public VEmpleadoMenu() {
         initComponents();
-        this.JTF_identificacionE_B.setText(cedulaE);
+        this.JTF_identificacionE_B.setText(cedula);
         datosEmp();
     }
 
-    public VEmpleadoMenu(String cedulaEmp) {
+    /*public VEmpleadoMenu(String cedulaEmp) {
         initComponents();
         cedulaE = cedulaEmp;
         this.JTF_identificacionE_B.setText(cedulaE);
         datosEmp();
-    }
-
+    }*/
     public void datosEmp() {
         if (!(this.JTF_identificacionE_B.getText().equals(""))) {
 
@@ -45,11 +42,11 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
             this.JTF_telefono1E.setText(datosEmp[4]);
             this.JTF_telefono2E.setText(datosEmp[5]);
             this.JTF_cod_nucleos.setText(datosEmp[6]);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Por favor rellene los campos faltantes", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-        //this.JTF_identificacionE_B.setEditable(false);
+        this.JTF_identificacionE_B.setEditable(false);
     }
 
 //  scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -321,17 +318,17 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-      new VEmpleadoCliente(cedulaE).setVisible(true);
+      new VEmpleadoCliente().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_clientesActionPerformed
 
   private void btn_transportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistaActionPerformed
-    new VEmpleadoTransportista(cedulaE).setVisible(true);
-    this.dispose();
+      new VEmpleadoTransportista(cedula).setVisible(true);
+      this.dispose();
   }//GEN-LAST:event_btn_transportistaActionPerformed
 
   private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
-      new VEmpleadoEncom(cedulaE).setVisible(true);
+      new VEmpleadoEncom().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_encomiendasActionPerformed
 
@@ -373,8 +370,16 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
 
-        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_telefono2E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("")) {
+        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
+            if (this.JTF_telefono2E.getText().equals("")) {
+                this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
+                null, this.JTF_cod_nucleos.getText());
+            } else {
+                this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
+                this.JTF_telefono2E.getText(), this.JTF_cod_nucleos.getText());
+            }
         }
         this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
                 this.JTF_telefono2E.getText(), this.JTF_cod_nucleos.getText());
@@ -382,7 +387,7 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
 
-        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_telefono2E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("") ) {
+        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_telefono2E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         }
         this.crudEpmMenu.actualizarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),

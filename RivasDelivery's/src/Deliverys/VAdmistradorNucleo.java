@@ -340,18 +340,19 @@ public class VAdmistradorNucleo extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-      String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
+    String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
     String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(),CodPais);
     String CodCiudad = this.datosBase.buscarCodCiudad(CodPais,CodEstado,this.JCB_cod_ciudades.getSelectedItem().toString());
     
-    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
-      JOptionPane.showMessageDialog(null, "Llene todos los campos");
-    }else{
-        if(this.JTF_identificacionE.getText().equals(""))
-            this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null,CodCiudad,CodEstado,CodPais);
-        else
-            this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(),CodCiudad,CodEstado,CodPais);
-    }
+      if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+          JOptionPane.showMessageDialog(null, "Llene todos los campos");
+      } else {
+          if (this.JTF_identificacionE.getText().equals("")) {
+              this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null, CodCiudad, CodEstado, CodPais);
+          } else {
+              this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodCiudad, CodEstado, CodPais);
+          }
+      }
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed

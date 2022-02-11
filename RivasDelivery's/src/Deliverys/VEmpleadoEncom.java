@@ -9,6 +9,7 @@ import CRUD.CRUDBase;
 import CRUD.CRUDEmpleadoEncom;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
 
 /**
  *
@@ -19,16 +20,16 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
   Conexion conexion = new Conexion();
   CRUDBase datosBase = new CRUDBase(conexion.conectar());
   CRUDEmpleadoEncom datosEncomienda = new CRUDEmpleadoEncom(conexion.conectar());
-  String cedulaE;
   public VEmpleadoEncom() {
-    initComponents();
+    initComponents();  
+    this.datosBase.comboboxPaises(cb_pais);
   }
   
-  public VEmpleadoEncom(String cedulaEmp) {
+  /*public VEmpleadoEncom(String cedulaEmp) {
     initComponents();
     cedulaE = cedulaEmp;
     this.datosBase.comboboxPaises(cb_pais);
-  }
+  }*/
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -496,7 +497,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_encomiendasActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
-    new VEmpleadoCliente(cedulaE).setVisible(true);
+    new VEmpleadoCliente().setVisible(true);
     this.dispose();
   }//GEN-LAST:event_btn_clientesActionPerformed
 
@@ -509,7 +510,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
   }//GEN-LAST:event_cb_estadoActionPerformed
 
   private void btn_paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paquetesActionPerformed
-    new VEmpleadoPaq(this.tf_CrearEncomienda.getText(),cedulaE,this.tf_ClientCedula.getText()).setVisible(true);
+    new VEmpleadoPaq(this.tf_CrearEncomienda.getText(),this.tf_ClientCedula.getText()).setVisible(true);
   }//GEN-LAST:event_btn_paquetesActionPerformed
 
   private void btn_BuscarEncomiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarEncomiendaActionPerformed
@@ -611,7 +612,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     if (this.tf_CrearEncomienda.getText().equals("") && Estatus==' ' && this.tf_ClientCedula.getText().equals("") && this.tf_destinatario.getText().equals("") && this.tf_distancia.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
     }
-    this.datosEncomienda.insertarDatos(this.tf_CrearEncomienda.getText(), Estatus, Float.parseFloat(this.tf_distancia.getText()), this.tf_destinatario.getText(), this.tf_ClientCedula.getText(), cedulaE, CodPais, CodEstado, CodCiudad);
+    this.datosEncomienda.insertarDatos(this.tf_CrearEncomienda.getText(), Estatus, Float.parseFloat(this.tf_distancia.getText()), this.tf_destinatario.getText(), this.tf_ClientCedula.getText(), cedula, CodPais, CodEstado, CodCiudad);
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void rb_transitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_transitoActionPerformed

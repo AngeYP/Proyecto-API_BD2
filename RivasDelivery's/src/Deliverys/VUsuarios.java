@@ -17,7 +17,7 @@ public class VUsuarios extends javax.swing.JFrame {
    * Creates new form VUsuarios
    */
   public VUsuarios() {
-    initComponents();
+    initComponents(); 
   }
 
   /**

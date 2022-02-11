@@ -9,23 +9,24 @@ import CRUD.CRUDBase;
 import CRUD.CRUDEmpleadoCliente;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
 
 public class VEmpleadoCliente extends javax.swing.JFrame {
 
   Conexion conexion = new Conexion();
-  String cedulaE;
   CRUDBase datosBase = new CRUDBase(conexion.conectar());
   CRUDEmpleadoCliente CRUDCliente = new CRUDEmpleadoCliente(conexion.conectar());
 
   public VEmpleadoCliente() {
     initComponents();
+    this.datosBase.comboboxPaises(cb_pais);
   }
 
-  public VEmpleadoCliente(String cedulaEmp) {
+  /*public VEmpleadoCliente(String cedulaEmp) {
     initComponents();
     cedulaE = cedulaEmp;
     this.datosBase.comboboxPaises(cb_pais);
-  }
+  }*/
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -421,7 +422,7 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
     String[] datosCliente = new String[11];
     datosCliente = this.CRUDCliente.buscarCliente(this.tf_identificacionC.getText());
-    if(!datosCliente[0].equals(null)){
+    if(!(datosCliente[0] == null)){
       this.tf_identificacion.setText(datosCliente[0]);
       if (datosCliente[1].equals("N")) {
         this.rbtn_nacional.setSelected(true);
@@ -493,14 +494,14 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
 
   private void btn_recargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_recargarActionPerformed
     if(!this.tf_identificacion.getText().equals(""))
-      new VEmpleadoRecarga(this.tf_identificacion.getText(), cedulaE).setVisible(true);
+      new VEmpleadoRecarga(this.tf_identificacion.getText()).setVisible(true);
     else {
       JOptionPane.showMessageDialog(null,"Busque al cliente antes de proseguir");
     }
   }//GEN-LAST:event_btn_recargarActionPerformed
 
   private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
-    new VEmpleadoEncom(cedulaE).setVisible(true);
+    new VEmpleadoEncom().setVisible(true);
     this.dispose();
   }//GEN-LAST:event_btn_encomiendasActionPerformed
 
