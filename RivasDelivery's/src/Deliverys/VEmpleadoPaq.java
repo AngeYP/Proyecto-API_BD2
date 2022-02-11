@@ -8,16 +8,14 @@ public class VEmpleadoPaq extends javax.swing.JFrame {
   Conexion conexion = new Conexion();
   CRUDEmpleadoPaq CRUDPaq = new CRUDEmpleadoPaq(conexion.conectar());
   String codEncomienda;
-  String ciEmpleado;
   String ciTransportista;
   public VEmpleadoPaq() {
     initComponents();
   }
   
-  public VEmpleadoPaq(String CodEncom, String CIEmp, String CITrans) {
+  public VEmpleadoPaq(String CodEncom, String CITrans) {
     initComponents();
     codEncomienda = CodEncom;
-    ciEmpleado = CIEmp;
     ciTransportista = CITrans;
     this.tf_encomienda.setText(codEncomienda);
     this.CRUDPaq.comboboxCodPaquetes(cb_codigo, codEncomienda);
@@ -219,7 +217,7 @@ public class VEmpleadoPaq extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
   private void btn_articulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_articulosActionPerformed
-    new VEmpleadoArt(ciEmpleado,ciTransportista,codEncomienda,this.cb_codigo.getSelectedItem().toString()).setVisible(true);
+    new VEmpleadoArt(ciTransportista,codEncomienda,this.cb_codigo.getSelectedItem().toString()).setVisible(true);
   }//GEN-LAST:event_btn_articulosActionPerformed
 
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed

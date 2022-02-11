@@ -112,7 +112,8 @@ public class VIniciarSesion extends javax.swing.JFrame {
 
   private void Btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar1ActionPerformed
       if(!(JTF_usuario.getText().equals("") && JTF_contrasena.getText().equals(""))){
-        new VUsuarios().setVisible(true);     
+          cedula = JTF_usuario.getText();
+        new VUsuarios().setVisible(true);    
         this.setVisible(false);
       }else{
           JOptionPane.showMessageDialog(null, "Llene todos los campos porfavor");

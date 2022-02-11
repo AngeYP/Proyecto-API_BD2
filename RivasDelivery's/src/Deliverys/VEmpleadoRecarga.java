@@ -10,6 +10,8 @@ import Conexion.Conexion;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
+
 /**
  *
  * @author angel
@@ -23,16 +25,14 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   CRUDEmpleadoRecarga recargacliente = new CRUDEmpleadoRecarga(conexion.conectar());
   String textoerror = null;
   String cedulaCliente;
-  String cedulaEmpleado;
   
   public VEmpleadoRecarga() {
     initComponents();
   }
   
-  public VEmpleadoRecarga(String cedulaC, String cedulaE) {
+  public VEmpleadoRecarga(String cedulaC) {
     initComponents();
     cedulaCliente = cedulaC;
-    cedulaEmpleado = cedulaE;
     this.tf_cedulaC.setText(cedulaCliente);
     Date date=new Date();
     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
@@ -149,7 +149,7 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
 
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
     if(!this.tf_monto.getText().equals("")){
-      this.recargacliente.insertarDatos(cedulaCliente, cedulaEmpleado, Float.parseFloat(this.tf_monto.getText()));
+      this.recargacliente.insertarDatos(cedulaCliente, cedula, Float.parseFloat(this.tf_monto.getText()));
     } else {
       JOptionPane.showMessageDialog(null,"Llene todos los campos");
     }
