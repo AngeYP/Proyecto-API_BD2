@@ -39,9 +39,9 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
-        btn_clientes = new javax.swing.JButton();
         btn_transportistas = new javax.swing.JButton();
         btn_encomiendas = new javax.swing.JButton();
+        BTN_Nucleos2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -89,18 +89,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         });
         jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
-        btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
-        btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        btn_clientes.setForeground(new java.awt.Color(238, 238, 238));
-        btn_clientes.setText("Nucleos");
-        btn_clientes.setBorderPainted(false);
-        btn_clientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clientesActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btn_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
-
         btn_transportistas.setBackground(new java.awt.Color(253, 112, 20));
         btn_transportistas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
         btn_transportistas.setForeground(new java.awt.Color(238, 238, 238));
@@ -124,6 +112,13 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+
+        BTN_Nucleos2.setBackground(new java.awt.Color(253, 112, 20));
+        BTN_Nucleos2.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        BTN_Nucleos2.setForeground(new java.awt.Color(238, 238, 238));
+        BTN_Nucleos2.setText("Nucleos");
+        BTN_Nucleos2.setBorderPainted(false);
+        jPanel2.add(BTN_Nucleos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -298,7 +293,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void cb_paisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_paisItemStateChanged
-        String paisito = crud.buscarCodPais(cb_pais.getSelectedItem().toString());
+        
         if (this.cb_pais.getSelectedIndex() > 0) {
             int size= cb_pais.getItemCount()-1;
             if (this.cb_pais.getSelectedIndex()==size) {
@@ -309,6 +304,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
             }else{
                 this.cb_estado.removeAllItems();
                 this.cb_estado.setEnabled(true);
+                String paisito = crud.buscarCodPais(cb_pais.getSelectedItem().toString());
                 crud.comboboxEstados(this.cb_estado, paisito);
                 this.cb_estado.addItem("Agregar nuevo");
                 textCod.setEditable(false);
@@ -367,17 +363,29 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
             crud.insertEstado(crud.buscarCodPais(cb_pais.getSelectedItem().toString()),textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            this.cb_estado.removeAllItems();
+            crud.comboboxEstados(cb_estado, crud.buscarCodPais(cb_pais.getSelectedItem().toString()));
+            this.cb_estado.addItem("Agregar nuevo");
         }
         if ((cb_pais.getSelectedIndex()>0)&&(cb_pais.getSelectedIndex()==cb_pais.getItemCount()-1)) {
             crud.insertPais(textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            cb_pais.removeAllItems();
+            crud.comboboxPaises(cb_pais);
+            cb_pais.addItem("Agregar nuevo");
         }
         if ((cb_ciudad.getSelectedIndex()>0)&&(cb_ciudad.getSelectedIndex()==cb_ciudad.getItemCount()-1)) {
             String pais=crud.buscarCodPais(cb_pais.getSelectedItem().toString());
             crud.insertciudades(pais,crud.buscarCodEstado(cb_estado.getSelectedItem().toString(), pais),textCod.getText(), textNombre.getText());
             textCod.setText("");
             textNombre.setText("");
+            String paisito = crud.buscarCodPais(this.cb_pais.getSelectedItem().toString());
+            String estadito = crud.buscarCodEstado(this.cb_estado.getSelectedItem().toString(), paisito);
+            this.cb_ciudad.removeAllItems();
+            this.cb_ciudad.setEnabled(true);
+            crud.comboboxCiudad(this.cb_ciudad, paisito, estadito);
+            this.cb_ciudad.addItem("Agregar nuevo");
         }
         
     }//GEN-LAST:event_agregarActionPerformed
@@ -418,10 +426,10 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Nucleos2;
     private javax.swing.JButton agregar;
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_clientes;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_encomiendas;
     private javax.swing.JButton btn_salir;
@@ -442,4 +450,5 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private javax.swing.JTextField textCod;
     private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.JButton BTN_Nucleos;
 }

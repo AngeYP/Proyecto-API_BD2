@@ -5,6 +5,7 @@
  */
 package Deliverys;
 
+import CRUD.CRUDBase;
 import CRUD.CRUDTransportistaDatos;
 import Conexion.Conexion;
 
@@ -16,6 +17,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     String id;
     Conexion conexion = new Conexion();
     public static CRUDTransportistaDatos crud ;
+    CRUD.CRUDBase base;
 
   /**
    * Creates new form VTransportistaDatos
@@ -24,13 +26,18 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     initComponents();
     String []info = new String[6];
     crud = new CRUDTransportistaDatos(conexion.conectar());
+    base= new CRUDBase(conexion.conectar());
     info=crud.datos(id);
-    jTextField1.setText(info[0]);
-    jTextField2.setText(info[1]);
-    jTextField3.setText(info[2]);
-    jTextField4.setText(info[3]);
-    jTextField5.setText(info[4]);
-    jTextField6.setText(info[5]);
+    txt_id.setText(info[0]);
+    txt_name.setText(info[1]);
+    txt_email.setText(info[2]);
+    txt_tlf.setText(info[3]);
+    txt_nucleo.setText(info[4]);
+    txt_saldo.setText(info[5]);
+    txt_curso.setText(info[6]);
+    cb_nucleo.removeAllItems();
+    cb_nucleo.addItem("Selecciona");
+    base.comboNucleo(cb_nucleo);
   }
 
   /**
@@ -53,12 +60,18 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txt_id = new javax.swing.JTextField();
+        txt_name = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
+        txt_tlf = new javax.swing.JTextField();
+        txt_nucleo = new javax.swing.JTextField();
+        txt_saldo = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        cb_curso = new javax.swing.JComboBox<>();
+        txt_curso = new javax.swing.JTextField();
+        cb_nucleo = new javax.swing.JComboBox<>();
+        cb_fecha = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         Btn_Ingresar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,58 +148,100 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel7.setText("Saldo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 40));
+        jLabel7.setText("Cursos realizados");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 250, 40));
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField1.setText("jTextField1");
-        jTextField1.setEnabled(false);
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 300, 40));
+        txt_id.setEditable(false);
+        txt_id.setBackground(new java.awt.Color(238, 238, 238));
+        txt_id.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_id.setForeground(new java.awt.Color(34, 40, 49));
+        txt_id.setText("jTextField1");
+        txt_id.setEnabled(false);
+        jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 300, 40));
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField2.setText("jTextField1");
-        jTextField2.setEnabled(false);
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 40));
+        txt_name.setEditable(false);
+        txt_name.setBackground(new java.awt.Color(238, 238, 238));
+        txt_name.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_name.setForeground(new java.awt.Color(34, 40, 49));
+        txt_name.setText("jTextField1");
+        txt_name.setEnabled(false);
+        jPanel2.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 40));
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField3.setText("jTextField1");
-        jTextField3.setEnabled(false);
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 300, 40));
+        txt_email.setEditable(false);
+        txt_email.setBackground(new java.awt.Color(238, 238, 238));
+        txt_email.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_email.setForeground(new java.awt.Color(34, 40, 49));
+        txt_email.setText("jTextField1");
+        txt_email.setEnabled(false);
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 300, 40));
 
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField4.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField4.setText("jTextField1");
-        jTextField4.setEnabled(false);
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 300, 40));
+        txt_tlf.setEditable(false);
+        txt_tlf.setBackground(new java.awt.Color(238, 238, 238));
+        txt_tlf.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_tlf.setForeground(new java.awt.Color(34, 40, 49));
+        txt_tlf.setText("jTextField1");
+        txt_tlf.setEnabled(false);
+        jPanel2.add(txt_tlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 300, 40));
 
-        jTextField5.setEditable(false);
-        jTextField5.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField5.setText("jTextField1");
-        jTextField5.setEnabled(false);
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 300, 40));
+        txt_nucleo.setEditable(false);
+        txt_nucleo.setBackground(new java.awt.Color(238, 238, 238));
+        txt_nucleo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_nucleo.setForeground(new java.awt.Color(34, 40, 49));
+        txt_nucleo.setText("jTextField1");
+        txt_nucleo.setEnabled(false);
+        jPanel2.add(txt_nucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 300, 40));
 
-        jTextField6.setEditable(false);
-        jTextField6.setBackground(new java.awt.Color(238, 238, 238));
-        jTextField6.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(34, 40, 49));
-        jTextField6.setText("jTextField1");
-        jTextField6.setEnabled(false);
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 300, 40));
+        txt_saldo.setEditable(false);
+        txt_saldo.setBackground(new java.awt.Color(238, 238, 238));
+        txt_saldo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_saldo.setForeground(new java.awt.Color(34, 40, 49));
+        txt_saldo.setText("jTextField1");
+        txt_saldo.setEnabled(false);
+        jPanel2.add(txt_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 300, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 780, 410));
+        jLabel8.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(238, 238, 238));
+        jLabel8.setText("Saldo");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 40));
+
+        cb_curso.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel2.add(cb_curso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 180, -1));
+
+        txt_curso.setEditable(false);
+        txt_curso.setBackground(new java.awt.Color(238, 238, 238));
+        txt_curso.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        txt_curso.setForeground(new java.awt.Color(34, 40, 49));
+        txt_curso.setText("jTextField1");
+        txt_curso.setEnabled(false);
+        jPanel2.add(txt_curso, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 300, 40));
+
+        cb_nucleo.setBackground(new java.awt.Color(238, 238, 238));
+        cb_nucleo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_nucleoItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(cb_nucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 180, -1));
+
+        cb_fecha.setBackground(new java.awt.Color(238, 238, 238));
+        cb_fecha.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_fechaItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(cb_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 180, -1));
+
+        jButton1.setBackground(new java.awt.Color(253, 112, 20));
+        jButton1.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 780, 490));
 
         Btn_Ingresar2.setBackground(new java.awt.Color(253, 112, 20));
         Btn_Ingresar2.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
@@ -229,6 +284,36 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Btn_Ingresar2ActionPerformed
 
+    private void cb_nucleoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_nucleoItemStateChanged
+        // TODO add your handling code here:
+        if (cb_nucleo.getSelectedIndex()>0) {
+            cb_fecha.removeAllItems();
+            cb_fecha.addItem("Seleccione");
+            base.fechasCursos(cb_fecha, base.buscarCodNucleo(cb_nucleo.getSelectedItem().toString()));
+        }else{
+            cb_fecha.removeAllItems();
+            cb_curso.removeAllItems();
+        }
+    }//GEN-LAST:event_cb_nucleoItemStateChanged
+
+    private void cb_fechaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_fechaItemStateChanged
+        // TODO add your handling code here:
+        if (cb_fecha.getSelectedIndex()>0) {
+            cb_curso.removeAllItems();
+            cb_curso.addItem("Seleccion");
+            base.buscarCodCurso(cb_curso, base.buscarCodNucleo(cb_nucleo.getSelectedItem().toString()), cb_fecha.getSelectedItem().toString());
+        }else{
+            cb_curso.removeAllItems();
+        }
+    }//GEN-LAST:event_cb_fechaItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (cb_curso.getSelectedIndex()>0) {
+            base.updateCursoTransportista(cb_curso.getSelectedItem().toString(), id);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
   /**
    * @param args the command line arguments
    */
@@ -268,6 +353,10 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Ingresar;
     private javax.swing.JButton Btn_Ingresar1;
     private javax.swing.JButton Btn_Ingresar2;
+    private javax.swing.JComboBox<String> cb_curso;
+    private javax.swing.JComboBox<String> cb_fecha;
+    private javax.swing.JComboBox<String> cb_nucleo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,13 +364,15 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txt_curso;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_nucleo;
+    private javax.swing.JTextField txt_saldo;
+    private javax.swing.JTextField txt_tlf;
     // End of variables declaration//GEN-END:variables
 }
