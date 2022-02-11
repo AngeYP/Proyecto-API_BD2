@@ -25,7 +25,7 @@ public class CRUDEmpleadoAsignarEncom {
         this.conexion = conexion;
   }
   
-  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin) throws ParseException {
+  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin) {
     String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);

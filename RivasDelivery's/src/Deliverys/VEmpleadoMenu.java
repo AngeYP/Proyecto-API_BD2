@@ -8,6 +8,7 @@ package Deliverys;
 import CRUD.CRUDEmpleadoMenu;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
 
 /**
  *
