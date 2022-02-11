@@ -323,7 +323,7 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_clientesActionPerformed
 
   private void btn_transportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistaActionPerformed
-      new VEmpleadoTransportista(cedula).setVisible(true);
+      new VEmpleadoTransportista().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_transportistaActionPerformed
 
