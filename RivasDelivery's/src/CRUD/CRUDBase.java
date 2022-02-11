@@ -272,6 +272,7 @@ public class CRUDBase {
     return NucleoEmp;
   }
   
+  /*********BUSCAR EL NOMBRE DEL NUCLEO*********/
   public String buscarNombNucleo(String CodNucleo) {
         
     String NombNucleo = null;

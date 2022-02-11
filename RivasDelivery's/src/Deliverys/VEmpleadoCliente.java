@@ -122,6 +122,11 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     btn_transportistas.setForeground(new java.awt.Color(238, 238, 238));
     btn_transportistas.setText("Transportistas");
     btn_transportistas.setBorderPainted(false);
+    btn_transportistas.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_transportistasActionPerformed(evt);
+      }
+    });
     jPanel2.add(btn_transportistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 180, 60));
 
     btn_encomiendas.setBackground(new java.awt.Color(253, 112, 20));
@@ -543,6 +548,10 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
       this.cb_ciudad.removeAllItems();
     }
   }//GEN-LAST:event_cb_estadoItemStateChanged
+
+  private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btn_transportistasActionPerformed
 
   /**
    * @param args the command line arguments
