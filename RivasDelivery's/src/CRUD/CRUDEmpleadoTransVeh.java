@@ -15,7 +15,7 @@ public class CRUDEmpleadoTransVeh {
         this.conexion = conexion;
   }
   
-  public void insertarDatos(String CITransportista, String Codigo, String Placa, String Tipo, String Modelo, String Marca, String Color) { 
+  public void insertarDatos(String CITransportista, String Codigo, String Placa, String Modelo, String Marca, String Color, String Tipo) { 
   try {
       String SQL = "INSERT INTO Vehiculos_Motor(cod_vehiculos,placa,modeloV,marcaV,colorV,tipoV,identificacionT)"
               + " VALUES (?,?,?,?,?,?,?)";
