@@ -92,6 +92,7 @@ public class VCurso extends javax.swing.JFrame {
         cs_fecha.setBackground(new java.awt.Color(238, 238, 238));
         cs_fecha.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         cs_fecha.setForeground(new java.awt.Color(34, 40, 49));
+        cs_fecha.setText("yyyy/mm/dd");
         jPanel2.add(cs_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 220, 40));
 
         jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -107,7 +108,7 @@ public class VCurso extends javax.swing.JFrame {
         tf_curso.setEditable(false);
         tf_curso.setBackground(new java.awt.Color(255, 255, 255));
         tf_curso.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        tf_curso.setForeground(new java.awt.Color(51, 51, 51));
+        tf_curso.setForeground(new java.awt.Color(34, 40, 49));
         tf_curso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_curso.setBorder(null);
         tf_curso.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +130,7 @@ public class VCurso extends javax.swing.JFrame {
         jPanel2.add(cb_nucleo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
 
         jLabel3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(238, 238, 238));
         jLabel3.setText("CodCurso");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
 

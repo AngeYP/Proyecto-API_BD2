@@ -33,12 +33,10 @@ public class CRUDEmpleadoAsignarEncom {
     try {
         Date date1= Date.valueOf(FechaIni);
         Date date2 = Date.valueOf(FechaFin);
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada BETWEEN ? AND ?";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada <= "+FechaIni+" AND fecha_creada >="+FechaFin;
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
-      consulta.setDate(3, date1);
-      consulta.setDate(4, date2);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
         registros[0] = resultado.getString("cod_encomienda");
@@ -87,11 +85,10 @@ public class CRUDEmpleadoAsignarEncom {
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada > ?";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada <= "+FechaIni;
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
-      consulta.setString(3, FechaIni);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
         registros[0] = resultado.getString("cod_encomienda");
@@ -114,11 +111,10 @@ public class CRUDEmpleadoAsignarEncom {
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada < ?";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada >= "+FechaFin;
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
-      consulta.setString(3, FechaFin);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
         registros[0] = resultado.getString("cod_encomienda");
