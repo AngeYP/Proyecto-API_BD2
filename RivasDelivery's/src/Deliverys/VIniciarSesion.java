@@ -44,6 +44,7 @@ public class VIniciarSesion extends javax.swing.JFrame {
         JTF_contrasena = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         BTN_registrarse = new javax.swing.JButton();
+        BTN_ingresar_ADM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,7 +114,21 @@ public class VIniciarSesion extends javax.swing.JFrame {
                 BTN_registrarseActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 140, 40));
+        jPanel1.add(BTN_registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 140, 40));
+
+        BTN_ingresar_ADM.setBackground(new java.awt.Color(253, 112, 20));
+        BTN_ingresar_ADM.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+        BTN_ingresar_ADM.setForeground(new java.awt.Color(238, 238, 238));
+        BTN_ingresar_ADM.setText("Iniciar como ADM");
+        BTN_ingresar_ADM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+        BTN_ingresar_ADM.setBorderPainted(false);
+        BTN_ingresar_ADM.setFocusPainted(false);
+        BTN_ingresar_ADM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ingresar_ADMActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_ingresar_ADM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,6 +169,24 @@ public class VIniciarSesion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BTN_registrarseActionPerformed
 
+    private void BTN_ingresar_ADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ingresar_ADMActionPerformed
+        // TODO add your handling code here:
+        
+        if (!(JTF_usuario.getText().equals("") || JTF_contrasena.getText().equals(""))) {
+          if ((JTF_usuario.getText().equals("admin") || JTF_contrasena.getText().equals("admin"))) {
+              cedula = "27732881";
+
+              new VAdministradorNucleo().setVisible(true);
+              this.setVisible(false);
+          } else {
+              JOptionPane.showMessageDialog(null, "Su clave o cuenta esta errada");
+          }
+
+      } else {
+          JOptionPane.showMessageDialog(null, "Llene todos los campos porfavor");
+      }
+    }//GEN-LAST:event_BTN_ingresar_ADMActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,6 +223,7 @@ public class VIniciarSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_ingresar_ADM;
     private javax.swing.JButton BTN_registrarse;
     private javax.swing.JButton Btn_Ingresar1;
     private javax.swing.JLabel JLB_contrasena;
