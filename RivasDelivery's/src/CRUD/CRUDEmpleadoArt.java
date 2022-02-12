@@ -18,11 +18,11 @@ public class CRUDEmpleadoArt {
   public void insertarDatos(String CodEncomienda, String CodPaquete, String NombArticulo, String Cantidad, String Precio) { 
   try {
       String SQL = "INSERT INTO Detalles_Art(nombreArt,cantidad_art,precio_art,cod_paquete,cod_encomienda)"
-              + " VALUES (?,?,?,?,?,?)";
+              + " VALUES (?,?,?,?,?)";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, NombArticulo);
-      consulta.setString(2, Cantidad);
-      consulta.setString(3, Precio);
+      consulta.setFloat(2, Float.valueOf(Cantidad));
+      consulta.setFloat(3, Float.valueOf(Precio));
       consulta.setString(4, CodPaquete);
       consulta.setString(5, CodEncomienda);
       consulta.execute();
@@ -34,8 +34,7 @@ public class CRUDEmpleadoArt {
   
   public void eliminarDatos(String CodEncomienda, String CodPaquete, String NombArticulo) { 
   try {
-      String SQL = "DELETE FROM Detalles_Art WHERE cod_destino=? AND cod_paquete=? AND nombreArt=?"
-              + " VALUES (?,?,?)";
+      String SQL = "DELETE FROM Detalles_Art WHERE cod_encomienda=? AND cod_paquete=? AND nombreArt=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodEncomienda);
       consulta.setString(2, CodPaquete);
@@ -50,22 +49,20 @@ public class CRUDEmpleadoArt {
   /*********LLENAR COMBOBOX DE PLACAS*********/
   public void comboboxCodArticulos(JComboBox cb, String CodEncomienda, String CodPaquete) {
     try {
-      String SQL = "SELECT nombreArt FROM Detalles_Art WHERE cod_encomienda=? AND cod_paquete=? ORDER BY nombreArt ASC";
+      String SQL = "SELECT nombreArt FROM Detalles_Art WHERE cod_encomienda='"+CodEncomienda+"' AND cod_paquete='"+CodPaquete+"' ORDER BY nombreArt ASC";
       PreparedStatement consulta = conexion.prepareStatement(SQL);
-      consulta.setString(1, CodEncomienda);
-      consulta.setString(1, CodPaquete);
       ResultSet resultado = consulta.executeQuery();
       cb.addItem("Seleccione una opcion");
       while (resultado.next()) {
         cb.addItem(resultado.getString("nombreArt"));
       }
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
+      JOptionPane.showMessageDialog(null, "Fallo1: "+ex.getMessage());
     }
   }
   
-  public String[] buscarArticulos(String NombArticulos,String CodPaquete, String CodEncomienda) {        
-    String[] DatosPaquete = new String[4];
+  public Float[] buscarArticulos(String NombArticulos,String CodPaquete, String CodEncomienda) {        
+    Float[] DatosPaquete = new Float[2];
     try {
       String SQL = "SELECT * FROM Detalles_Art WHERE cod_paquete = ? AND cod_encomienda = ? AND nombreArt = ?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
@@ -74,8 +71,8 @@ public class CRUDEmpleadoArt {
       consulta.setString(3, NombArticulos);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
-        DatosPaquete[0] = resultado.getString("cantidad_art");
-        DatosPaquete[1] = resultado.getString("precio_art");
+        DatosPaquete[0] = resultado.getFloat("cantidad_art");
+        DatosPaquete[1] = resultado.getFloat("precio_art");
       }                            
     } catch (HeadlessException | SQLException e) {
       JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());

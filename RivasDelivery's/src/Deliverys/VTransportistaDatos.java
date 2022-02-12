@@ -14,16 +14,18 @@ import Conexion.Conexion;
  * @author angel
  */
 public class VTransportistaDatos extends javax.swing.JFrame {
-    String id="V-26599849";
+    String id="27732881";
     Conexion conexion = new Conexion();
     public static CRUDTransportistaDatos crud ;
     CRUD.CRUDBase base;
+    public static String ident;
 
   /**
    * Creates new form VTransportistaDatos
    */
   public VTransportistaDatos() {
     initComponents();
+    ident=id;
     String []info = new String[6];
     crud = new CRUDTransportistaDatos(conexion.conectar());
     base= new CRUDBase(conexion.conectar());
@@ -57,7 +59,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Btn_Ingresar = new javax.swing.JButton();
-        Btn_Ingresar1 = new javax.swing.JButton();
+        btn_solicitar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -109,19 +111,19 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         });
         jPanel1.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 640, 140, 40));
 
-        Btn_Ingresar1.setBackground(new java.awt.Color(253, 112, 20));
-        Btn_Ingresar1.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-        Btn_Ingresar1.setForeground(new java.awt.Color(238, 238, 238));
-        Btn_Ingresar1.setText("Solicitar");
-        Btn_Ingresar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
-        Btn_Ingresar1.setBorderPainted(false);
-        Btn_Ingresar1.setFocusPainted(false);
-        Btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
+        btn_solicitar.setBackground(new java.awt.Color(253, 112, 20));
+        btn_solicitar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+        btn_solicitar.setForeground(new java.awt.Color(238, 238, 238));
+        btn_solicitar.setText("Solicitar");
+        btn_solicitar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+        btn_solicitar.setBorderPainted(false);
+        btn_solicitar.setFocusPainted(false);
+        btn_solicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Ingresar1ActionPerformed(evt);
+                btn_solicitarActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Ingresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 640, 140, 40));
+        jPanel1.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 640, 140, 40));
 
         jPanel2.setBackground(new java.awt.Color(57, 62, 70));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -281,9 +283,10 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
   }//GEN-LAST:event_Btn_IngresarActionPerformed
 
-  private void Btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar1ActionPerformed
+  private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
 
-  }//GEN-LAST:event_Btn_Ingresar1ActionPerformed
+      new VTransportistaEncom().setVisible(true);
+  }//GEN-LAST:event_btn_solicitarActionPerformed
 
     private void Btn_Ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar2ActionPerformed
         // TODO add your handling code here:
@@ -356,8 +359,8 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ingresar;
-    private javax.swing.JButton Btn_Ingresar1;
     private javax.swing.JButton Btn_Ingresar2;
+    private javax.swing.JButton btn_solicitar;
     private javax.swing.JComboBox<String> cb_curso;
     private javax.swing.JComboBox<String> cb_fecha;
     private javax.swing.JComboBox<String> cb_nucleo;

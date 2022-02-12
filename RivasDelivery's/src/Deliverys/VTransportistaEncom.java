@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author angel
  */
 public class VTransportistaEncom extends javax.swing.JFrame {
-    String id;
+    
     Conexion conexion = new Conexion();
     public static CRUD.CRUDBase crud;
     DefaultTableModel table;
@@ -45,7 +45,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         Btn_Ingresar = new javax.swing.JButton();
         cb_pais = new javax.swing.JComboBox<>();
         cb_estado = new javax.swing.JComboBox<>();
@@ -105,19 +105,19 @@ public class VTransportistaEncom extends javax.swing.JFrame {
         jLabel1.setText("Ubicación Actual:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 130, 40));
 
-        jButton1.setBackground(new java.awt.Color(253, 112, 20));
-        jButton1.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(238, 238, 238));
-        jButton1.setText("Buscar");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setBackground(new java.awt.Color(253, 112, 20));
+        btn_buscar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+        btn_buscar.setForeground(new java.awt.Color(238, 238, 238));
+        btn_buscar.setText("Buscar");
+        btn_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+        btn_buscar.setBorderPainted(false);
+        btn_buscar.setFocusPainted(false);
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 100, 40));
+        jPanel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 100, 40));
 
         Btn_Ingresar.setBackground(new java.awt.Color(253, 112, 20));
         Btn_Ingresar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
@@ -175,6 +175,11 @@ public class VTransportistaEncom extends javax.swing.JFrame {
                 cb_ciudadItemStateChanged(evt);
             }
         });
+        cb_ciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ciudadActionPerformed(evt);
+            }
+        });
         jPanel1.add(cb_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 220, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,15 +235,20 @@ public class VTransportistaEncom extends javax.swing.JFrame {
 
     private void cb_ciudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_ciudadItemStateChanged
 
+        if (cb_ciudad.getSelectedIndex()>0) {
+            btn_buscar.setEnabled(true);
+        }else{
+            btn_buscar.setEnabled(false);
+        }
     }//GEN-LAST:event_cb_ciudadItemStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
         if((cb_pais.getSelectedIndex()>0)&&(cb_estado.getSelectedIndex()>0)&&(cb_ciudad.getSelectedIndex()>0)){
             String paisito = crud.buscarCodPais(this.cb_pais.getSelectedItem().toString());
             String estadito = crud.buscarCodEstado(this.cb_estado.getSelectedItem().toString(), paisito);
             String ciudad = crud.buscarCodCiudad(paisito, estadito, cb_ciudad.getSelectedItem().toString());
-            List<Encomiendas> lista = VTransportistaDatos.crud.encomiendasDisponibles(id,paisito, estadito, ciudad);
+            List<Encomiendas> lista = VTransportistaDatos.crud.encomiendasDisponibles(VTransportistaDatos.ident,paisito, estadito, ciudad);
             for (Encomiendas list : lista) {
                 String []datos = new String[6];
                 datos[0]=list.getCodEncomienda();
@@ -251,7 +261,11 @@ public class VTransportistaEncom extends javax.swing.JFrame {
             }
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void cb_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ciudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ciudadActionPerformed
 
   /**
    * @param args the command line arguments
@@ -290,10 +304,10 @@ public class VTransportistaEncom extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ingresar;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JComboBox<String> cb_ciudad;
     private javax.swing.JComboBox<String> cb_estado;
     private javax.swing.JComboBox<String> cb_pais;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

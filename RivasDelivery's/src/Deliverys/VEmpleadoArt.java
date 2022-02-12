@@ -26,6 +26,7 @@ public class VEmpleadoArt extends javax.swing.JFrame {
     ciTransportista = CITrans;
     codEncomienda = CodEncom;
     codPaquete = CodPaq;
+    
     this.CRUDArticulos.comboboxCodArticulos(cb_nombreArt, codEncomienda, codPaquete);
     this.tf_codEncomienda.setText(codEncomienda);
     this.tf_codPaquete.setText(codPaquete);
@@ -190,6 +191,12 @@ public class VEmpleadoArt extends javax.swing.JFrame {
   private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
     if(!this.cb_nombreArt.getSelectedItem().toString().equals("Seleccione una opcion")){
       this.CRUDArticulos.eliminarDatos(codEncomienda, codPaquete, this.cb_nombreArt.getSelectedItem().toString());
+      if(this.cb_nombreArt.getSelectedIndex()>0) {
+        this.cb_nombreArt.removeAllItems();
+        this.CRUDArticulos.comboboxCodArticulos(cb_nombreArt, codEncomienda, codPaquete);
+      }
+      this.tf_cantidad.setText("");
+      this.tf_precio.setText("");
     }
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -200,15 +207,21 @@ public class VEmpleadoArt extends javax.swing.JFrame {
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
     if(!this.cb_nombreArt.getSelectedItem().toString().equals("Seleccione una opcion")){
       this.CRUDArticulos.insertarDatos(codEncomienda, codPaquete, this.cb_nombreArt.getSelectedItem().toString(), this.tf_cantidad.getText(), this.tf_precio.getText());
+      if(this.cb_nombreArt.getSelectedIndex()>0) {
+        this.cb_nombreArt.removeAllItems();
+        this.CRUDArticulos.comboboxCodArticulos(cb_nombreArt, codEncomienda, codPaquete);
+      }
+      this.tf_cantidad.setText("");
+      this.tf_precio.setText("");
     }
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void cb_nombreArtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_nombreArtItemStateChanged
-    if(!this.cb_nombreArt.getSelectedItem().toString().equals("Seleccione una opcion")){
-      String[] datosPaq = new String[2];
-      this.CRUDArticulos.buscarArticulos(this.cb_nombreArt.getSelectedItem().toString(),codPaquete,codEncomienda);
-      this.tf_cantidad.setText(datosPaq[0]);
-      this.tf_precio.setText(datosPaq[1]);
+    if(this.cb_nombreArt.getSelectedIndex()>0){
+      Float[] datosPaq = new Float[2];
+      datosPaq =this.CRUDArticulos.buscarArticulos(this.cb_nombreArt.getSelectedItem().toString(),codPaquete,codEncomienda);
+      this.tf_cantidad.setText(datosPaq[0].toString());
+      this.tf_precio.setText(datosPaq[1].toString());
     }
   }//GEN-LAST:event_cb_nombreArtItemStateChanged
 

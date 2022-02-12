@@ -63,8 +63,7 @@ public class CRUDTransportistaDatos {
     }
     
     public List<Encomiendas> encomiendasDisponibles(String id,String pais,String estado, String ciudad){
-        List<Encomiendas> lista=new ArrayList<>();
-        
+        List<Encomiendas> lista=new ArrayList<Encomiendas>();
         try {
             String sql1 = "SELECT * FROM Transportistas WHERE identificacionT = ?";
             PreparedStatement busqueda = this.conexion.prepareStatement(sql1);
@@ -72,9 +71,8 @@ public class CRUDTransportistaDatos {
             ResultSet res =busqueda.executeQuery();
             String nucleo="";
             while (res.next()) {                
-                nucleo = res.getString("cod_nucleo");
+                nucleo = res.getString("cod_nucleos");
             }
-            
             String sql = "SELECT * FROM encomiendasDisponibles "
                     + "WHERE cod_pais= ? "
                     + "AND cod_estados = ? "
@@ -89,7 +87,7 @@ public class CRUDTransportistaDatos {
             
             while (resultado.next()) {                
                 lista.add(new Encomiendas(resultado.getString("cod_encomienda"),
-                resultado.getString("status"),
+                resultado.getString("estatusE"),
                 resultado.getString("cod_paises"),
                 resultado.getString("cod_estados"),
                 resultado.getString("cod_ciudades"),

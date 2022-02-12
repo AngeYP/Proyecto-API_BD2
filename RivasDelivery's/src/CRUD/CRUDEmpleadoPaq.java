@@ -60,7 +60,7 @@ public class CRUDEmpleadoPaq {
         cb.addItem(resultado.getString("cod_paquete"));
       }
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
+      JOptionPane.showMessageDialog(null, "Fallo2: "+ex.getMessage());
     }
   }
   
