@@ -108,8 +108,8 @@ public class VTransportistaEncom extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 238, 238));
-        jLabel1.setText("Ubicación Actual:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 130, 40));
+        jLabel1.setText("Ubicación Destino:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 160, 40));
 
         btn_buscar.setBackground(new java.awt.Color(253, 112, 20));
         btn_buscar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
