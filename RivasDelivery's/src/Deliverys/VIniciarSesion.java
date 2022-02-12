@@ -174,7 +174,6 @@ public class VIniciarSesion extends javax.swing.JFrame {
         
         if (!(JTF_usuario.getText().equals("") || JTF_contrasena.getText().equals(""))) {
           if ((JTF_usuario.getText().equals("admin") || JTF_contrasena.getText().equals("admin"))) {
-              cedula = "27732881";
 
               new VAdministradorNucleo().setVisible(true);
               this.setVisible(false);
