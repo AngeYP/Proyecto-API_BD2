@@ -115,6 +115,11 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menu");
         jLabel1.setOpaque(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
         btn_salir.setBackground(new java.awt.Color(204, 0, 0));
@@ -216,6 +221,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransNombre.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransNombre.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransNombre.setForeground(new java.awt.Color(34, 40, 49));
+        tf_TransNombre.setEnabled(false);
         jPanel4.add(tf_TransNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
 
         tf_TransTelefonoSecu.setBackground(new java.awt.Color(238, 238, 238));
@@ -258,6 +264,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransTelefono.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransTelefono.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransTelefono.setForeground(new java.awt.Color(34, 40, 49));
+        tf_TransTelefono.setEnabled(false);
         jPanel4.add(tf_TransTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 320, 40));
 
         jLabel9.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -302,6 +309,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransApellido.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransApellido.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransApellido.setForeground(new java.awt.Color(34, 40, 49));
+        tf_TransApellido.setEnabled(false);
         jPanel4.add(tf_TransApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
 
         tf_TransLicencia.setBackground(new java.awt.Color(238, 238, 238));
@@ -366,6 +374,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransCorreo.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransCorreo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransCorreo.setForeground(new java.awt.Color(34, 40, 49));
+        tf_TransCorreo.setEnabled(false);
         jPanel4.add(tf_TransCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, 40));
 
         btn_vehiculos.setBackground(new java.awt.Color(253, 112, 20));
@@ -606,6 +615,12 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         // TODO add your handling code here:
         rb_TransExtranjero.setSelected(false);
     }//GEN-LAST:event_rb_TransNacionalMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        new VEmpleadoMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
   /**
    * @param args the command line arguments

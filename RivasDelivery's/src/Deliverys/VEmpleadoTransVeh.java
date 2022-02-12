@@ -8,6 +8,7 @@ package Deliverys;
 import CRUD.CRUDEmpleadoTransVeh;
 import Conexion.Conexion;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
 
 /**
  *
@@ -20,16 +21,14 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
    */
   Conexion conexion = new Conexion();
   CRUDEmpleadoTransVeh CRUDVehiculo = new CRUDEmpleadoTransVeh(conexion.conectar());
-  String CedulaEmp;
   String CedulaTrans;
   
   public VEmpleadoTransVeh() {
     initComponents();
   }
   
-  public VEmpleadoTransVeh(String CIEmpleado, String CITransportista) {
+  public VEmpleadoTransVeh(String CITransportista) {
     initComponents();
-    CedulaEmp =  CIEmpleado;
     CedulaTrans = CITransportista;
     this.tf_cedulaT.setText(CedulaTrans);
     this.CRUDVehiculo.comboboxPlacas(this.cb_placas,CedulaTrans);
@@ -78,12 +77,16 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 80));
 
-        tf_cedulaT.setEditable(false);
         tf_cedulaT.setBackground(new java.awt.Color(57, 62, 70));
         tf_cedulaT.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_cedulaT.setForeground(new java.awt.Color(238, 238, 238));
         tf_cedulaT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_cedulaT.setBorder(null);
+        tf_cedulaT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_cedulaTActionPerformed(evt);
+            }
+        });
         jPanel1.add(tf_cedulaT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 200, 40));
 
         btn_cancelar.setBackground(new java.awt.Color(253, 112, 20));
@@ -102,11 +105,9 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(57, 62, 70));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tf_codigo.setEditable(false);
         tf_codigo.setBackground(new java.awt.Color(238, 238, 238));
         tf_codigo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_codigo.setForeground(new java.awt.Color(34, 40, 49));
-        tf_codigo.setEnabled(false);
         jPanel2.add(tf_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 270, 40));
 
         jLabel2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -127,14 +128,11 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
         tf_modelo.setBackground(new java.awt.Color(238, 238, 238));
         tf_modelo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_modelo.setForeground(new java.awt.Color(34, 40, 49));
-        tf_modelo.setEnabled(false);
         jPanel2.add(tf_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 270, 40));
 
-        tf_marca.setEditable(false);
         tf_marca.setBackground(new java.awt.Color(238, 238, 238));
         tf_marca.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_marca.setForeground(new java.awt.Color(34, 40, 49));
-        tf_marca.setEnabled(false);
         jPanel2.add(tf_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 270, 40));
 
         jLabel5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -163,7 +161,6 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
         tf_color.setBackground(new java.awt.Color(238, 238, 238));
         tf_color.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_color.setForeground(new java.awt.Color(34, 40, 49));
-        tf_color.setEnabled(false);
         jPanel2.add(tf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 270, 40));
 
         jLabel7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -171,11 +168,9 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
         jLabel7.setText("Tipo:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 150, 40));
 
-        tf_tipo.setEditable(false);
         tf_tipo.setBackground(new java.awt.Color(238, 238, 238));
         tf_tipo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_tipo.setForeground(new java.awt.Color(34, 40, 49));
-        tf_tipo.setEnabled(false);
         jPanel2.add(tf_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 270, 40));
 
         btn_eliminar.setBackground(new java.awt.Color(253, 112, 20));
@@ -201,6 +196,11 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
                 cb_placasItemStateChanged(evt);
             }
         });
+        cb_placas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_placasActionPerformed(evt);
+            }
+        });
         jPanel2.add(cb_placas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 270, 40));
 
         jScrollPane1.setViewportView(jPanel2);
@@ -223,7 +223,7 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-    if(this.tf_tipo.getText().equals("") && this.tf_marca.getText().equals("") && this.tf_codigo.getText().equals("") && this.tf_modelo.getText().equals("") && this.tf_color.getText().equals("")) {
+    if(this.tf_tipo.getText().equals("") || this.tf_marca.getText().equals("") || this.tf_codigo.getText().equals("") || this.tf_modelo.getText().equals("") || this.tf_color.getText().equals("")) {
       JOptionPane.showMessageDialog(null,"Llene todos los campos");
     } else {
       this.CRUDVehiculo.insertarDatos(this.tf_cedulaT.getText(), this.tf_codigo.getText(), this.cb_placas.getSelectedItem().toString(), this.tf_modelo.getText(), this.tf_marca.getText(), this.tf_color.getText(), this.tf_tipo.getText());
@@ -255,16 +255,26 @@ public class VEmpleadoTransVeh extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
   private void cb_placasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_placasItemStateChanged
-    if(!this.cb_placas.getSelectedItem().toString().equals("Seleccione una opcion")){
-      String[] DatosVehiculos = new String[5];
-      this.tf_codigo.setText(DatosVehiculos[0]);
-      this.tf_modelo.setText(DatosVehiculos[1]);
-      this.tf_marca.setText(DatosVehiculos[2]);
-      this.tf_color.setText(DatosVehiculos[3]);
-      this.tf_tipo.setText(DatosVehiculos[4]);
+    if(!(this.cb_placas.getSelectedItem().toString().equals("Seleccione una opcion") &&this.cb_placas.getSelectedItem().toString().equals(""))){
+      String[] datosVehiculos = new String[5];
+      datosVehiculos = CRUDVehiculo.buscarVehiculos(cb_placas.getSelectedItem().toString());
+      
+      this.tf_codigo.setText(datosVehiculos[0]);
+      this.tf_modelo.setText(datosVehiculos[1]);
+      this.tf_marca.setText(datosVehiculos[2]);
+      this.tf_color.setText(datosVehiculos[3]);
+      this.tf_tipo.setText(datosVehiculos[4]);
     }
     
   }//GEN-LAST:event_cb_placasItemStateChanged
+
+    private void cb_placasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_placasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_placasActionPerformed
+
+    private void tf_cedulaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cedulaTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_cedulaTActionPerformed
 
   /**
    * @param args the command line arguments

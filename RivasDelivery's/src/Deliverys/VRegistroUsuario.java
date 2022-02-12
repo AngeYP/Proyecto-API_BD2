@@ -13,16 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author angel
  */
-public class VIniciarSesion extends javax.swing.JFrame {
-
-    public static String cedula;
+public class VRegistroUsuario extends javax.swing.JFrame {
     Conexion conexion = new Conexion();
     Seguridad verfUsuario = new Seguridad(conexion.conectar());
 
     /**
      * Creates new form VIniciarSesion
      */
-    public VIniciarSesion() {
+    public VRegistroUsuario() {
         initComponents();
     }
 
@@ -43,7 +41,7 @@ public class VIniciarSesion extends javax.swing.JFrame {
         JTF_usuario = new javax.swing.JTextField();
         JTF_contrasena = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        BTN_registrarse = new javax.swing.JButton();
+        BTN_Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,23 +95,23 @@ public class VIniciarSesion extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Iniciar Sesión");
+        jLabel4.setText("Registro");
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 80));
 
-        BTN_registrarse.setBackground(new java.awt.Color(253, 112, 20));
-        BTN_registrarse.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-        BTN_registrarse.setForeground(new java.awt.Color(238, 238, 238));
-        BTN_registrarse.setText("Registrarse");
-        BTN_registrarse.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
-        BTN_registrarse.setBorderPainted(false);
-        BTN_registrarse.setFocusPainted(false);
-        BTN_registrarse.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Volver.setBackground(new java.awt.Color(253, 112, 20));
+        BTN_Volver.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+        BTN_Volver.setForeground(new java.awt.Color(238, 238, 238));
+        BTN_Volver.setText("Volver");
+        BTN_Volver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+        BTN_Volver.setBorderPainted(false);
+        BTN_Volver.setFocusPainted(false);
+        BTN_Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_registrarseActionPerformed(evt);
+                BTN_VolverActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 140, 40));
+        jPanel1.add(BTN_Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,15 +129,12 @@ public class VIniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void Btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar1ActionPerformed
-      if (!(JTF_usuario.getText().equals("") || JTF_contrasena.getText().equals(""))) {
-          String cifradito = verfUsuario.cifradoCesar(JTF_contrasena.getText(), 3);
-          if (cifradito.equals(verfUsuario.buscarContrasenha(JTF_usuario.getText(), cifradito))) {
-              cedula = JTF_usuario.getText();
-
-              new VUsuarios().setVisible(true);
-              this.setVisible(false);
+      if (!(JTF_usuario.getText().equals("") || JTF_contrasena.getText().equals(""))) {        
+          if (!JTF_usuario.getText().equals(verfUsuario.verificarUsuario(JTF_usuario.getText()))) {
+              String cifradito = verfUsuario.cifradoCesar(JTF_contrasena.getText(), 3);
+              verfUsuario.insertarUsuario(JTF_usuario.getText(), cifradito);
           } else {
-              JOptionPane.showMessageDialog(null, "Su clave o cuenta esta errada");
+              JOptionPane.showMessageDialog(null, "El usuario ya esta registrado");
           }
 
       } else {
@@ -148,11 +143,11 @@ public class VIniciarSesion extends javax.swing.JFrame {
 
   }//GEN-LAST:event_Btn_Ingresar1ActionPerformed
 
-    private void BTN_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_registrarseActionPerformed
+    private void BTN_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VolverActionPerformed
         // TODO add your handling code here:
-        new VRegistroUsuario().setVisible(true);
+        new VIniciarSesion().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BTN_registrarseActionPerformed
+    }//GEN-LAST:event_BTN_VolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,26 +166,27 @@ public class VIniciarSesion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VIniciarSesion().setVisible(true);
+                new VRegistroUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTN_registrarse;
+    private javax.swing.JButton BTN_Volver;
     private javax.swing.JButton Btn_Ingresar1;
     private javax.swing.JLabel JLB_contrasena;
     private javax.swing.JLabel JLB_usuario;
