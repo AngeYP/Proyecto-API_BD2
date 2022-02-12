@@ -178,19 +178,25 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
         JLB_cod_nucleos.setText("Nucleos :");
         jPanel4.add(JLB_cod_nucleos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 290, 40));
 
+        JTF_identificacionE.setEditable(false);
         JTF_identificacionE.setBackground(new java.awt.Color(238, 238, 238));
         JTF_identificacionE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_identificacionE.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_identificacionE.setEnabled(false);
         jPanel4.add(JTF_identificacionE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 320, 40));
 
+        JTF_nombreE.setEditable(false);
         JTF_nombreE.setBackground(new java.awt.Color(238, 238, 238));
         JTF_nombreE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_nombreE.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_nombreE.setEnabled(false);
         jPanel4.add(JTF_nombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 320, 40));
 
+        JTF_cod_nucleos.setEditable(false);
         JTF_cod_nucleos.setBackground(new java.awt.Color(238, 238, 238));
         JTF_cod_nucleos.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_cod_nucleos.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_cod_nucleos.setEnabled(false);
         jPanel4.add(JTF_cod_nucleos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 320, 40));
 
         JLB_apellidoE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -213,24 +219,32 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
         JLB_telefono2.setText("Teléfono 2 :");
         jPanel4.add(JLB_telefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 290, 40));
 
+        JTF_apellidoE.setEditable(false);
         JTF_apellidoE.setBackground(new java.awt.Color(238, 238, 238));
         JTF_apellidoE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_apellidoE.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_apellidoE.setEnabled(false);
         jPanel4.add(JTF_apellidoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
 
+        JTF_emailE.setEditable(false);
         JTF_emailE.setBackground(new java.awt.Color(238, 238, 238));
         JTF_emailE.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_emailE.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_emailE.setEnabled(false);
         jPanel4.add(JTF_emailE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
 
+        JTF_telefono1E.setEditable(false);
         JTF_telefono1E.setBackground(new java.awt.Color(238, 238, 238));
         JTF_telefono1E.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_telefono1E.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_telefono1E.setEnabled(false);
         jPanel4.add(JTF_telefono1E, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, 40));
 
+        JTF_telefono2E.setEditable(false);
         JTF_telefono2E.setBackground(new java.awt.Color(238, 238, 238));
         JTF_telefono2E.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_telefono2E.setForeground(new java.awt.Color(34, 40, 49));
+        JTF_telefono2E.setEnabled(false);
         jPanel4.add(JTF_telefono2E, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 320, 40));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 490));
@@ -274,6 +288,7 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
         btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
         btn_aceptar.setText("Aceptar");
+        btn_aceptar.setEnabled(false);
         btn_aceptar.setFocusPainted(false);
         btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

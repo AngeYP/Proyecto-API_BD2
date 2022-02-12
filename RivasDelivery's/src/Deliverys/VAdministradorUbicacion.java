@@ -39,7 +39,7 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
-        btn_transportistas = new javax.swing.JButton();
+        btn_empleados = new javax.swing.JButton();
         btn_encomiendas = new javax.swing.JButton();
         BTN_Nucleos2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -89,17 +89,17 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         });
         jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
-        btn_transportistas.setBackground(new java.awt.Color(253, 112, 20));
-        btn_transportistas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        btn_transportistas.setForeground(new java.awt.Color(238, 238, 238));
-        btn_transportistas.setText("Empleados");
-        btn_transportistas.setBorderPainted(false);
-        btn_transportistas.addActionListener(new java.awt.event.ActionListener() {
+        btn_empleados.setBackground(new java.awt.Color(253, 112, 20));
+        btn_empleados.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        btn_empleados.setForeground(new java.awt.Color(238, 238, 238));
+        btn_empleados.setText("Empleados");
+        btn_empleados.setBorderPainted(false);
+        btn_empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_transportistasActionPerformed(evt);
+                btn_empleadosActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_transportistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 180, 60));
+        jPanel2.add(btn_empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 180, 60));
 
         btn_encomiendas.setBackground(new java.awt.Color(253, 112, 20));
         btn_encomiendas.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
@@ -118,6 +118,11 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         BTN_Nucleos2.setForeground(new java.awt.Color(238, 238, 238));
         BTN_Nucleos2.setText("Nucleos");
         BTN_Nucleos2.setBorderPainted(false);
+        BTN_Nucleos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_Nucleos2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(BTN_Nucleos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 180, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
@@ -272,9 +277,10 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
 
   }//GEN-LAST:event_btn_clientesActionPerformed
 
-  private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
-
-  }//GEN-LAST:event_btn_transportistasActionPerformed
+  private void btn_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleadosActionPerformed
+      new VAdministradorEmpleado().setVisible(true);
+      this.setVisible(false);
+  }//GEN-LAST:event_btn_empleadosActionPerformed
 
   private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
 
@@ -390,6 +396,12 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_agregarActionPerformed
 
+    private void BTN_Nucleos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Nucleos2ActionPerformed
+        // TODO add your handling code here:
+      new VAdministradorNucleo().setVisible(true);
+      this.setVisible(false);
+    }//GEN-LAST:event_BTN_Nucleos2ActionPerformed
+
   /**
    * @param args the command line arguments
    */
@@ -431,9 +443,9 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_empleados;
     private javax.swing.JButton btn_encomiendas;
     private javax.swing.JButton btn_salir;
-    private javax.swing.JButton btn_transportistas;
     private javax.swing.JComboBox<String> cb_ciudad;
     private javax.swing.JComboBox<String> cb_estado;
     private javax.swing.JComboBox<String> cb_pais;
