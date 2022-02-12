@@ -41,8 +41,6 @@ public class CRUDEmpleadoCliente {
     } catch (HeadlessException | SQLException e) {
         System.out.println("Fallo en la consulta" + e.getMessage());
     }
-    
-//    System.out.println("["+datosCliente[10]+"]");
     return datosCliente;
   }
   

@@ -5,6 +5,8 @@
  */
 package Deliverys;
 
+import CRUD.CRUDBase;
+import CRUD.CRUDClientes;
 import Conexion.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,15 +24,16 @@ import java.awt.HeadlessException;
  */
 public class VCliente extends javax.swing.JFrame {
 
-    Conexion conection = new Conexion();
-    Connection conexion = conection.conectar();
+    Conexion conexion = new Conexion();
+    CRUDClientes CRUDClientes = new CRUDClientes(conexion.conectar());
+    CRUDBase datosBase = new CRUDBase(conexion.conectar());
 
     /**
      * Creates new form VCliente
      */
     public VCliente() {
         initComponents();
-        comboboxPaquetes(cedula, JCB_lista_paquetes);
+        this.CRUDClientes.comboboxEncomiendas(JCB_lista_paquetes, cedula);
     }
 
     /**
@@ -43,101 +46,38 @@ public class VCliente extends javax.swing.JFrame {
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
-    jPanel2 = new javax.swing.JPanel();
-    JLB_cod_pequete = new javax.swing.JLabel();
-    JLB_peso_paq = new javax.swing.JLabel();
-    JLB_alto_paq = new javax.swing.JLabel();
-    JLB_ancho_paq = new javax.swing.JLabel();
-    JLB_profundidad = new javax.swing.JLabel();
-    JLB_cod_destino = new javax.swing.JLabel();
-    JTF_cod_paquete = new javax.swing.JTextField();
-    JTF_peso_paq = new javax.swing.JTextField();
-    JTF_alto_paq = new javax.swing.JTextField();
-    JTF_ancho_paq = new javax.swing.JTextField();
-    JTF_profundidad = new javax.swing.JTextField();
-    JTF_cod_destino = new javax.swing.JTextField();
     jLabel4 = new javax.swing.JLabel();
     JCB_lista_paquetes = new javax.swing.JComboBox<>();
     Btn_Ingresar = new javax.swing.JButton();
+    jScrollPane2 = new javax.swing.JScrollPane();
+    jPanel2 = new javax.swing.JPanel();
+    JLB_peso_paq = new javax.swing.JLabel();
+    JLB_alto_paq = new javax.swing.JLabel();
+    JLB_profundidad = new javax.swing.JLabel();
+    JLB_cod_destino = new javax.swing.JLabel();
+    tf_precio = new javax.swing.JTextField();
+    tf_transportista = new javax.swing.JTextField();
+    tf_destinatario = new javax.swing.JTextField();
+    JLB_cod_destino1 = new javax.swing.JLabel();
+    tf_llegada = new javax.swing.JTextField();
+    JLB_cod_destino2 = new javax.swing.JLabel();
+    tf_salida = new javax.swing.JTextField();
+    JLB_cod_destino3 = new javax.swing.JLabel();
+    tf_creada = new javax.swing.JTextField();
+    JLB_ancho_paq1 = new javax.swing.JLabel();
+    tf_estado = new javax.swing.JTextField();
+    JLB_ancho_paq = new javax.swing.JLabel();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    ta_destino = new javax.swing.JTextArea();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     jPanel1.setBackground(new java.awt.Color(34, 40, 49));
+    jPanel1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
     jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
     jPanel1.setMinimumSize(new java.awt.Dimension(1080, 720));
     jPanel1.setPreferredSize(new java.awt.Dimension(1080, 720));
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-    jPanel2.setBackground(new java.awt.Color(57, 62, 70));
-    jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-    JLB_cod_pequete.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_cod_pequete.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_cod_pequete.setText("Codigo de Paquete :");
-    jPanel2.add(JLB_cod_pequete, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 40));
-
-    JLB_peso_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_peso_paq.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_peso_paq.setText("Peso :");
-    jPanel2.add(JLB_peso_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 250, 40));
-
-    JLB_alto_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_alto_paq.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_alto_paq.setText("Alto :");
-    jPanel2.add(JLB_alto_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 250, 40));
-
-    JLB_ancho_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_ancho_paq.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_ancho_paq.setText("Ancho :");
-    jPanel2.add(JLB_ancho_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 250, 40));
-
-    JLB_profundidad.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_profundidad.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_profundidad.setText("Profundidad :");
-    jPanel2.add(JLB_profundidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 40));
-
-    JLB_cod_destino.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JLB_cod_destino.setForeground(new java.awt.Color(238, 238, 238));
-    JLB_cod_destino.setText("Codigo de destino :");
-    jPanel2.add(JLB_cod_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 40));
-
-    JTF_cod_paquete.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_cod_paquete.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_cod_paquete.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_cod_paquete.setEnabled(false);
-    jPanel2.add(JTF_cod_paquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 300, 40));
-
-    JTF_peso_paq.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_peso_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_peso_paq.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_peso_paq.setEnabled(false);
-    jPanel2.add(JTF_peso_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 40));
-
-    JTF_alto_paq.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_alto_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_alto_paq.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_alto_paq.setEnabled(false);
-    jPanel2.add(JTF_alto_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 300, 40));
-
-    JTF_ancho_paq.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_ancho_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_ancho_paq.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_ancho_paq.setEnabled(false);
-    jPanel2.add(JTF_ancho_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 300, 40));
-
-    JTF_profundidad.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_profundidad.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_profundidad.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_profundidad.setEnabled(false);
-    jPanel2.add(JTF_profundidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 300, 40));
-
-    JTF_cod_destino.setBackground(new java.awt.Color(238, 238, 238));
-    JTF_cod_destino.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JTF_cod_destino.setForeground(new java.awt.Color(34, 40, 49));
-    JTF_cod_destino.setEnabled(false);
-    jPanel2.add(JTF_cod_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 300, 40));
-
-    jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 780, 410));
 
     jLabel4.setBackground(new java.awt.Color(253, 112, 20));
     jLabel4.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
@@ -147,9 +87,9 @@ public class VCliente extends javax.swing.JFrame {
     jLabel4.setOpaque(true);
     jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 80));
 
-    JCB_lista_paquetes.setBackground(new java.awt.Color(57, 62, 70));
+    JCB_lista_paquetes.setBackground(new java.awt.Color(238, 238, 238));
     JCB_lista_paquetes.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    JCB_lista_paquetes.setForeground(new java.awt.Color(238, 238, 238));
+    JCB_lista_paquetes.setForeground(new java.awt.Color(34, 40, 49));
     JCB_lista_paquetes.addItemListener(new java.awt.event.ItemListener() {
       public void itemStateChanged(java.awt.event.ItemEvent evt) {
         JCB_lista_paquetesItemStateChanged(evt);
@@ -160,7 +100,7 @@ public class VCliente extends javax.swing.JFrame {
         JCB_lista_paquetesActionPerformed(evt);
       }
     });
-    jPanel1.add(JCB_lista_paquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 260, 40));
+    jPanel1.add(JCB_lista_paquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 260, 40));
 
     Btn_Ingresar.setBackground(new java.awt.Color(253, 112, 20));
     Btn_Ingresar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
@@ -175,6 +115,113 @@ public class VCliente extends javax.swing.JFrame {
       }
     });
     jPanel1.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 650, 140, 40));
+
+    jPanel2.setBackground(new java.awt.Color(57, 62, 70));
+    jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    JLB_peso_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_peso_paq.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_peso_paq.setText("Estado:");
+    jPanel2.add(JLB_peso_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 440, 250, 40));
+
+    JLB_alto_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_alto_paq.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_alto_paq.setText("Precio:");
+    jPanel2.add(JLB_alto_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 250, 40));
+
+    JLB_profundidad.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_profundidad.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_profundidad.setText("Destinatario:");
+    jPanel2.add(JLB_profundidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 250, 40));
+
+    JLB_cod_destino.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_cod_destino.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_cod_destino.setText("Destino:");
+    jPanel2.add(JLB_cod_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 250, 40));
+
+    tf_precio.setEditable(false);
+    tf_precio.setBackground(new java.awt.Color(238, 238, 238));
+    tf_precio.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_precio.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 300, 40));
+
+    tf_transportista.setEditable(false);
+    tf_transportista.setBackground(new java.awt.Color(238, 238, 238));
+    tf_transportista.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_transportista.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_transportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 300, 40));
+
+    tf_destinatario.setEditable(false);
+    tf_destinatario.setBackground(new java.awt.Color(238, 238, 238));
+    tf_destinatario.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_destinatario.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_destinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 300, 40));
+
+    JLB_cod_destino1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_cod_destino1.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_cod_destino1.setText("Fecha llegada:");
+    jPanel2.add(JLB_cod_destino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 250, 40));
+
+    tf_llegada.setBackground(new java.awt.Color(238, 238, 238));
+    tf_llegada.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_llegada.setForeground(new java.awt.Color(34, 40, 49));
+    tf_llegada.setEnabled(false);
+    jPanel2.add(tf_llegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 300, 40));
+
+    JLB_cod_destino2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_cod_destino2.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_cod_destino2.setText("Fecha salida:");
+    jPanel2.add(JLB_cod_destino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 250, 40));
+
+    tf_salida.setEditable(false);
+    tf_salida.setBackground(new java.awt.Color(238, 238, 238));
+    tf_salida.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_salida.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 300, 40));
+
+    JLB_cod_destino3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_cod_destino3.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_cod_destino3.setText("Fecha creada:");
+    jPanel2.add(JLB_cod_destino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 250, 40));
+
+    tf_creada.setEditable(false);
+    tf_creada.setBackground(new java.awt.Color(238, 238, 238));
+    tf_creada.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_creada.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_creada, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 300, 40));
+
+    JLB_ancho_paq1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_ancho_paq1.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_ancho_paq1.setText("Transportista:");
+    jPanel2.add(JLB_ancho_paq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 250, 40));
+
+    tf_estado.setEditable(false);
+    tf_estado.setBackground(new java.awt.Color(238, 238, 238));
+    tf_estado.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    tf_estado.setForeground(new java.awt.Color(34, 40, 49));
+    jPanel2.add(tf_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 300, 40));
+
+    JLB_ancho_paq.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    JLB_ancho_paq.setForeground(new java.awt.Color(238, 238, 238));
+    JLB_ancho_paq.setText("Estado:");
+    jPanel2.add(JLB_ancho_paq, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 250, 40));
+
+    ta_destino.setEditable(false);
+    ta_destino.setBackground(new java.awt.Color(238, 238, 238));
+    ta_destino.setColumns(20);
+    ta_destino.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+    ta_destino.setForeground(new java.awt.Color(34, 40, 49));
+    ta_destino.setLineWrap(true);
+    ta_destino.setRows(5);
+    ta_destino.setCaretColor(new java.awt.Color(255, 255, 255));
+    ta_destino.setMinimumSize(new java.awt.Dimension(13, 120));
+    jScrollPane1.setViewportView(ta_destino);
+
+    jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 300, 70));
+
+    jScrollPane2.setViewportView(jPanel2);
+
+    jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 800, 460));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -202,66 +249,25 @@ public class VCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_JCB_lista_paquetesActionPerformed
 
     private void JCB_lista_paquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JCB_lista_paquetesItemStateChanged
-        // TODO add your handling code here:
-        if (this.JCB_lista_paquetes.getSelectedIndex() > 0) {
-            String paquetico = JCB_lista_paquetes.getSelectedItem().toString();
-            String[] datosPaquetes = buscarPaquetes(paquetico);
-            this.JTF_cod_paquete.setText(datosPaquetes[0]);
-            this.JTF_peso_paq.setText(datosPaquetes[1]);
-            this.JTF_alto_paq.setText(datosPaquetes[2]);
-            this.JTF_ancho_paq.setText(datosPaquetes[3]);
-            this.JTF_profundidad.setText(datosPaquetes[4]);
-            this.JTF_cod_destino.setText(datosPaquetes[5]);
+      if(this.JCB_lista_paquetes.getSelectedIndex()>0){
+        String[] datosEncomiendas = this.CRUDClientes.buscarCliente(cedula, this.JCB_lista_paquetes.getSelectedItem().toString());
+        switch(datosEncomiendas[0]){
+          case "D": this.tf_estado.setText("Por pagar");
+          case "P": this.tf_estado.setText("Por asignar");
+          case "T": this.tf_estado.setText("En transito");
+          case "A": this.tf_estado.setText("En destino");
+          case "R": this.tf_estado.setText("Retirada");
         }
+        this.tf_precio.setText(datosEncomiendas[1]);
+        this.tf_destinatario.setText(datosEncomiendas[2]);
+        this.ta_destino.setText(this.datosBase.buscarNombPais(datosEncomiendas[3])+" - "+this.datosBase.buscarNombEstado(datosEncomiendas[3],datosEncomiendas[4])+" - "+this.datosBase.buscarNombCiudad(datosEncomiendas[3], datosEncomiendas[4], datosEncomiendas[5]));
+        String[] nombreTrans = this.CRUDClientes.buscarTransportista(datosEncomiendas[6]);
+        this.tf_transportista.setText(nombreTrans[0]+" "+nombreTrans[1]);
+        this.tf_creada.setText(datosEncomiendas[7]);
+        this.tf_salida.setText(datosEncomiendas[8]);
+        this.tf_llegada.setText(datosEncomiendas[9]);
+      }
     }//GEN-LAST:event_JCB_lista_paquetesItemStateChanged
-
-    /**
-     * *******LLENAR COMBOBOX DE ENCOMIENDAS********
-     */
-    public void comboboxPaquetes(String cedula, JComboBox cb) {
-
-        try {
-            String SQL = "SELECT p.cod_paquete FROM Paquetes AS p, Encomiendas AS e, Clientes AS c  "
-                    + "WHERE c.identificacionC = ? AND c.identificacionC = e.identificacionC "
-                    + "ORDER BY cod_paquete ASC";
-            PreparedStatement consulta = conexion.prepareStatement(SQL);
-            consulta.setString(1, cedula);
-            ResultSet resultado = consulta.executeQuery();
-            cb.addItem("Seleccione una opcion");
-            while (resultado.next()) {
-                cb.addItem(resultado.getString("cod_paquete"));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Fallo: " + ex.getMessage());
-        }
-    }
-
-    //************FUNCION QUE HACE UN STRING ARRAY DE UN PAQUETE************
-    public String[] buscarPaquetes(String cod_paquete) {
-
-        String[] datosPaquetes = new String[6];
-
-        try {
-            String SQL = "SELECT * FROM Paquetes WHERE cod_paquetes = ?";
-            PreparedStatement consulta = this.conexion.prepareStatement(SQL);
-            consulta.setString(1, cod_paquete);
-            System.out.println("Consulta exitosa");
-            ResultSet resultado = consulta.executeQuery();
-
-            while (resultado.next()) {
-                datosPaquetes[0] = resultado.getString("cod_paquetes");
-                datosPaquetes[1] = resultado.getString("peso_paq");
-                datosPaquetes[2] = resultado.getString("alto_paq");
-                datosPaquetes[3] = resultado.getString("ancho_paq");
-                datosPaquetes[4] = resultado.getString("profundidad");
-                datosPaquetes[5] = resultado.getString("cod_destino");
-            }
-        } catch (HeadlessException | SQLException e) {
-            System.out.println("Fallo en la consulta" + e.getMessage());
-        }
-        
-        return datosPaquetes;
-    }
 
     /**
      * @param args the command line arguments
@@ -303,23 +309,25 @@ public class VCliente extends javax.swing.JFrame {
   private javax.swing.JComboBox<String> JCB_lista_paquetes;
   private javax.swing.JLabel JLB_alto_paq;
   private javax.swing.JLabel JLB_ancho_paq;
+  private javax.swing.JLabel JLB_ancho_paq1;
   private javax.swing.JLabel JLB_cod_destino;
-  private javax.swing.JLabel JLB_cod_pequete;
+  private javax.swing.JLabel JLB_cod_destino1;
+  private javax.swing.JLabel JLB_cod_destino2;
+  private javax.swing.JLabel JLB_cod_destino3;
   private javax.swing.JLabel JLB_peso_paq;
   private javax.swing.JLabel JLB_profundidad;
-  private javax.swing.JTextField JTF_alto_paq;
-  private javax.swing.JTextField JTF_ancho_paq;
-  private javax.swing.JTextField JTF_cod_destino;
-  private javax.swing.JTextField JTF_cod_paquete;
-  private javax.swing.JTextField JTF_peso_paq;
-  private javax.swing.JTextField JTF_profundidad;
-  private javax.swing.JButton btn_salir;
-  private javax.swing.JButton btn_salir1;
-  private javax.swing.JButton btn_salir2;
-  private javax.swing.JButton btn_salir3;
-  private javax.swing.JButton btn_salir4;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
+  private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JScrollPane jScrollPane2;
+  private javax.swing.JTextArea ta_destino;
+  private javax.swing.JTextField tf_creada;
+  private javax.swing.JTextField tf_destinatario;
+  private javax.swing.JTextField tf_estado;
+  private javax.swing.JTextField tf_llegada;
+  private javax.swing.JTextField tf_precio;
+  private javax.swing.JTextField tf_salida;
+  private javax.swing.JTextField tf_transportista;
   // End of variables declaration//GEN-END:variables
 }
