@@ -16,15 +16,22 @@ public class CRUDEmpleadoPaq {
   }
   
   public void insertarDatos(String CodEncomienda, String CodPaquete, String Peso, String Alto, String Ancho, String Profundidad) { 
+      System.out.println(CodEncomienda);
+      System.out.println(CodPaquete);
+      System.out.println(Peso);
+      System.out.println(Alto);
+      System.out.println(Ancho);
+      System.out.println(Profundidad);
   try {
-      String SQL = "INSERT INTO Vehiculos_Motor(cod_paquete,peso_paq,alto_paq,ancho_paq,profundidad,cod_destino)"
-              + " VALUES (?,?,?,?,?,?,?)";
+      
+      String SQL = "INSERT INTO Paquetes(cod_paquete,peso_paq,alto_paq,ancho_paq,profundidad,cod_destino)"
+              + " VALUES (?,?,?,?,?,?)";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodPaquete);
-      consulta.setString(2, Peso);
-      consulta.setString(3, Alto);
-      consulta.setString(4, Ancho);
-      consulta.setString(5, Profundidad);
+      consulta.setFloat(2, Float.valueOf(Peso));
+      consulta.setFloat(3, Float.valueOf(Alto));
+      consulta.setFloat(4, Float.valueOf(Ancho));
+      consulta.setFloat(5, Float.valueOf(Profundidad));
       consulta.setString(6, CodEncomienda);
       consulta.execute();
       System.out.println("Registro insertado exitosamente");

@@ -76,7 +76,6 @@ public class CRUDEmpleadoTransportista {
   public void actualizarDatos(String CITransportista, String Nacionalidad, String Nombre, String Apellido, String Email, String Telefono1, 
       String Telefono2, String LicenciaC, String AntecedentesP,String codNucleo) {
     try {
-        System.out.println(CITransportista);       System.out.println(Nacionalidad);       System.out.println(Nombre);       System.out.println(Apellido);       System.out.println(Email);       System.out.println(Telefono1);       System.out.println(Telefono2);       System.out.println(LicenciaC);       System.out.println(AntecedentesP);       System.out.println(Nacionalidad);
       String SQL = "UPDATE Transportistas SET nacionalidadT=?,nombreT=?,apellidoT=?,emailT=?,telefono1T=?,telefono2T=?,lic_conducirT=?,antecedentes_penalesT=?,cod_nucleos=? WHERE identificacionT=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Nacionalidad);

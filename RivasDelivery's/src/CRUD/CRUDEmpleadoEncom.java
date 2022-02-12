@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class CRUDEmpleadoEncom {
@@ -15,7 +17,7 @@ public class CRUDEmpleadoEncom {
   }
   
   public String[] buscarEncomienda(String codEncomienda){
-    String[] datosEncomienda = new String[8];
+    String[] datosEncomienda = new String[9];
     
     try {
       String SQL = "SELECT * FROM Encomiendas WHERE cod_encomienda = ?";
@@ -58,11 +60,13 @@ public class CRUDEmpleadoEncom {
     return datosCliente;
   }
   
-  public void insertarDatos(String CodEncomienda, char Estatus, float Distancia, String Destinatario, String CICliente, String CIEmpleado, String Pais, String Estado, String Ciudad) {
+  public void insertarDatos(String CodEncomienda, char Estatus, float Distancia, String Destinatario, String CICliente, String CIEmpleado, String Pais, String Estado, String Ciudad,String codNucleo) {
     try {
-      String SQL = "INSERT INTO Encomiendas(cod_encomienda,estatusE,distancia_recorrida,precio_peso,precio_total,destinatario,identificacionC,identificacionE,cod_ciudades,cod_estados,cod_pais) "
-              + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+      String SQL = "INSERT INTO Encomiendas(cod_encomienda,estatusE,distancia_recorrida,precio_peso,precio_total,destinatario,identificacionC,identificacionE,cod_ciudades,cod_estados,cod_pais,fecha_creada,cod_nucleo) "
+              + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      
+      LocalDate now = LocalDate.now();  
       consulta.setString(1, CodEncomienda);
       consulta.setString(2, String.valueOf(Estatus));
       consulta.setFloat(3, Distancia);
@@ -74,6 +78,8 @@ public class CRUDEmpleadoEncom {
       consulta.setString(9, Ciudad);
       consulta.setString(10, Estado);
       consulta.setString(11, Pais);
+      consulta.setDate(12, Date.valueOf(now.toString()));
+      consulta.setString(13, codNucleo);
       consulta.execute();
       System.out.println("Registro insertado exitosamente");
     } catch (HeadlessException | SQLException e) {
