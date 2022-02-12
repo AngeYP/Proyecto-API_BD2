@@ -99,7 +99,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="720" y="640" width="140" height="40"/>
+              <AbsoluteConstraints x="910" y="660" width="140" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -130,7 +130,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="640" width="140" height="40"/>
+              <AbsoluteConstraints x="580" y="650" width="140" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -142,7 +142,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="130" width="780" height="490"/>
+              <AbsoluteConstraints x="170" y="100" width="780" height="520"/>
             </Constraint>
           </Constraints>
 
@@ -258,7 +258,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -279,7 +278,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -300,7 +298,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -321,7 +318,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -342,7 +338,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -363,7 +358,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -402,7 +396,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="430" y="440" width="180" height="-1"/>
+                  <AbsoluteConstraints x="430" y="450" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -418,7 +412,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="31" green="28" red="22" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -444,7 +437,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="440" width="180" height="-1"/>
+                  <AbsoluteConstraints x="30" y="450" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -465,7 +458,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="230" y="440" width="180" height="-1"/>
+                  <AbsoluteConstraints x="230" y="450" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -475,16 +468,20 @@
                   <Color blue="14" green="70" red="fd" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Helvetica" size="17" style="1"/>
+                  <Font name="Helvetica" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ee" green="ee" red="ee" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="620" y="440" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="630" y="450" width="110" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -517,7 +514,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="640" width="140" height="40"/>
+              <AbsoluteConstraints x="390" y="650" width="140" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
