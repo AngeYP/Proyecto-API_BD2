@@ -14,7 +14,7 @@ import Conexion.Conexion;
  * @author angel
  */
 public class VTransportistaDatos extends javax.swing.JFrame {
-    String id="27732881";
+    String id;
     Conexion conexion = new Conexion();
     public static CRUDTransportistaDatos crud ;
     CRUD.CRUDBase base;
@@ -25,6 +25,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
    */
   public VTransportistaDatos() {
     initComponents();
+    id=VIniciarSesion.cedula;
     ident=id;
     String []info = new String[6];
     crud = new CRUDTransportistaDatos(conexion.conectar());

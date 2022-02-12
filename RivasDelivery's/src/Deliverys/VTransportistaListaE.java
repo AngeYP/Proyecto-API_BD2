@@ -137,6 +137,7 @@ public class VTransportistaListaE extends javax.swing.JFrame {
 
   private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
 
+      this.dispose();
   }//GEN-LAST:event_Btn_IngresarActionPerformed
 
   /**

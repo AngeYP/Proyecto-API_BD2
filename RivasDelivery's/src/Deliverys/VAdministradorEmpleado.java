@@ -21,8 +21,6 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
 
     public VAdministradorEmpleado() {
         initComponents();
-        this.JTF_identificacionE_B.setText(cedula);
-        datosEmp();
     }
 
     /*public VEmpleadoMenu(String cedulaEmp) {
