@@ -200,4 +200,193 @@ public class CRUDBase {
     }
   }
   
+  /*******************Insert Pais********************/
+  public void insertPais(String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Paises (cod_pais,nombre_pais) VALUES(?,?)";
+            
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, cod);
+          consulta.setString(2, nombre);
+          consulta.executeUpdate();
+          
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
+  /*******************Insert Estado********************/
+  public void insertEstado(String codPais,String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Estados (cod_pais,cod_estados," +
+            "nombre_estados) " +
+            "VALUES" +
+            "(?,?,?)";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codPais);
+          consulta.setString(2, cod);
+          consulta.setString(3, nombre);
+          consulta.executeUpdate();
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
+  /*******************Insert Ciudades********************/
+  public void insertciudades(String codPais,String codEstado,String cod,String nombre){
+      
+      try {
+          String SQL = "INSERT INTO Ciudades (cod_pais,cod_estados,cod_ciudades," +
+            "nombre_ciudades) " +
+            "VALUES" +
+            "(?,?,?,?)";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codPais);
+          consulta.setString(2, codEstado);
+          consulta.setString(3, cod);
+          consulta.setString(4, nombre);
+          consulta.executeUpdate();
+      } catch (Exception e) {
+          System.out.println("Insercion fallida: "+e.getMessage());
+      }
+  }
+  
+  /*********BUSCAR EL NUCLEO DEL EMPLEADO*********/
+  public String buscarNucleoEmp(String CIEmpleado) {
+        
+    String NucleoEmp = null;
+
+    try {
+      String SQL = "SELECT cod_nucleos FROM Empleados WHERE identificacionE = ?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CIEmpleado);
+      ResultSet resultado = consulta.executeQuery();
+      while (resultado.next()) {
+        NucleoEmp = resultado.getString("cod_nucleos");
+      }                            
+    } catch (HeadlessException | SQLException e) {
+      JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
+    }
+    return NucleoEmp;
+  }
+  
+  /*********BUSCAR EL NOMBRE DEL NUCLEO*********/
+  public String buscarNombNucleo(String CodNucleo) {
+        
+    String NombNucleo = null;
+
+    try {
+      String SQL = "SELECT nombre_nucleo FROM Nucleos WHERE cod_nucleo = ?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CodNucleo);
+      ResultSet resultado = consulta.executeQuery();
+      while (resultado.next()) {
+        NombNucleo = resultado.getString("nombre_nucleo");
+      }                            
+    } catch (HeadlessException | SQLException e) {
+      JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
+    }
+    return NombNucleo;
+  }
+  
+  public void comboNucleo(JComboBox cb){
+      cb.removeAllItems();
+      cb.addItem("Seleccione nucleo");
+      try {
+          String SQL = "SELECT * FROM Nucleos";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          ResultSet res = consulta.executeQuery();
+          
+          while (res.next()) {              
+              cb.addItem(res.getString("nombre_nucleo"));
+          }
+      } catch (Exception e) {
+          System.out.println("Error en consulta: "+e.getMessage());
+      }
+  }
+  
+  public String buscarNombreNucleo(String nombre){
+      String cod="";
+      try {
+          String SQL = "SELECT * FROM Nucleos WHERE nombre_nucleo= ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, nombre);
+          ResultSet resultado = consulta.executeQuery();
+          
+          while (resultado.next()) {              
+              cod = resultado.getString("cod_nucleo");
+          }
+      } catch (Exception e) {
+          System.out.println("Error en consulta: "+e.getMessage());
+      }finally{
+          return cod;
+      }
+  }
+  
+  public String buscarCodNucleo(String cod){
+      String nucleo="";
+      try {
+          String SQL = "SELECT * FROM Nucleos WHERE nombre_nucleo= ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, cod);
+          ResultSet resultado = consulta.executeQuery();
+          
+          while (resultado.next()) {              
+              nucleo=resultado.getString("cod_nucleo");
+          }
+      } catch (Exception e) {
+          System.out.println("Error en consulta: "+e.getMessage());
+      }finally{
+          return nucleo;
+      }
+  }
+  
+  public void fechasCursos(JComboBox cb, String cod){
+      
+      try {
+          String SQL = "SELECT * FROM Cursos WHERE cod_nucleos = ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, cod);
+          ResultSet res = consulta.executeQuery();
+          
+          while (res.next()) {              
+              cb.addItem(res.getDate("fecha_curso").toString());
+          }
+          
+      } catch (Exception e) {
+          
+          System.out.println("Error en consulta: "+e.getMessage());
+      }
+  }
+  
+  public void buscarCodCurso(JComboBox cb, String codNucleo,String date){
+      try {
+          String SQL = "SELECT * FROM Cursos WHERE cod_nucleos = ? AND fecha_curso = ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codNucleo);
+          consulta.setString(2, date);
+          ResultSet resultado = consulta.executeQuery();
+          
+          while (resultado.next()) {              
+              cb.addItem(resultado.getString("cod_curso"));
+          }
+      } catch (Exception e) {
+          System.out.println("Error en consulta: "+e.getMessage());
+      }
+  }
+  
+  public void updateCursoTransportista(String codCurso,String codTrans){
+      
+      try {
+          String SQL = "UPDATE Transportistas SET codigo_curso = ? WHERE identificacionT = ?";
+          PreparedStatement consulta = conexion.prepareStatement(SQL);
+          consulta.setString(1, codCurso);
+          consulta.setString(2, codTrans);
+          consulta.executeUpdate();
+      } catch (Exception e) {
+          System.out.println("Error en actualizacion: "+e.getMessage());
+      }
+  }
 }

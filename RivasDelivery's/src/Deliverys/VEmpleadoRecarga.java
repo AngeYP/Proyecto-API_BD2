@@ -10,6 +10,8 @@ import Conexion.Conexion;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import static Deliverys.VIniciarSesion.cedula;
+
 /**
  *
  * @author angel
@@ -23,16 +25,14 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
   CRUDEmpleadoRecarga recargacliente = new CRUDEmpleadoRecarga(conexion.conectar());
   String textoerror = null;
   String cedulaCliente;
-  String cedulaEmpleado;
   
   public VEmpleadoRecarga() {
     initComponents();
   }
   
-  public VEmpleadoRecarga(String cedulaC, String cedulaE) {
+  public VEmpleadoRecarga(String cedulaC) {
     initComponents();
     cedulaCliente = cedulaC;
-    cedulaEmpleado = cedulaE;
     this.tf_cedulaC.setText(cedulaCliente);
     Date date=new Date();
     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
@@ -59,7 +59,7 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     jLabel2 = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     jPanel1.setBackground(new java.awt.Color(34, 40, 49));
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,29 +147,15 @@ public class VEmpleadoRecarga extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-//    private JPanel getPanel() {
-//        JPanel panel = new JPanel();
-//        JLabel label = new JLabel(textoerror);
-//        Font font = new Font("Helvetica", Font.BOLD, 14);
-//        panel.setBackground(new Color(34,40,49));
-//        panel.setFont(font);
-//        panel.setSize(420, 120);
-//
-//        return panel;
-//    }
-  
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
     if(!this.tf_monto.getText().equals("")){
-      this.recargacliente.insertarDatos(cedulaCliente, cedulaEmpleado, Float.parseFloat(this.tf_monto.getText()));
+      this.recargacliente.insertarDatos(cedulaCliente, cedula, Float.parseFloat(this.tf_monto.getText()));
     } else {
-      //JPanel errormessage = this.getPanel();
-      //this.textoerror = "Llene todos los campos";
       JOptionPane.showMessageDialog(null,"Llene todos los campos");
     }
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-    new VEmpleadoCliente(cedulaEmpleado).setVisible(true);
     this.dispose();
   }//GEN-LAST:event_btn_cancelarActionPerformed
 
