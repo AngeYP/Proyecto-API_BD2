@@ -47,10 +47,10 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    btn_salir = new javax.swing.JButton();
     btn_clientes = new javax.swing.JButton();
     btn_empleados = new javax.swing.JButton();
     btn_direcciones = new javax.swing.JButton();
+    btn_salir = new javax.swing.JButton();
     jPanel4 = new javax.swing.JPanel();
     JLB_cod_nucleo = new javax.swing.JLabel();
     JTF_cod_nucleo = new javax.swing.JTextField();
@@ -90,17 +90,6 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
     jLabel1.setOpaque(true);
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
-    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
-    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
-    btn_salir.setText("Salir");
-    btn_salir.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_salirActionPerformed(evt);
-      }
-    });
-    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
-
     btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
     btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
     btn_clientes.setForeground(new java.awt.Color(34, 40, 49));
@@ -136,6 +125,17 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
       }
     });
     jPanel2.add(btn_direcciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+
+    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
+    btn_salir.setText("Salir");
+    btn_salir.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_salirActionPerformed(evt);
+      }
+    });
+    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -306,11 +306,8 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
     );
 
     pack();
+    setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
-
-  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-      // TODO add your handling code here:
-  }//GEN-LAST:event_btn_salirActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
       
@@ -326,54 +323,6 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
       this.setVisible(false);
   }//GEN-LAST:event_btn_direccionesActionPerformed
 
-  private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-      // TODO add your handling code here:
-      this.crudAdmNucleo.eliminarRegistro(this.JTF_cod_nucleo_B.getText());
-      this.JTF_cod_nucleo_B.setText("Codigo de Nucleo");
-      this.JTF_cod_nucleo.setText("");
-      this.JTF_cod_nucleo.setEnabled(true);
-      this.datosBase.comboboxPaises(this.JCB_cod_pais);
-      this.JTF_nombre_nucleo.setText("");
-      this.JTF_num_telefonoN.setText("");
-      this.JTF_identificacionE.setText("");
-      this.btn_actualizar.setEnabled(false);
-      this.btn_eliminar.setEnabled(false);
-      this.btn_aceptar.setEnabled(true);
-  }//GEN-LAST:event_btn_eliminarActionPerformed
-
-  private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-      String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
-      String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(), CodPais);
-      String CodCiudad = this.datosBase.buscarCodCiudad(CodPais, CodEstado, this.JCB_cod_ciudades.getSelectedItem().toString());
-
-      if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
-          JOptionPane.showMessageDialog(null, "Llene todos los campos");
-      } else {
-          if (this.JTF_identificacionE.getText().equals("")) {
-              this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null, CodCiudad, CodEstado, CodPais);
-          } else {
-              this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodCiudad, CodEstado, CodPais);
-          }
-      }
-  }//GEN-LAST:event_btn_aceptarActionPerformed
-
-  private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-      // TODO add your handling code here:
-      String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
-      String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(), CodPais);
-      String CodCiudad = this.datosBase.buscarCodCiudad(CodPais, CodEstado, this.JCB_cod_ciudades.getSelectedItem().toString());
-
-      if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
-          JOptionPane.showMessageDialog(null, "Llene todos los campos");
-      } else {
-          if (this.JTF_identificacionE.getText().equals("")) {
-              this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null, CodCiudad, CodEstado, CodPais);
-          } else {
-              this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodCiudad, CodEstado, CodPais);
-          }
-      }
-  }//GEN-LAST:event_btn_actualizarActionPerformed
-
   private void JTF_cod_nucleo_BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTF_cod_nucleo_BMouseClicked
       if (this.JTF_cod_nucleo_B.getText().equals("Codigo nucleo"))
           this.JTF_cod_nucleo_B.setText("");
@@ -387,9 +336,6 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
           this.JTF_nombre_nucleo.setText(datosNucleo[1]);
           this.JTF_num_telefonoN.setText(datosNucleo[2]);
           this.JTF_identificacionE.setText(datosNucleo[3]);
-          this.btn_actualizar.setEnabled(true);
-          this.btn_eliminar.setEnabled(true);
-          this.btn_aceptar.setEnabled(false);
           this.JTF_cod_nucleo.setEnabled(false);
           this.JCB_cod_pais.setSelectedItem(this.datosBase.buscarNombPais(datosNucleo[6]));
           this.JCB_cod_estados.setSelectedItem(this.datosBase.buscarNombEstado(datosNucleo[6], datosNucleo[5]));
@@ -429,6 +375,59 @@ public class VAdministradorNucleo extends javax.swing.JFrame {
     private void JCB_cod_estadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_cod_estadosActionPerformed
 
     }//GEN-LAST:event_JCB_cod_estadosActionPerformed
+
+  private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+    // TODO add your handling code here:
+    String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
+    String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(), CodPais);
+    String CodCiudad = this.datosBase.buscarCodCiudad(CodPais, CodEstado, this.JCB_cod_ciudades.getSelectedItem().toString());
+
+    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+      JOptionPane.showMessageDialog(null, "Llene todos los campos");
+    } else {
+      if (this.JTF_identificacionE.getText().equals("")) {
+        this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null, CodCiudad, CodEstado, CodPais);
+      } else {
+        this.crudAdmNucleo.actualizarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodCiudad, CodEstado, CodPais);
+      }
+    }
+  }//GEN-LAST:event_btn_actualizarActionPerformed
+
+  private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
+    String CodPais = this.datosBase.buscarCodPais(this.JCB_cod_pais.getSelectedItem().toString());
+    String CodEstado = this.datosBase.buscarCodEstado(this.JCB_cod_estados.getSelectedItem().toString(), CodPais);
+    String CodCiudad = this.datosBase.buscarCodCiudad(CodPais, CodEstado, this.JCB_cod_ciudades.getSelectedItem().toString());
+
+    if (this.JTF_cod_nucleo.getText().equals("") && this.JTF_nombre_nucleo.getText().equals("") && this.JTF_num_telefonoN.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
+      JOptionPane.showMessageDialog(null, "Llene todos los campos");
+    } else {
+      if (this.JTF_identificacionE.getText().equals("")) {
+        this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), null, CodCiudad, CodEstado, CodPais);
+      } else {
+        this.crudAdmNucleo.insertarDatos(this.JTF_cod_nucleo.getText(), this.JTF_nombre_nucleo.getText(), this.JTF_num_telefonoN.getText(), this.JTF_identificacionE.getText(), CodCiudad, CodEstado, CodPais);
+      }
+    }
+  }//GEN-LAST:event_btn_aceptarActionPerformed
+
+  private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+    // TODO add your handling code here:
+    this.crudAdmNucleo.eliminarRegistro(this.JTF_cod_nucleo_B.getText());
+    this.JTF_cod_nucleo_B.setText("Codigo de Nucleo");
+    this.JTF_cod_nucleo.setText("");
+    this.JTF_cod_nucleo.setEnabled(true);
+    this.datosBase.comboboxPaises(this.JCB_cod_pais);
+    this.JTF_nombre_nucleo.setText("");
+    this.JTF_num_telefonoN.setText("");
+    this.JTF_identificacionE.setText("");
+    this.btn_actualizar.setEnabled(false);
+    this.btn_eliminar.setEnabled(false);
+    this.btn_aceptar.setEnabled(true);
+  }//GEN-LAST:event_btn_eliminarActionPerformed
+
+  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments

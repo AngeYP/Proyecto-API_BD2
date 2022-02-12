@@ -59,7 +59,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
     jPanel1 = new javax.swing.JPanel();
     jLabel4 = new javax.swing.JLabel();
-    Btn_Ingresar = new javax.swing.JButton();
+    Btn_salir = new javax.swing.JButton();
     btn_solicitar = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
@@ -98,19 +98,19 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     jLabel4.setOpaque(true);
     jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 80));
 
-    Btn_Ingresar.setBackground(new java.awt.Color(253, 112, 20));
-    Btn_Ingresar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
-    Btn_Ingresar.setForeground(new java.awt.Color(238, 238, 238));
-    Btn_Ingresar.setText("Salir");
-    Btn_Ingresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-    Btn_Ingresar.setBorderPainted(false);
-    Btn_Ingresar.setFocusPainted(false);
-    Btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+    Btn_salir.setBackground(new java.awt.Color(253, 112, 20));
+    Btn_salir.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    Btn_salir.setForeground(new java.awt.Color(238, 238, 238));
+    Btn_salir.setText("Salir");
+    Btn_salir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    Btn_salir.setBorderPainted(false);
+    Btn_salir.setFocusPainted(false);
+    Btn_salir.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        Btn_IngresarActionPerformed(evt);
+        Btn_salirActionPerformed(evt);
       }
     });
-    jPanel1.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, 140, 40));
+    jPanel1.add(Btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, 140, 40));
 
     btn_solicitar.setBackground(new java.awt.Color(253, 112, 20));
     btn_solicitar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
@@ -275,9 +275,10 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
-
-  }//GEN-LAST:event_Btn_IngresarActionPerformed
+  private void Btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_salirActionPerformed
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_Btn_salirActionPerformed
 
   private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
 
@@ -355,8 +356,8 @@ public class VTransportistaDatos extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton Btn_Ingresar;
   private javax.swing.JButton Btn_Ingresar2;
+  private javax.swing.JButton Btn_salir;
   private javax.swing.JButton btn_solicitar;
   private javax.swing.JComboBox<String> cb_curso;
   private javax.swing.JComboBox<String> cb_fecha;

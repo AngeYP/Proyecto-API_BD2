@@ -54,10 +54,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     textNombre = new javax.swing.JTextField();
     jLabel3 = new javax.swing.JLabel();
     jLabel4 = new javax.swing.JLabel();
-    jPanel3 = new javax.swing.JPanel();
-    btn_eliminar = new javax.swing.JButton();
-    btn_aceptar = new javax.swing.JButton();
-    btn_actualizar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,47 +221,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
 
     jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 400));
 
-    jPanel3.setBackground(new java.awt.Color(57, 62, 70));
-    jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-    btn_eliminar.setBackground(new java.awt.Color(253, 112, 20));
-    btn_eliminar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    btn_eliminar.setForeground(new java.awt.Color(238, 238, 238));
-    btn_eliminar.setText("Eliminar");
-    btn_eliminar.setFocusPainted(false);
-    btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_eliminarActionPerformed(evt);
-      }
-    });
-    jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
-
-    btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
-    btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
-    btn_aceptar.setText("Aceptar");
-    btn_aceptar.setFocusPainted(false);
-    btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_aceptarActionPerformed(evt);
-      }
-    });
-    jPanel3.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 40));
-
-    btn_actualizar.setBackground(new java.awt.Color(253, 112, 20));
-    btn_actualizar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-    btn_actualizar.setForeground(new java.awt.Color(238, 238, 238));
-    btn_actualizar.setText("Actualizar");
-    btn_actualizar.setFocusPainted(false);
-    btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_actualizarActionPerformed(evt);
-      }
-    });
-    jPanel3.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
-
-    jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
-
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -278,10 +233,12 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     );
 
     pack();
+    setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
   private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-    // TODO add your handling code here:
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
   }//GEN-LAST:event_btn_salirActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
@@ -289,25 +246,13 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_clientesActionPerformed
 
   private void btn_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleadosActionPerformed
-      new VAdministradorEmpleado().setVisible(true);
-      this.setVisible(false);
+    new VAdministradorEmpleado().setVisible(true);
+    this.dispose();
   }//GEN-LAST:event_btn_empleadosActionPerformed
 
   private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
 
   }//GEN-LAST:event_btn_encomiendasActionPerformed
-
-  private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-
-  }//GEN-LAST:event_btn_aceptarActionPerformed
-
-  private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_btn_actualizarActionPerformed
-
-  private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void cb_paisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_paisItemStateChanged
         
@@ -408,9 +353,8 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarActionPerformed
 
     private void BTN_Nucleos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Nucleos2ActionPerformed
-        // TODO add your handling code here:
       new VAdministradorNucleo().setVisible(true);
-      this.setVisible(false);
+      this.dispose();
     }//GEN-LAST:event_BTN_Nucleos2ActionPerformed
 
   /**
@@ -451,9 +395,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton BTN_Nucleos2;
   private javax.swing.JButton agregar;
-  private javax.swing.JButton btn_aceptar;
-  private javax.swing.JButton btn_actualizar;
-  private javax.swing.JButton btn_eliminar;
   private javax.swing.JButton btn_empleados;
   private javax.swing.JButton btn_encomiendas;
   private javax.swing.JButton btn_salir;
@@ -468,7 +409,6 @@ public class VAdministradorUbicacion extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel8;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
   private javax.swing.JTextField textCod;
   private javax.swing.JTextField textNombre;

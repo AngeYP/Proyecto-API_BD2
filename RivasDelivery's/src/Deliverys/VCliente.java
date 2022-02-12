@@ -192,7 +192,8 @@ public class VCliente extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
-
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
   }//GEN-LAST:event_Btn_IngresarActionPerformed
 
     private void JCB_lista_paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_lista_paquetesActionPerformed
@@ -312,6 +313,11 @@ public class VCliente extends javax.swing.JFrame {
   private javax.swing.JTextField JTF_cod_paquete;
   private javax.swing.JTextField JTF_peso_paq;
   private javax.swing.JTextField JTF_profundidad;
+  private javax.swing.JButton btn_salir;
+  private javax.swing.JButton btn_salir1;
+  private javax.swing.JButton btn_salir2;
+  private javax.swing.JButton btn_salir3;
+  private javax.swing.JButton btn_salir4;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;

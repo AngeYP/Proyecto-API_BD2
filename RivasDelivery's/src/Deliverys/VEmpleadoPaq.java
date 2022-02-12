@@ -181,7 +181,7 @@ public class VEmpleadoPaq extends javax.swing.JFrame {
     btn_cancelar.setBackground(new java.awt.Color(253, 112, 20));
     btn_cancelar.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
     btn_cancelar.setForeground(new java.awt.Color(238, 238, 238));
-    btn_cancelar.setText("Cancelar");
+    btn_cancelar.setText("Regresar");
     btn_cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
     btn_cancelar.setBorderPainted(false);
     btn_cancelar.addActionListener(new java.awt.event.ActionListener() {

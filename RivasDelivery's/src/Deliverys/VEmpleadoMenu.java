@@ -66,10 +66,10 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    jButton1 = new javax.swing.JButton();
     btn_clientes = new javax.swing.JButton();
     btn_transportista = new javax.swing.JButton();
     btn_encomiendas = new javax.swing.JButton();
+    btn_salir = new javax.swing.JButton();
     jPanel4 = new javax.swing.JPanel();
     JTF_indentificacionE = new javax.swing.JLabel();
     JLB_nombreE = new javax.swing.JLabel();
@@ -106,17 +106,6 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
     jLabel1.setOpaque(true);
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
-    jButton1.setBackground(new java.awt.Color(204, 0, 0));
-    jButton1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton1.setForeground(new java.awt.Color(238, 238, 238));
-    jButton1.setText("Salir");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
-      }
-    });
-    jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
-
     btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
     btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
     btn_clientes.setForeground(new java.awt.Color(238, 238, 238));
@@ -152,6 +141,17 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
       }
     });
     jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+
+    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
+    btn_salir.setText("Salir");
+    btn_salir.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_salirActionPerformed(evt);
+      }
+    });
+    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -267,10 +267,6 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      // TODO add your handling code here:
-  }//GEN-LAST:event_jButton1ActionPerformed
-
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
       new VEmpleadoCliente().setVisible(true);
       this.dispose();
@@ -285,6 +281,11 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
       new VEmpleadoEncom().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_encomiendasActionPerformed
+
+  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,8 +340,8 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
   private javax.swing.JTextField JTF_telefono2E;
   private javax.swing.JButton btn_clientes;
   private javax.swing.JButton btn_encomiendas;
+  private javax.swing.JButton btn_salir;
   private javax.swing.JButton btn_transportista;
-  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;

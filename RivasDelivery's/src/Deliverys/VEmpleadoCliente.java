@@ -40,10 +40,10 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    btn_salir = new javax.swing.JButton();
     btn_clientes = new javax.swing.JButton();
     btn_transportistas = new javax.swing.JButton();
     btn_encomiendas = new javax.swing.JButton();
+    btn_salir = new javax.swing.JButton();
     tf_identificacionC = new javax.swing.JTextField();
     btn_buscar = new javax.swing.JButton();
     jPanel3 = new javax.swing.JPanel();
@@ -99,17 +99,6 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     });
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
-    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
-    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
-    btn_salir.setText("Salir");
-    btn_salir.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_salirActionPerformed(evt);
-      }
-    });
-    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
-
     btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
     btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
     btn_clientes.setForeground(new java.awt.Color(34, 40, 49));
@@ -145,6 +134,17 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
       }
     });
     jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+
+    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
+    btn_salir.setText("Salir");
+    btn_salir.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_salirActionPerformed(evt);
+      }
+    });
+    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -394,10 +394,6 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-      // TODO add your handling code here:
-  }//GEN-LAST:event_btn_salirActionPerformed
-
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
       this.tf_identificacionC.setText("Cedula");
       this.tf_identificacion.setText("");
@@ -556,16 +552,19 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
   }//GEN-LAST:event_cb_estadoItemStateChanged
 
   private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
-      // TODO add your handling code here:
       new VEmpleadoTransportista().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_transportistasActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
         new VEmpleadoMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments

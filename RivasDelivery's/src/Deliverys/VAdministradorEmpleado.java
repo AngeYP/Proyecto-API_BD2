@@ -64,10 +64,10 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    jButton1 = new javax.swing.JButton();
     btn_clientes = new javax.swing.JButton();
     btn_transportistas = new javax.swing.JButton();
     btn_encomiendas = new javax.swing.JButton();
+    btn_salir = new javax.swing.JButton();
     jPanel4 = new javax.swing.JPanel();
     JTF_indentificacionE = new javax.swing.JLabel();
     JLB_nombreE = new javax.swing.JLabel();
@@ -109,17 +109,6 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     jLabel1.setOpaque(true);
     jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
-    jButton1.setBackground(new java.awt.Color(204, 0, 0));
-    jButton1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    jButton1.setForeground(new java.awt.Color(238, 238, 238));
-    jButton1.setText("Salir");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
-      }
-    });
-    jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
-
     btn_clientes.setBackground(new java.awt.Color(253, 112, 20));
     btn_clientes.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
     btn_clientes.setForeground(new java.awt.Color(238, 238, 238));
@@ -155,6 +144,17 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
       }
     });
     jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
+
+    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
+    btn_salir.setText("Salir");
+    btn_salir.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btn_salirActionPerformed(evt);
+      }
+    });
+    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -239,6 +239,11 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     JTF_identificacionE_B.setHorizontalAlignment(javax.swing.JTextField.CENTER);
     JTF_identificacionE_B.setText("Cedula de Empleado");
     JTF_identificacionE_B.setBorder(null);
+    JTF_identificacionE_B.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        JTF_identificacionE_BMouseClicked(evt);
+      }
+    });
     jPanel1.add(JTF_identificacionE_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
 
     btn_buscar.setBackground(new java.awt.Color(57, 62, 70));
@@ -311,10 +316,6 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      // TODO add your handling code here:
-  }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         String[] datosEmpleado = new String[7];
         datosEmpleado = this.crudEpmMenu.buscarEmpleado(this.JTF_identificacionE_B.getText());
@@ -329,7 +330,7 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(true);
             this.btn_eliminar.setEnabled(true);
             this.btn_aceptar.setEnabled(false);
-            this.JTF_identificacionE_B.setEnabled(false);
+            this.JTF_identificacionE.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(null, "Empleado no encontrado");
         }
@@ -338,8 +339,8 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         this.crudEpmMenu.eliminarRegistro(this.JTF_identificacionE_B.getText());
         this.JTF_identificacionE_B.setText("Cedula de Empleado");
-        this.JTF_identificacionE.setText("");
         this.JTF_identificacionE.setEnabled(true);
+        this.JTF_identificacionE.setText("");
         this.JTF_nombreE.setText("");
         this.JTF_apellidoE.setText("");
         this.JTF_emailE.setText("");
@@ -352,44 +353,53 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
-
-        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        if (!this.JTF_identificacionE.getText().equals("") && !this.JTF_nombreE.getText().equals("") && !this.JTF_apellidoE.getText().equals("") && !this.JTF_emailE.getText().equals("") && !this.JTF_telefono1E.getText().equals("") && !this.JTF_cod_nucleos.getText().equals("")) {
+            this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),this.JTF_telefono2E.getText(), this.JTF_cod_nucleos.getText());
         } else {
-            if (this.JTF_telefono2E.getText().equals("")) {
-                this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
-                        null, this.JTF_cod_nucleos.getText());
-            } else {
-                this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
-                        this.JTF_telefono2E.getText(), this.JTF_cod_nucleos.getText());
-            }
+          JOptionPane.showMessageDialog(null,"Llene los campos obligatorios");
         }
-        this.crudEpmMenu.insertarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
-                this.JTF_telefono2E.getText(), this.JTF_cod_nucleos.getText());
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-
-        if (this.JTF_identificacionE.getText().equals("") && this.JTF_nombreE.getText().equals("") && this.JTF_apellidoE.getText().equals("") && this.JTF_emailE.getText().equals("") && this.JTF_telefono1E.getText().equals("") && this.JTF_telefono2E.getText().equals("") && this.JTF_cod_nucleos.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        if (!this.JTF_identificacionE.getText().equals("") && !this.JTF_nombreE.getText().equals("") && !this.JTF_apellidoE.getText().equals("") && !this.JTF_emailE.getText().equals("") && !this.JTF_telefono1E.getText().equals("") && !this.JTF_cod_nucleos.getText().equals("")) {
+            this.crudEpmMenu.actualizarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(), this.JTF_telefono2E.getText(), JTF_cod_nucleos.getText());
+        } else {
+          JOptionPane.showMessageDialog(null, "Llene todos los campos obligatorios");
         }
-        this.crudEpmMenu.actualizarDatos(this.JTF_identificacionE.getText(), this.JTF_nombreE.getText(), this.JTF_apellidoE.getText(), this.JTF_emailE.getText(), this.JTF_telefono1E.getText(),
-                this.JTF_telefono2E.getText(), JTF_cod_nucleos.getText());
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
       new VAdministradorNucleo().setVisible(true);
-      this.setVisible(false);
+      this.dispose();
     }//GEN-LAST:event_btn_clientesActionPerformed
 
     private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
-
+      this.JTF_apellidoE.setText("");
+      this.JTF_cod_nucleos.setText("");
+      this.JTF_emailE.setText("");
+      this.JTF_nombreE.setText("");
+      this.JTF_telefono1E.setText("");
+      this.JTF_telefono2E.setText("");
+      this.JTF_indentificacionE.setText("");
+      this.JTF_identificacionE_B.setText("Cedula de Empleado");
+      this.btn_aceptar.setEnabled(true);
     }//GEN-LAST:event_btn_transportistasActionPerformed
 
     private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
-        new VAdministradorUbicacion().setVisible(true);
-        this.setVisible(false);
+      new VAdministradorUbicacion().setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_btn_encomiendasActionPerformed
+
+  private void JTF_identificacionE_BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTF_identificacionE_BMouseClicked
+    if(this.JTF_identificacionE_B.getText().equals("Cedula de Empleado")) {
+      this.JTF_identificacionE_B.setText("");
+    }
+  }//GEN-LAST:event_JTF_identificacionE_BMouseClicked
+
+  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+    new VIniciarSesion().setVisible(true);
+    this.dispose();
+  }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,8 +459,8 @@ public class VAdministradorEmpleado extends javax.swing.JFrame {
   private javax.swing.JButton btn_clientes;
   private javax.swing.JButton btn_eliminar;
   private javax.swing.JButton btn_encomiendas;
+  private javax.swing.JButton btn_salir;
   private javax.swing.JButton btn_transportistas;
-  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
