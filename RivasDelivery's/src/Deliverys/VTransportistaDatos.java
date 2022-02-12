@@ -14,7 +14,7 @@ import Conexion.Conexion;
  * @author angel
  */
 public class VTransportistaDatos extends javax.swing.JFrame {
-    String id="27732881";
+    String id;
     Conexion conexion = new Conexion();
     public static CRUDTransportistaDatos crud ;
     CRUD.CRUDBase base;
@@ -25,6 +25,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
    */
   public VTransportistaDatos() {
     initComponents();
+    id=VIniciarSesion.cedula;
     ident=id;
     String []info = new String[6];
     crud = new CRUDTransportistaDatos(conexion.conectar());
@@ -290,6 +291,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
     private void Btn_Ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar2ActionPerformed
         // TODO add your handling code here:
+        new VTransportistaListaE().setVisible(true);
     }//GEN-LAST:event_Btn_Ingresar2ActionPerformed
 
     private void cb_nucleoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_nucleoItemStateChanged
