@@ -30,7 +30,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
 
     public VEmpleadoTransportista() {
         initComponents();
-        cedula = "V-26599849";
         this.tf_TransIngreso.setText(sdf.format(date));
         this.comboNucleo.addItem(this.datosBase.buscarNombNucleo(this.datosBase.buscarNucleoEmp(cedula)));
     }
