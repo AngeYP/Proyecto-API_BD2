@@ -207,7 +207,7 @@ public class VEmpleadoPaq extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-    if(!this.cb_codigo.getSelectedItem().toString().equals("Seleccione una opcion")){
+    if(this.cb_codigo.getSelectedIndex()>0){
       this.CRUDPaq.eliminarDatos(codEncomienda, this.cb_codigo.getSelectedItem().toString());
     }
   }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -224,13 +224,13 @@ public class VEmpleadoPaq extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void cb_codigoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_codigoItemStateChanged
-    if(!this.cb_codigo.getSelectedItem().toString().equals("Seleccione una opcion")){
-      String[] datosPaq = new String[4];
-      this.CRUDPaq.buscarPaq(this.cb_codigo.getSelectedItem().toString(), codEncomienda);
-      this.tf_peso.setText(datosPaq[0]);
-      this.tf_alto.setText(datosPaq[1]);
-      this.tf_ancho.setText(datosPaq[2]);
-      this.tf_profundidad.setText(datosPaq[3]);
+    if(this.cb_codigo.getSelectedIndex()>0){
+      Float[] datosPaq = new Float[4];
+      datosPaq=this.CRUDPaq.buscarPaq(this.cb_codigo.getSelectedItem().toString(), codEncomienda);
+      this.tf_peso.setText(datosPaq[0].toString());
+      this.tf_alto.setText(datosPaq[1].toString());
+      this.tf_ancho.setText(datosPaq[2].toString());
+      this.tf_profundidad.setText(datosPaq[3].toString());
     }
   }//GEN-LAST:event_cb_codigoItemStateChanged
 
