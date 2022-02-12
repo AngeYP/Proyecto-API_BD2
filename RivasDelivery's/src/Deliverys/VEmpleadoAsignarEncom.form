@@ -417,7 +417,7 @@
               <Color blue="ee" green="ee" red="ee" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Rango de fecha (yyyy-mm-dd)"/>
+            <Property name="text" type="java.lang.String" value="Rango de fecha (dd/mm/yyyy)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -467,7 +467,7 @@
               <Color blue="ee" green="ee" red="ee" type="rgb"/>
             </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
+              <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -495,7 +495,7 @@
               <Color blue="ee" green="ee" red="ee" type="rgb"/>
             </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
+              <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

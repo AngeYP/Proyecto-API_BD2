@@ -389,38 +389,4 @@ public class CRUDBase {
           System.out.println("Error en actualizacion: "+e.getMessage());
       }
   }
-  
-  public void insertarCurso(String nucleo, String curso, String date){
-      
-      try {
-          String sql = "SELECT * FROM Nucleos WHERE cod_nucleo = ?";
-          PreparedStatement consulta = conexion.prepareStatement(sql);
-          consulta.setString(1, nucleo);
-          ResultSet resultado= consulta.executeQuery();
-          
-          String pais="";
-          String estado="";
-          String ciudad="";
-          while (resultado.next()) {              
-              pais= resultado.getString("cod_pais");
-              estado = resultado.getString("cod_estados");
-              ciudad = resultado.getString("cod_ciudades");
-          }
-          
-          String sql2 = "INSERT INTO Cursos (codigo_curso,fecha_curso,cod_ciudades,cod_estados,cod_pais,cod_nucleos) "
-                  + "VALUES(?,?,?,?,?,?)";
-          
-          PreparedStatement consulta2 = conexion.prepareStatement(sql2);
-          consulta2.setString(1, curso);
-          consulta2.setString(2, date);
-          consulta2.setString(3, ciudad);
-          consulta2.setString(4, estado);
-          consulta2.setString(5, pais);
-          consulta2.setString(6, nucleo);
-          consulta2.executeUpdate();
-          
-      } catch (Exception e) {
-          System.out.println("Fallo insercion: "+e.getMessage());
-      }
-  }
 }
