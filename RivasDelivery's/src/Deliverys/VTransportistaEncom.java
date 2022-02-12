@@ -9,6 +9,7 @@ import CRUD.CRUDBase;
 import CRUD.Encomiendas;
 import Conexion.Conexion;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,7 +29,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
     initComponents();
     crud = new CRUDBase(conexion.conectar());
     crud.comboboxPaises(this.cb_pais);
-    table = (DefaultTableModel)this.jTable1.getModel();
+    table = (DefaultTableModel)this.tb_encomienda.getModel();
   }
 
   /**
@@ -43,7 +44,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_encomienda = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
         Btn_Ingresar = new javax.swing.JButton();
@@ -67,10 +68,10 @@ public class VTransportistaEncom extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 80));
 
-        jTable1.setBackground(new java.awt.Color(57, 62, 70));
-        jTable1.setFont(new java.awt.Font("Helvetica", 1, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(238, 238, 238));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_encomienda.setBackground(new java.awt.Color(57, 62, 70));
+        tb_encomienda.setFont(new java.awt.Font("Helvetica", 1, 12)); // NOI18N
+        tb_encomienda.setForeground(new java.awt.Color(238, 238, 238));
+        tb_encomienda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -86,16 +87,21 @@ public class VTransportistaEncom extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setEnabled(false);
-        jTable1.setSelectionForeground(new java.awt.Color(57, 62, 70));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        tb_encomienda.setEnabled(false);
+        tb_encomienda.setSelectionForeground(new java.awt.Color(57, 62, 70));
+        tb_encomienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_encomiendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_encomienda);
+        if (tb_encomienda.getColumnModel().getColumnCount() > 0) {
+            tb_encomienda.getColumnModel().getColumn(0).setResizable(false);
+            tb_encomienda.getColumnModel().getColumn(1).setResizable(false);
+            tb_encomienda.getColumnModel().getColumn(2).setResizable(false);
+            tb_encomienda.getColumnModel().getColumn(3).setResizable(false);
+            tb_encomienda.getColumnModel().getColumn(4).setResizable(false);
+            tb_encomienda.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1080, 490));
@@ -199,6 +205,7 @@ public class VTransportistaEncom extends javax.swing.JFrame {
 
   private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
 
+      this.dispose();
   }//GEN-LAST:event_Btn_IngresarActionPerformed
 
     private void cb_paisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_paisItemStateChanged
@@ -253,8 +260,8 @@ public class VTransportistaEncom extends javax.swing.JFrame {
                 String []datos = new String[6];
                 datos[0]=list.getCodEncomienda();
                 datos[1]=crud.buscarNombPais(list.getCod_pais());
-                datos[2]=crud.buscarNombEstado(datos[1], list.getCod_estado());
-                datos[3]=crud.buscarNombCiudad(datos[1], datos[2], list.getCod_ciudad());
+                datos[2]=crud.buscarNombEstado(list.getCod_pais(),list.getCod_estado());
+                datos[3]=crud.buscarNombCiudad(list.getCod_pais(), list.getCod_estado(), list.getCod_ciudad());
                 datos[4]=String.valueOf(Float.valueOf(list.getVolumen())/10);
                 datos[5]=list.getPrecio();
                 table.addRow(datos);
@@ -266,6 +273,14 @@ public class VTransportistaEncom extends javax.swing.JFrame {
     private void cb_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ciudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_ciudadActionPerformed
+
+    private void tb_encomiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_encomiendaMouseClicked
+        // TODO add your handling code here:
+        int filaSeleccionada = this.tb_encomienda.rowAtPoint(evt.getPoint());
+        String codEnco = table.getValueAt(filaSeleccionada, 0).toString();
+        VTransportistaDatos.crud.insertSolicitud(VTransportistaDatos.ident, codEnco);
+        JOptionPane.showMessageDialog(null, "Encomienda solicitada");
+    }//GEN-LAST:event_tb_encomiendaMouseClicked
 
   /**
    * @param args the command line arguments
@@ -312,6 +327,6 @@ public class VTransportistaEncom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tb_encomienda;
     // End of variables declaration//GEN-END:variables
 }

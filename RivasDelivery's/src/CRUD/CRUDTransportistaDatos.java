@@ -48,7 +48,7 @@ public class CRUDTransportistaDatos {
     public boolean insertSolicitud(String id, String codigoEncomienda){
         
         try {
-            String sql = "INSERT INTO Solicitan ('identificacionT','cod_encomienda') "
+            String sql = "INSERT INTO Solicitan (identificacionT,cod_encomienda) "
                     + "VALUES(?,?)";
             PreparedStatement insert = this.conexion.prepareStatement(sql);
             insert.setString(1, id);
@@ -88,7 +88,7 @@ public class CRUDTransportistaDatos {
             while (resultado.next()) {                
                 lista.add(new Encomiendas(resultado.getString("cod_encomienda"),
                 resultado.getString("estatusE"),
-                resultado.getString("cod_paises"),
+                resultado.getString("cod_pais"),
                 resultado.getString("cod_estados"),
                 resultado.getString("cod_ciudades"),
                 resultado.getString("precio_total"),
@@ -116,7 +116,7 @@ public class CRUDTransportistaDatos {
             while (resultado.next()) {                
                 encomienda.add(new Encomiendas(resultado.getString("cod_encomienda"),
                 resultado.getString("status"),
-                resultado.getString("cod_paises"),
+                resultado.getString("cod_pais"),
                 resultado.getString("cod_estados"),
                 resultado.getString("cod_ciudades"),
                 resultado.getString("precio_total"),

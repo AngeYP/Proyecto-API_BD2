@@ -502,6 +502,16 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
       this.cb_estado.setEnabled(false);
       this.cb_ciudad.setEnabled(false);
       this.btn_paquetes.setEnabled(false);
+      this.rb_deudor.setSelected(true);
+      this.rb_arribo.setSelected(false);
+      this.rb_transito.setSelected(false);
+      this.rb_recibido.setSelected(false);
+      this.rb_porasignar.setSelected(false);
+      this.rb_deudor.setEnabled(false);
+      this.rb_arribo.setEnabled(false);
+      this.rb_transito.setEnabled(false);
+      this.rb_recibido.setEnabled(false);
+      this.rb_porasignar.setEnabled(false);
   }//GEN-LAST:event_btn_encomiendasActionPerformed
 
   private void btn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientesActionPerformed
@@ -527,33 +537,62 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
           String[] datosCliente = new String[2];
           auxEncomienda = this.datosEncomienda.buscarEncomienda(this.tf_CodEncomienda.getText());
           if (auxEncomienda[0] != null) {
+              btn_actualizar.setEnabled(true);
+              btn_eliminar.setEnabled(true);
               this.tf_ClientCedula.setText(auxEncomienda[0]);
               datosCliente = this.datosEncomienda.buscarCliente(this.tf_ClientCedula.getText());
               this.tf_ClientNombre.setText(datosCliente[0]);
               this.tf_ClientApellido.setText(datosCliente[1]);
               this.tf_CrearEncomienda.setText(auxEncomienda[1]);
-              if (auxEncomienda[2] != null) {
-                  switch (auxEncomienda[2]) {
-                      case "D" ->
-                          this.rb_deudor.setSelected(true);
-                      case "P" ->
-                          this.rb_porasignar.setSelected(true);
-                      case "T" ->
-                          this.rb_transito.setSelected(true);
-                      case "A" ->
-                          this.rb_arribo.setSelected(true);
-                      case "R" ->
-                          this.rb_recibido.setSelected(true);
-                      default -> {
-                      }
-                  }
+              switch (auxEncomienda[2]) {
+                case "D" -> {
+                  this.rb_deudor.setSelected(true);
+                  this.rb_porasignar.setEnabled(true);
+                  this.rb_transito.setEnabled(false);
+                  this.rb_recibido.setEnabled(false);
+                  this.rb_arribo.setEnabled(false);
+                }
+                case "P" -> {
+                    this.rb_porasignar.setSelected(true);
+                    this.rb_porasignar.setEnabled(false);
+                    this.rb_deudor.setSelected(false);
+                    this.rb_transito.setEnabled(false);
+                    this.rb_recibido.setEnabled(false);
+                    this.rb_arribo.setEnabled(false);
+                }
+                case "T" -> {
+                    this.rb_transito.setSelected(true);
+                    this.rb_deudor.setSelected(false);
+                    this.rb_porasignar.setEnabled(false);
+                    this.rb_transito.setEnabled(false);
+                    this.rb_recibido.setEnabled(false);
+                    this.rb_arribo.setEnabled(true);
+                }
+                case "A" -> {
+                  this.rb_arribo.setSelected(true);
+                  this.rb_deudor.setSelected(false);
+                  this.rb_porasignar.setEnabled(false);
+                  this.rb_transito.setEnabled(false);
+                  this.rb_recibido.setEnabled(true);
+                  this.rb_arribo.setEnabled(false);
+                }
+                case "R" -> {
+                  this.rb_recibido.setSelected(true);
+                  this.rb_deudor.setSelected(false);
+                  this.rb_porasignar.setEnabled(false);
+                  this.rb_transito.setEnabled(false);
+                  this.rb_recibido.setEnabled(false);
+                  this.rb_arribo.setEnabled(false);
+                }
+                  default -> {
+                }
               }
               this.tf_distancia.setText(auxEncomienda[3]);
               this.tf_CostoTotal.setText(auxEncomienda[4]);
               this.tf_destinatario.setText(auxEncomienda[5]);
-              this.cb_pais.setSelectedItem(auxEncomienda[6]);
-              this.cb_estado.setSelectedItem(auxEncomienda[7]);
-              this.cb_ciudad.setSelectedItem(auxEncomienda[8]);
+              this.cb_pais.setSelectedItem(this.datosBase.buscarNombPais(auxEncomienda[6]));
+              this.cb_estado.setSelectedItem(this.datosBase.buscarNombEstado(auxEncomienda[6],auxEncomienda[7]));
+              this.cb_ciudad.setSelectedItem(this.datosBase.buscarNombCiudad(auxEncomienda[6], auxEncomienda[7], auxEncomienda[8]));
 
               this.tf_ClientCedula.setEnabled(false);
               this.tf_CrearEncomienda.setEnabled(false);
@@ -562,31 +601,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
               this.cb_estado.setEnabled(true);
               this.cb_ciudad.setEnabled(true);
               this.btn_paquetes.setEnabled(true);
-
-              if (this.rb_deudor.isSelected()) {
-                  this.rb_porasignar.setEnabled(true);
-                  this.rb_transito.setEnabled(false);
-                  this.rb_recibido.setEnabled(false);
-                  this.rb_arribo.setEnabled(false);
-              }
-              //      if(this.rb_porasignar.isSelected()) 
-              //        this.rb_transito.setEnabled(true);
-              if (this.rb_transito.isSelected()) {
-                  this.rb_arribo.setEnabled(true);
-                  this.rb_porasignar.setEnabled(false);
-                  this.rb_transito.setEnabled(false);
-                  this.rb_recibido.setEnabled(false);
-              }
-              if (this.rb_arribo.isSelected()) {
-                  this.rb_recibido.setEnabled(true);
-                  this.rb_arribo.setEnabled(true);
-                  this.rb_porasignar.setEnabled(false);
-                  this.rb_transito.setEnabled(false);
-              }
-              if (this.rb_recibido.isSelected()) {
-                  this.tf_destinatario.setEnabled(false);
-                  this.cb_pais.setEnabled(false);
-              }
           } else {
               JOptionPane.showMessageDialog(null, "No se consiguio encomienda");
           }
@@ -732,6 +746,16 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
       this.btn_actualizar.setEnabled(false);
       this.btn_eliminar.setEnabled(false);
       this.btn_aceptar.setEnabled(true);
+      this.rb_deudor.setSelected(true);
+      this.rb_arribo.setSelected(false);
+      this.rb_transito.setSelected(false);
+      this.rb_recibido.setSelected(false);
+      this.rb_porasignar.setSelected(false);
+      this.rb_deudor.setEnabled(false);
+      this.rb_arribo.setEnabled(false);
+      this.rb_transito.setEnabled(false);
+      this.rb_recibido.setEnabled(false);
+      this.rb_porasignar.setEnabled(false);
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
