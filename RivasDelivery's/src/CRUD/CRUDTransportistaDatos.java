@@ -106,16 +106,14 @@ public class CRUDTransportistaDatos {
         List<Encomiendas> encomienda=new ArrayList<>();
         
         try {
-            String sql = "SELECT * FROM Encomiendas "
-                    + "WHERE identificacionT = ? "
-                    + "GROUP BY estatusE";
+            String sql = "SELECT * FROM Encomiendas WHERE identificacionT= ? GROUP BY estatusE";
             PreparedStatement consulta = this.conexion.prepareStatement(sql);
             consulta.setString(1, id);
             ResultSet resultado = consulta.executeQuery();
             
             while (resultado.next()) {                
                 encomienda.add(new Encomiendas(resultado.getString("cod_encomienda"),
-                resultado.getString("status"),
+                resultado.getString("estatusE"),
                 resultado.getString("cod_pais"),
                 resultado.getString("cod_estados"),
                 resultado.getString("cod_ciudades"),

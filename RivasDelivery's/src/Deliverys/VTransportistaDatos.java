@@ -290,6 +290,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
     private void Btn_Ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar2ActionPerformed
         // TODO add your handling code here:
+        new VTransportistaListaE().setVisible(true);
     }//GEN-LAST:event_Btn_Ingresar2ActionPerformed
 
     private void cb_nucleoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_nucleoItemStateChanged

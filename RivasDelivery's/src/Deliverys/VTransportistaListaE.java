@@ -23,7 +23,7 @@ public class VTransportistaListaE extends javax.swing.JFrame {
   public VTransportistaListaE() {
     initComponents();
     tableListiner=(DefaultTableModel)this.jTable1.getModel();
-    List<Encomiendas> lista= VTransportistaDatos.crud.encomiendasActuales(id);
+    List<Encomiendas> lista= VTransportistaDatos.crud.encomiendasActuales(VTransportistaDatos.ident);
       for (Encomiendas enco : lista) {
           String []objeto= new String[8];
           objeto[0]=enco.getCodEncomienda();
