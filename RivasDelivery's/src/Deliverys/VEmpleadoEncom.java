@@ -19,10 +19,12 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
 
   Conexion conexion = new Conexion();
   CRUDBase datosBase = new CRUDBase(conexion.conectar());
+  
   CRUDEmpleadoEncom datosEncomienda = new CRUDEmpleadoEncom(conexion.conectar());
   public VEmpleadoEncom() {
     initComponents();  
     this.datosBase.comboboxPaises(cb_pais);
+    cedula = "27732881";
   }
   
   /*public VEmpleadoEncom(String cedulaEmp) {
@@ -49,6 +51,12 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         btn_transportistas = new javax.swing.JButton();
         btn_encomiendas = new javax.swing.JButton();
         tf_CodEncomienda = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        btn_eliminar = new javax.swing.JButton();
+        btn_aceptar = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
+        btn_BuscarEncomienda = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,11 +82,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         tf_ClientApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tf_distancia = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        btn_eliminar = new javax.swing.JButton();
-        btn_aceptar = new javax.swing.JButton();
-        btn_actualizar = new javax.swing.JButton();
-        btn_BuscarEncomienda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,11 +100,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menu");
         jLabel1.setOpaque(true);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
         btn_salir.setBackground(new java.awt.Color(204, 0, 0));
@@ -165,6 +163,61 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tf_CodEncomienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
+
+        jPanel3.setBackground(new java.awt.Color(57, 62, 70));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_eliminar.setBackground(new java.awt.Color(253, 112, 20));
+        btn_eliminar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(238, 238, 238));
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setEnabled(false);
+        btn_eliminar.setFocusPainted(false);
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
+
+        btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
+        btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
+        btn_aceptar.setText("Aceptar");
+        btn_aceptar.setEnabled(false);
+        btn_aceptar.setFocusPainted(false);
+        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_aceptarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 40));
+
+        btn_actualizar.setBackground(new java.awt.Color(253, 112, 20));
+        btn_actualizar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        btn_actualizar.setForeground(new java.awt.Color(238, 238, 238));
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setEnabled(false);
+        btn_actualizar.setFocusPainted(false);
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
+
+        btn_BuscarEncomienda.setBackground(new java.awt.Color(57, 62, 70));
+        btn_BuscarEncomienda.setBorderPainted(false);
+        btn_BuscarEncomienda.setFocusPainted(false);
+        btn_BuscarEncomienda.setFocusable(false);
+        btn_BuscarEncomienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BuscarEncomiendaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_BuscarEncomienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 40, 40));
 
         jPanel4.setBackground(new java.awt.Color(57, 62, 70));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -269,7 +322,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         jPanel4.add(cb_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 320, 40));
 
         btn_BuscarCliente.setBackground(new java.awt.Color(57, 62, 70));
-        btn_BuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
         btn_BuscarCliente.setBorderPainted(false);
         btn_BuscarCliente.setFocusPainted(false);
         btn_BuscarCliente.setFocusable(false);
@@ -392,63 +444,9 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         tf_distancia.setEnabled(false);
         jPanel4.add(tf_distancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, 320, 40));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 740, 520));
+        jScrollPane1.setViewportView(jPanel4);
 
-        jPanel3.setBackground(new java.awt.Color(57, 62, 70));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_eliminar.setBackground(new java.awt.Color(253, 112, 20));
-        btn_eliminar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        btn_eliminar.setForeground(new java.awt.Color(238, 238, 238));
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.setEnabled(false);
-        btn_eliminar.setFocusPainted(false);
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 40));
-
-        btn_aceptar.setBackground(new java.awt.Color(253, 112, 20));
-        btn_aceptar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        btn_aceptar.setForeground(new java.awt.Color(238, 238, 238));
-        btn_aceptar.setText("Aceptar");
-        btn_aceptar.setEnabled(false);
-        btn_aceptar.setFocusPainted(false);
-        btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_aceptarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 40));
-
-        btn_actualizar.setBackground(new java.awt.Color(253, 112, 20));
-        btn_actualizar.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        btn_actualizar.setForeground(new java.awt.Color(238, 238, 238));
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.setEnabled(false);
-        btn_actualizar.setFocusPainted(false);
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 130, 40));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 490, 80));
-
-        btn_BuscarEncomienda.setBackground(new java.awt.Color(57, 62, 70));
-        btn_BuscarEncomienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
-        btn_BuscarEncomienda.setBorderPainted(false);
-        btn_BuscarEncomienda.setFocusPainted(false);
-        btn_BuscarEncomienda.setFocusable(false);
-        btn_BuscarEncomienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_BuscarEncomiendaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_BuscarEncomienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 40, 40));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 750, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -520,10 +518,10 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
 
   private void btn_BuscarEncomiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarEncomiendaActionPerformed
     if(!this.tf_CodEncomienda.getText().equals("")) {
-      String[] auxEncomienda = new String[8];
+      String[] auxEncomienda = new String[9];
       String[] datosCliente = new String[2];
-      auxEncomienda = this.datosEncomienda.buscarEncomienda(this.tf_CrearEncomienda.getText());
-      if(!auxEncomienda[0].equals("")) {
+      auxEncomienda = this.datosEncomienda.buscarEncomienda(this.tf_CodEncomienda.getText());
+      if(auxEncomienda[0]!=null) {
         this.tf_ClientCedula.setText(auxEncomienda[0]);
         datosCliente = this.datosEncomienda.buscarCliente(this.tf_ClientCedula.getText());
         this.tf_ClientNombre.setText(datosCliente[0]);
@@ -617,7 +615,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     if (this.tf_CrearEncomienda.getText().equals("") && Estatus==' ' && this.tf_ClientCedula.getText().equals("") && this.tf_destinatario.getText().equals("") && this.tf_distancia.getText().equals("") && CodPais.equals("") && CodEstado.equals("") && CodCiudad.equals("")) {
       JOptionPane.showMessageDialog(null, "Llene todos los campos");
     }
-    this.datosEncomienda.insertarDatos(this.tf_CrearEncomienda.getText(), Estatus, Float.parseFloat(this.tf_distancia.getText()), this.tf_destinatario.getText(), this.tf_ClientCedula.getText(), cedula, CodPais, CodEstado, CodCiudad);
+    this.datosEncomienda.insertarDatos(this.tf_CrearEncomienda.getText(), Estatus, Float.parseFloat(this.tf_distancia.getText()), this.tf_destinatario.getText(), this.tf_ClientCedula.getText(), cedula, CodPais, CodEstado, CodCiudad,datosBase.buscarNucleoEmp(cedula));
   }//GEN-LAST:event_btn_aceptarActionPerformed
 
   private void rb_transitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_transitoActionPerformed
@@ -720,12 +718,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     this.btn_aceptar.setEnabled(true);
   }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        new VEmpleadoMenu().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
-
   /**
    * @param args the command line arguments
    */
@@ -789,6 +781,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rb_arribo;
     private javax.swing.JRadioButton rb_deudor;
     private javax.swing.JRadioButton rb_porasignar;

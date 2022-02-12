@@ -73,12 +73,12 @@ public class CRUDEmpleadoTransportista {
     }
   }
 
-  public void actualizarDatos(String CITransportista, char Nacionalidad, String Nombre, String Apellido, String Email, String Telefono1, 
-      String Telefono2, String LicenciaC, String AntecedentesP) {
+  public void actualizarDatos(String CITransportista, String Nacionalidad, String Nombre, String Apellido, String Email, String Telefono1, 
+      String Telefono2, String LicenciaC, String AntecedentesP,String codNucleo) {
     try {
-      String SQL = "UPDATE Transportistas SET nacionalidadT=?,nombreT=?,apellidoT=?,emailT=?,telefono1T=?,telefono2T=?,lic_conducirT=?,antecedentes_penalesT=? WHERE identificacionT=?";
+      String SQL = "UPDATE Transportistas SET nacionalidadT=?,nombreT=?,apellidoT=?,emailT=?,telefono1T=?,telefono2T=?,lic_conducirT=?,antecedentes_penalesT=?,cod_nucleos=? WHERE identificacionT=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
-      consulta.setString(1, String.valueOf(Nacionalidad));
+      consulta.setString(1, Nacionalidad);
       consulta.setString(2, Nombre);
       consulta.setString(3, Apellido);
       consulta.setString(4, Email);
@@ -86,10 +86,12 @@ public class CRUDEmpleadoTransportista {
       consulta.setString(6, Telefono2);
       consulta.setString(7, LicenciaC);
       consulta.setString(8, AntecedentesP);
-      consulta.setString(9, CITransportista);
+      consulta.setString(9, codNucleo);
+      consulta.setString(10, CITransportista);
+      
       consulta.execute();
       System.out.println("Registro editado exitosamente");
-    } catch (Exception e) {
+    } catch (SQLException e) {
       System.out.println("Error al editar el registro" + e.getMessage());
     }
   }

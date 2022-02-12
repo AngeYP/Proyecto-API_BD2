@@ -92,11 +92,6 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menu");
         jLabel1.setOpaque(true);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 80));
 
         btn_salir.setBackground(new java.awt.Color(204, 0, 0));
@@ -154,7 +149,7 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
         tf_identificacionC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tf_identificacionC.setText("Cedula");
         tf_identificacionC.setBorder(null);
-        tf_identificacionC.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        tf_identificacionC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tf_identificacionC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clearText(evt);
@@ -163,7 +158,6 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
         jPanel1.add(tf_identificacionC, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 310, 40));
 
         btn_buscar.setBackground(new java.awt.Color(57, 62, 70));
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
         btn_buscar.setBorderPainted(false);
         btn_buscar.setFocusPainted(false);
         btn_buscar.setFocusable(false);
@@ -560,12 +554,6 @@ public class VEmpleadoCliente extends javax.swing.JFrame {
       new VEmpleadoTransportista().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_btn_transportistasActionPerformed
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        new VEmpleadoMenu().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

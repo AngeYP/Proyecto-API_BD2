@@ -16,15 +16,17 @@ public class CRUDEmpleadoPaq {
   }
   
   public void insertarDatos(String CodEncomienda, String CodPaquete, String Peso, String Alto, String Ancho, String Profundidad) { 
+      
   try {
-      String SQL = "INSERT INTO Vehiculos_Motor(cod_paquete,peso_paq,alto_paq,ancho_paq,profundidad,cod_destino)"
-              + " VALUES (?,?,?,?,?,?,?)";
+      
+      String SQL = "INSERT INTO Paquetes(cod_paquete,peso_paq,alto_paq,ancho_paq,profundidad,cod_destino)"
+              + " VALUES (?,?,?,?,?,?)";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodPaquete);
-      consulta.setString(2, Peso);
-      consulta.setString(3, Alto);
-      consulta.setString(4, Ancho);
-      consulta.setString(5, Profundidad);
+      consulta.setFloat(2, Float.valueOf(Peso));
+      consulta.setFloat(3, Float.valueOf(Alto));
+      consulta.setFloat(4, Float.valueOf(Ancho));
+      consulta.setFloat(5, Float.valueOf(Profundidad));
       consulta.setString(6, CodEncomienda);
       consulta.execute();
       System.out.println("Registro insertado exitosamente");
@@ -35,13 +37,12 @@ public class CRUDEmpleadoPaq {
   
   public void eliminarDatos(String CodEncomienda, String CodPaquete) { 
   try {
-      String SQL = "DELETE FROM Paquetes WHERE cod_destino=? AND cod_paquete=?"
-              + " VALUES (?,?)";
+      String SQL = "DELETE FROM Paquetes WHERE cod_destino=? AND cod_paquete=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodEncomienda);
       consulta.setString(2, CodPaquete);
       consulta.execute();
-      System.out.println("Registro insertado exitosamente");
+      System.out.println("Registro eliminado exitosamente");
     } catch (HeadlessException | SQLException e) {
       JOptionPane.showMessageDialog(null, "Error al insertar registro: " + e.getMessage());
     }
@@ -63,9 +64,9 @@ public class CRUDEmpleadoPaq {
     }
   }
   
-  public String[] buscarPaq(String CodPaquete, String CodEncomienda) {
+  public Float[] buscarPaq(String CodPaquete, String CodEncomienda) {
         
-    String[] DatosPaquete = new String[4];
+    Float[] DatosPaquete = new Float[4];
 
     try {
       String SQL = "SELECT * FROM Paquetes WHERE cod_paquete = ? AND cod_destino=?";
@@ -74,10 +75,10 @@ public class CRUDEmpleadoPaq {
       consulta.setString(2, CodEncomienda);
       ResultSet resultado = consulta.executeQuery();
       while (resultado.next()) {
-        DatosPaquete[0] = resultado.getString("peso_paq");
-        DatosPaquete[1] = resultado.getString("alto_paq");
-        DatosPaquete[2] = resultado.getString("ancho_paq");
-        DatosPaquete[3] = resultado.getString("profundidad");
+        DatosPaquete[0] = resultado.getFloat("peso_paq");
+        DatosPaquete[1] = resultado.getFloat("alto_paq");
+        DatosPaquete[2] = resultado.getFloat("ancho_paq");
+        DatosPaquete[3] = resultado.getFloat("profundidad");
       }                            
     } catch (HeadlessException | SQLException e) {
       JOptionPane.showMessageDialog(null, "Fallo en la consulta" + e.getMessage());
