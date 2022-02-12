@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -387,6 +390,40 @@ public class CRUDBase {
           consulta.executeUpdate();
       } catch (Exception e) {
           System.out.println("Error en actualizacion: "+e.getMessage());
+      }
+  }
+  
+  public void insertarCurso(String codNucleo,String CodCurso,String dat){
+      
+      try {
+          String sql = "SELECT * FROM Nucleos WHERE cod_nucleo = ?";
+          PreparedStatement consulta = conexion.prepareStatement(sql);
+          consulta.setString(1, codNucleo);
+          ResultSet resultado = consulta.executeQuery();
+          
+          String pais="";
+          String estado = "";
+          String ciudad = "";
+          
+          while (resultado.next()) {              
+              pais = resultado.getString("cod_pais");
+              estado = resultado.getString("cod_estados");
+              ciudad = resultado.getString("cod_ciudades");
+          }
+          DateTimeFormatter asdf = DateTimeFormatter.ofPattern("dd/mm/aaaa");
+          LocalDate fecha = LocalDate.parse(dat, asdf);
+          String sql2 = "INSERT INTO Cursos (codigo_curso,fecha_curso,cod_ciudades,cod_estados,cod_pais,cod_nucleos)"
+                  + " VALUES(?,?,?,?,?,?)";
+          PreparedStatement consulta2 = conexion.prepareCall(sql2);
+          consulta2.setString(1, CodCurso);
+          consulta2.setDate(2, Date.valueOf(fecha.toString()));
+          consulta2.setString(3, ciudad);
+          consulta2.setString(4, estado);
+          consulta2.setString(5, pais);
+          consulta2.setString(6, codNucleo);
+          consulta2.executeUpdate();
+      } catch (SQLException e) {
+          System.out.println("Fallo en insercion: "+e.getMessage());
       }
   }
 }
