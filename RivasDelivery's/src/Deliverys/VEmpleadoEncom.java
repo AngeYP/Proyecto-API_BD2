@@ -25,7 +25,6 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     public VEmpleadoEncom() {
         initComponents();
         this.datosBase.comboboxPaises(cb_pais);
-        cedula = "27732881";
     }
 
     /*public VEmpleadoEncom(String cedulaEmp) {
@@ -483,11 +482,12 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
 
   private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
       // TODO add your handling code here:
+      
   }//GEN-LAST:event_btn_salirActionPerformed
 
   private void btn_transportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transportistasActionPerformed
-//    new VEmpleadoTranspo(cedulaE).setVisible(true);
-//    this.dispose();
+    new VEmpleadoTransportista().setVisible(true);
+    this.dispose();
   }//GEN-LAST:event_btn_transportistasActionPerformed
 
   private void btn_encomiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encomiendasActionPerformed
