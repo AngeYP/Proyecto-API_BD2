@@ -82,6 +82,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         tf_ClientApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tf_distancia = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -453,6 +454,16 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 750, 520));
 
+        jButton1.setBackground(new java.awt.Color(253, 112, 20));
+        jButton1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jButton1.setText("Asignar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 643, -1, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -764,6 +775,12 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new VEmpleadoAsignarEncom().setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -815,6 +832,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_ciudad;
     private javax.swing.JComboBox<String> cb_estado;
     private javax.swing.JComboBox<String> cb_pais;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

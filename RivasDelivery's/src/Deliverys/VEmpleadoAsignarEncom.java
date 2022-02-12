@@ -28,6 +28,8 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
   
   public VEmpleadoAsignarEncom() {
     initComponents();
+    ciEmpleado=VIniciarSesion.cedula;
+    codNucleo = this.datosBase.buscarNucleoEmp(ciEmpleado);
   }
   
   public VEmpleadoAsignarEncom(String CIEmp) {
@@ -266,7 +268,7 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
 
   private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
     if(this.cb_estatus.getSelectedItem().toString().equals("Por asignar")){
-      this.CRUDAsignar.actualizarDatos(this.cb_transportista.getSelectedItem().toString(), this.tf_codigo.getText());
+      this.CRUDAsignar.actualizarDatos(this.tf_codigo.getText(),this.cb_transportista.getSelectedItem().toString());
     } else {
       JOptionPane.showMessageDialog(null,"Encomienda no disponible para actualizar");
     }
@@ -296,7 +298,7 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
         this.CRUDAsignar.mostrarDatosConInicio(estatus, codNucleo, this.tf_fechaini.getText());
       }
       if(this.tf_fechaini.getText().equals("") && this.tf_fechafin.getText().equals("")) {
-        this.CRUDAsignar.mostrarDatosSinFechas(estatus, codNucleo);
+        t_datosencomienda.setModel(this.CRUDAsignar.mostrarDatosSinFechas(estatus, codNucleo));
       }
     }
   }//GEN-LAST:event_btn_buscarActionPerformed
