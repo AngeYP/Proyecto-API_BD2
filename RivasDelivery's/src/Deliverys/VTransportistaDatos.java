@@ -81,6 +81,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     cb_fecha = new javax.swing.JComboBox<>();
     jButton1 = new javax.swing.JButton();
     Btn_Ingresar2 = new javax.swing.JButton();
+    Btn_Ingresar3 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,7 +125,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         btn_solicitarActionPerformed(evt);
       }
     });
-    jPanel1.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 650, 140, 40));
+    jPanel1.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 140, 40));
 
     jPanel2.setBackground(new java.awt.Color(57, 62, 70));
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,7 +250,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     Btn_Ingresar2.setBackground(new java.awt.Color(253, 112, 20));
     Btn_Ingresar2.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
     Btn_Ingresar2.setForeground(new java.awt.Color(238, 238, 238));
-    Btn_Ingresar2.setText("Encomiendas");
+    Btn_Ingresar2.setText("Vuelos");
     Btn_Ingresar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
     Btn_Ingresar2.setBorderPainted(false);
     Btn_Ingresar2.setFocusPainted(false);
@@ -258,7 +259,21 @@ public class VTransportistaDatos extends javax.swing.JFrame {
         Btn_Ingresar2ActionPerformed(evt);
       }
     });
-    jPanel1.add(Btn_Ingresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 650, 140, 40));
+    jPanel1.add(Btn_Ingresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 650, 140, 40));
+
+    Btn_Ingresar3.setBackground(new java.awt.Color(253, 112, 20));
+    Btn_Ingresar3.setFont(new java.awt.Font("Helvetica", 1, 17)); // NOI18N
+    Btn_Ingresar3.setForeground(new java.awt.Color(238, 238, 238));
+    Btn_Ingresar3.setText("Encomiendas");
+    Btn_Ingresar3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
+    Btn_Ingresar3.setBorderPainted(false);
+    Btn_Ingresar3.setFocusPainted(false);
+    Btn_Ingresar3.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Btn_Ingresar3ActionPerformed(evt);
+      }
+    });
+    jPanel1.add(Btn_Ingresar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 650, 140, 40));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -287,7 +302,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
     private void Btn_Ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar2ActionPerformed
         // TODO add your handling code here:
-        new VTransportistaListaE().setVisible(true);
+        new VTransVuelos().setVisible(true);
     }//GEN-LAST:event_Btn_Ingresar2ActionPerformed
 
     private void cb_nucleoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_nucleoItemStateChanged
@@ -319,6 +334,10 @@ public class VTransportistaDatos extends javax.swing.JFrame {
             base.updateCursoTransportista(cb_curso.getSelectedItem().toString(), id);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+  private void Btn_Ingresar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Ingresar3ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_Btn_Ingresar3ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -357,6 +376,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton Btn_Ingresar2;
+  private javax.swing.JButton Btn_Ingresar3;
   private javax.swing.JButton Btn_salir;
   private javax.swing.JButton btn_solicitar;
   private javax.swing.JComboBox<String> cb_curso;
