@@ -297,7 +297,7 @@ public class VTransportistaDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void Btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_salirActionPerformed
-      new VIniciarSesion().setVisible(true);
+      new VUsuarios().setVisible(true);
       this.dispose();
   }//GEN-LAST:event_Btn_salirActionPerformed
 

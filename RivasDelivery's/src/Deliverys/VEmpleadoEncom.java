@@ -48,7 +48,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     btn_clientes = new javax.swing.JButton();
     btn_transportistas = new javax.swing.JButton();
     btn_encomiendas = new javax.swing.JButton();
-    btn_salir = new javax.swing.JButton();
+    btn_salir2 = new javax.swing.JButton();
     tf_CodEncomienda = new javax.swing.JTextField();
     jPanel3 = new javax.swing.JPanel();
     btn_eliminar = new javax.swing.JButton();
@@ -143,16 +143,16 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     });
     jPanel2.add(btn_encomiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 180, 60));
 
-    btn_salir.setBackground(new java.awt.Color(204, 0, 0));
-    btn_salir.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-    btn_salir.setForeground(new java.awt.Color(238, 238, 238));
-    btn_salir.setText("Salir");
-    btn_salir.addActionListener(new java.awt.event.ActionListener() {
+    btn_salir2.setBackground(new java.awt.Color(204, 0, 0));
+    btn_salir2.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+    btn_salir2.setForeground(new java.awt.Color(238, 238, 238));
+    btn_salir2.setText("Salir");
+    btn_salir2.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btn_salirActionPerformed(evt);
+        btn_salir2ActionPerformed(evt);
       }
     });
-    jPanel2.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
+    jPanel2.add(btn_salir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, 60));
 
     jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 720));
 
@@ -780,10 +780,10 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-  private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-    new VIniciarSesion().setVisible(true);
+  private void btn_salir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salir2ActionPerformed
+    new VUsuarios().setVisible(true);
     this.dispose();
-  }//GEN-LAST:event_btn_salirActionPerformed
+  }//GEN-LAST:event_btn_salir2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -832,6 +832,8 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
   private javax.swing.JButton btn_encomiendas;
   private javax.swing.JButton btn_paquetes;
   private javax.swing.JButton btn_salir;
+  private javax.swing.JButton btn_salir1;
+  private javax.swing.JButton btn_salir2;
   private javax.swing.JButton btn_transportistas;
   private javax.swing.JComboBox<String> cb_ciudad;
   private javax.swing.JComboBox<String> cb_estado;
