@@ -26,6 +26,7 @@ public class VTransVuelos extends javax.swing.JFrame {
   
   public VTransVuelos() {
     initComponents();
+    this.JTF_identificacionT.setText(cedula);
   }
   
   public VTransVuelos(String identificacionT) {
@@ -258,7 +259,7 @@ public class VTransVuelos extends javax.swing.JFrame {
               , this.JTF_hora_estimada_S.getText(), this.JTF_hora_estimada_LL.getText(), this.JTF_hora_retraso.getText()
               ,this.JTF_descripcion_retraso.getText(), this.JTF_fecha_llegada.getText(), this.JTF_fecha_salida.getText(),
               this.JTF_identificacionT.getText());
-      this.JTF_cod_vuelos.setText("");
+      /*this.JTF_cod_vuelos.setText("");
       this.JTF_hora_salida.setText("");
       this.JTF_hora_llegada.setText("");
       this.JTF_hora_estimada_S.setText("");
@@ -267,7 +268,7 @@ public class VTransVuelos extends javax.swing.JFrame {
       this.JTF_descripcion_retraso.setText("");
       this.JTF_fecha_llegada.setText("");
       this.JTF_fecha_salida.setText("");
-      this.JTF_identificacionT.setText("");
+      this.JTF_identificacionT.setText("");*/
     }
   }//GEN-LAST:event_btn_aceptarActionPerformed
 

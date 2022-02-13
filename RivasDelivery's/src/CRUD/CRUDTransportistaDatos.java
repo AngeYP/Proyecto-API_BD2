@@ -132,7 +132,7 @@ public class CRUDTransportistaDatos {
     
   public void comboboxVuelos(JComboBox cb, String CITransportista) {
     try {
-      String SQL = "SELECT * FROM Vuelos WHERE CITransportista = ?";
+      String SQL = "SELECT * FROM Vuelos WHERE identificacionT = ?";
       PreparedStatement consulta = conexion.prepareStatement(SQL);
       consulta.setString(1, CITransportista);
       ResultSet resultado = consulta.executeQuery();
@@ -147,7 +147,7 @@ public class CRUDTransportistaDatos {
   
   public void agregarVuelo(String CodEncomienda, String CITransp, String CodVuelo) {
     try {
-      String SQL = "UPDATE Encomiendas SET cod_vuelos=? WHERE cod_encomienda=? AND identificacionT";
+      String SQL = "UPDATE Encomiendas SET cod_vuelos=? WHERE cod_encomienda=? AND identificacionT=?";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, CodVuelo);
       consulta.setString(2, CodEncomienda);
