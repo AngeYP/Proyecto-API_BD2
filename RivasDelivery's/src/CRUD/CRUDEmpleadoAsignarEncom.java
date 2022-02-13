@@ -25,15 +25,12 @@ public class CRUDEmpleadoAsignarEncom {
         this.conexion = conexion;
   }
   
-  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin) {
-    String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
+  public DefaultTableModel mostrarDatosConFechas(String Estatus, String Nucleos, String FechaIni, String FechaFin, String TipoFecha) {
+    String[] titulos = {"Codigo", "Cliente", "Fecha C", "Fecha S", "Fecha E","Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
-    
     try {
-      System.out.println(FechaIni);
-      System.out.println(FechaFin);
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND (fecha_creada >= '"+FechaIni+"' AND fecha_creada <= '"+FechaFin+"')";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND ("+TipoFecha+" >= '"+FechaIni+"' AND "+TipoFecha+" <= '"+FechaFin+"')";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
@@ -42,10 +39,12 @@ public class CRUDEmpleadoAsignarEncom {
         registros[0] = resultado.getString("cod_encomienda");
         registros[1] = resultado.getString("identificacionC");
         registros[2] = resultado.getString("fecha_creada");
-        registros[3] = resultado.getString("cod_pais");
-        registros[4] = resultado.getString("cod_estados");
-        registros[5] = resultado.getString("cod_ciudades");
-        registros[6] = resultado.getString("identificacionT");
+        registros[3] = resultado.getString("fecha_salida");
+        registros[4] = resultado.getString("fecha_llegada");
+        registros[5] = resultado.getString("cod_pais");
+        registros[6] = resultado.getString("cod_estados");
+        registros[7] = resultado.getString("cod_ciudades");
+        registros[8] = resultado.getString("identificacionT");
         tabla.addRow(registros);
       }
     } catch (SQLException e) {
@@ -55,7 +54,7 @@ public class CRUDEmpleadoAsignarEncom {
   }
   
   public DefaultTableModel mostrarDatosSinFechas(String Estatus, String Nucleos) {
-    String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
+    String[] titulos = {"Codigo", "Cliente", "Fecha C", "Fecha S", "Fecha E","Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
@@ -68,10 +67,12 @@ public class CRUDEmpleadoAsignarEncom {
         registros[0] = resultado.getString("cod_encomienda");
         registros[1] = resultado.getString("identificacionC");
         registros[2] = resultado.getString("fecha_creada");
-        registros[3] = resultado.getString("cod_pais");
-        registros[4] = resultado.getString("cod_estados");
-        registros[5] = resultado.getString("cod_ciudades");
-        registros[6] = resultado.getString("identificacionT");
+        registros[3] = resultado.getString("fecha_salida");
+        registros[4] = resultado.getString("fecha_llegada");
+        registros[5] = resultado.getString("cod_pais");
+        registros[6] = resultado.getString("cod_estados");
+        registros[7] = resultado.getString("cod_ciudades");
+        registros[8] = resultado.getString("identificacionT");
         tabla.addRow(registros);
       }
     } catch (SQLException e) {
@@ -80,12 +81,12 @@ public class CRUDEmpleadoAsignarEncom {
     return tabla;
   }
   
-  public DefaultTableModel mostrarDatosConInicio(String Estatus, String Nucleos, String FechaIni) {
-    String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
+  public DefaultTableModel mostrarDatosConInicio(String Estatus, String Nucleos, String FechaIni, String TipoFecha) {
+    String[] titulos = {"Codigo", "Cliente", "Fecha C", "Fecha S", "Fecha E", "Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada>='"+FechaIni+"'";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND "+TipoFecha+">='"+FechaIni+"'";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
@@ -94,10 +95,12 @@ public class CRUDEmpleadoAsignarEncom {
         registros[0] = resultado.getString("cod_encomienda");
         registros[1] = resultado.getString("identificacionC");
         registros[2] = resultado.getString("fecha_creada");
-        registros[3] = resultado.getString("cod_pais");
-        registros[4] = resultado.getString("cod_estados");
-        registros[5] = resultado.getString("cod_ciudades");
-        registros[6] = resultado.getString("identificacionT");
+        registros[3] = resultado.getString("fecha_salida");
+        registros[4] = resultado.getString("fecha_llegada");
+        registros[5] = resultado.getString("cod_pais");
+        registros[6] = resultado.getString("cod_estados");
+        registros[7] = resultado.getString("cod_ciudades");
+        registros[8] = resultado.getString("identificacionT");
         tabla.addRow(registros);
       }
     } catch (SQLException e) {
@@ -106,12 +109,12 @@ public class CRUDEmpleadoAsignarEncom {
     return tabla;
   }
   
-    public DefaultTableModel mostrarDatosConFin(String Estatus, String Nucleos, String FechaFin) {
+    public DefaultTableModel mostrarDatosConFin(String Estatus, String Nucleos, String FechaFin, String TipoFecha) {
     String[] titulos = {"Codigo Encomienda", "Cedula Cliente", "Fecha Procesada","Pais", "Estado", "Ciudad", "Transportista"};
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada<='"+FechaFin+"'";
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND "+TipoFecha+"<='"+FechaFin+"'";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
@@ -120,10 +123,12 @@ public class CRUDEmpleadoAsignarEncom {
         registros[0] = resultado.getString("cod_encomienda");
         registros[1] = resultado.getString("identificacionC");
         registros[2] = resultado.getString("fecha_creada");
-        registros[3] = resultado.getString("cod_pais");
-        registros[4] = resultado.getString("cod_estados");
-        registros[5] = resultado.getString("cod_ciudades");
-        registros[6] = resultado.getString("identificacionT");
+        registros[3] = resultado.getString("fecha_salida");
+        registros[4] = resultado.getString("fecha_llegada");
+        registros[5] = resultado.getString("cod_pais");
+        registros[6] = resultado.getString("cod_estados");
+        registros[7] = resultado.getString("cod_ciudades");
+        registros[8] = resultado.getString("identificacionT");
         tabla.addRow(registros);
       }
     } catch (SQLException e) {
