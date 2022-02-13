@@ -84,11 +84,13 @@ public class VTransVuelos extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 80));
 
+        JTF_identificacionT.setEditable(false);
         JTF_identificacionT.setBackground(new java.awt.Color(57, 62, 70));
         JTF_identificacionT.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         JTF_identificacionT.setForeground(new java.awt.Color(238, 238, 238));
         JTF_identificacionT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTF_identificacionT.setBorder(null);
+        JTF_identificacionT.setEnabled(false);
         JTF_identificacionT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTF_identificacionTActionPerformed(evt);
