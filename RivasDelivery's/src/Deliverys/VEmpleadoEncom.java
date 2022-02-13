@@ -328,6 +328,7 @@ public class VEmpleadoEncom extends javax.swing.JFrame {
     jPanel4.add(cb_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 320, 40));
 
     btn_BuscarCliente.setBackground(new java.awt.Color(57, 62, 70));
+    btn_BuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa1.png"))); // NOI18N
     btn_BuscarCliente.setBorderPainted(false);
     btn_BuscarCliente.setFocusPainted(false);
     btn_BuscarCliente.setFocusable(false);

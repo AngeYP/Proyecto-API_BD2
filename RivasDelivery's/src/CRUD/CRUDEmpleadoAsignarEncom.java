@@ -31,9 +31,9 @@ public class CRUDEmpleadoAsignarEncom {
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     
     try {
-        Date date1= Date.valueOf(FechaIni);
-        Date date2 = Date.valueOf(FechaFin);
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada <= "+FechaIni+" AND fecha_creada >="+FechaFin;
+      System.out.println(FechaIni);
+      System.out.println(FechaFin);
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND (fecha_creada >= '"+FechaIni+"' AND fecha_creada <= '"+FechaFin+"')";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
@@ -85,7 +85,7 @@ public class CRUDEmpleadoAsignarEncom {
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada <= "+FechaIni;
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada>='"+FechaIni+"'";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);
@@ -111,7 +111,7 @@ public class CRUDEmpleadoAsignarEncom {
     String[] registros = new String[67];
     DefaultTableModel tabla = new DefaultTableModel(null, titulos);
     try {
-      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada >= "+FechaFin;
+      String SQL = "SELECT * FROM Encomiendas WHERE estatusE = ? AND cod_nucleo = ? AND fecha_creada<='"+FechaFin+"'";
       PreparedStatement consulta = this.conexion.prepareStatement(SQL);
       consulta.setString(1, Estatus);
       consulta.setString(2, Nucleos);

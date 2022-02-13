@@ -306,15 +306,17 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
   private void t_datosencomiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_datosencomiendaMouseClicked
     int filaSeleccionada = this.t_datosencomienda.rowAtPoint(evt.getPoint());
     this.tf_codigo.setText(this.t_datosencomienda.getValueAt(filaSeleccionada, 0).toString());
-    this.ta_direccion.setText(this.t_datosencomienda.getValueAt(filaSeleccionada, 3).toString()+", "+this.t_datosencomienda.getValueAt(filaSeleccionada, 4).toString()+", "+this.t_datosencomienda.getValueAt(filaSeleccionada, 5).toString());
+    this.ta_direccion.setText(this.datosBase.buscarNombPais(this.t_datosencomienda.getValueAt(filaSeleccionada, 3).toString())+", "+
+        this.datosBase.buscarNombEstado(this.t_datosencomienda.getValueAt(filaSeleccionada, 3).toString(), this.t_datosencomienda.getValueAt(filaSeleccionada, 4).toString())+", "+
+        this.datosBase.buscarNombCiudad(this.t_datosencomienda.getValueAt(filaSeleccionada, 3).toString(), this.t_datosencomienda.getValueAt(filaSeleccionada, 4).toString(), this.t_datosencomienda.getValueAt(filaSeleccionada, 5).toString()));
     if(this.cb_estatus.getSelectedItem().toString().equals("Por asignar")) {
-      if(this.cb_transportista.getSelectedIndex()>0)
+      if(this.cb_transportista.getSelectedIndex()>-1)
         this.cb_transportista.removeAllItems();
       this.CRUDAsignar.comboboxTransportista(this.cb_transportista, this.tf_codigo.getText());
     } else {
-      if(this.cb_transportista.getSelectedIndex()>0)
+      if(this.cb_transportista.getSelectedIndex()>-1)
         this.cb_transportista.removeAllItems();
-      this.cb_transportista.setSelectedItem(this.t_datosencomienda.getValueAt(filaSeleccionada, 6).toString());
+      this.cb_transportista.addItem(this.t_datosencomienda.getValueAt(filaSeleccionada, 6).toString());
     }
   }//GEN-LAST:event_t_datosencomiendaMouseClicked
 
@@ -335,17 +337,21 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
   }//GEN-LAST:event_tf_fechafinMouseClicked
 
   private void btn_DatosTransportistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DatosTransportistaActionPerformed
-    if(this.cb_transportista.getSelectedIndex()>0) {
-      new VEmpleadosDatosTransp(this.cb_transportista.getSelectedItem().toString()).setVisible(true);
+    if(this.cb_transportista.getSelectedIndex()>-1) {
+      if(!this.cb_transportista.getSelectedItem().toString().equals("Seleccione una opcion"))
+        new VEmpleadosDatosTransp(this.cb_transportista.getSelectedItem().toString()).setVisible(true);
     } else {
       JOptionPane.showMessageDialog(null,"Debe seleccionar un transportista");
     }
   }//GEN-LAST:event_btn_DatosTransportistaActionPerformed
 
   private void cb_transportistaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_transportistaItemStateChanged
-    if(this.cb_transportista.getSelectedIndex()>0) {
+    if(this.cb_transportista.getSelectedIndex()>-1) {
       String[] datosTrans = this.CRUDAsignar.buscarTrasportista(this.cb_transportista.getSelectedItem().toString());
-      this.tf_nombre.setText(datosTrans[0]+" "+datosTrans[1]);
+      if(datosTrans[0]!=null)
+        this.tf_nombre.setText(datosTrans[0]+" "+datosTrans[1]);
+    } else {
+      this.tf_nombre.setText("");
     }
   }//GEN-LAST:event_cb_transportistaItemStateChanged
 
