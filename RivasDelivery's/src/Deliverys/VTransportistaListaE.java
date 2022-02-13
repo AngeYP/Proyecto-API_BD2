@@ -60,7 +60,7 @@ public class VTransportistaListaE extends javax.swing.JFrame {
     Btn_Ingresar = new javax.swing.JButton();
     cb_codvuelos = new javax.swing.JComboBox<>();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     jPanel1.setBackground(new java.awt.Color(34, 40, 49));
     jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
