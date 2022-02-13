@@ -370,7 +370,7 @@ public class CRUDBase {
           ResultSet resultado = consulta.executeQuery();
           
           while (resultado.next()) {              
-              cb.addItem(resultado.getString("cod_curso"));
+              cb.addItem(resultado.getString("codigo_curso"));
           }
       } catch (Exception e) {
           System.out.println("Error en consulta: "+e.getMessage());
