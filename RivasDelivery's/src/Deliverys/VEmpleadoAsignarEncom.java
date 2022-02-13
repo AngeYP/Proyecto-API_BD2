@@ -310,12 +310,12 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
     }
     if(!estatus.equals("")){
       if(this.cb_fechas.getSelectedIndex()>0) {
-          String TipoFecha = null;
-          switch(this.cb_fechas.getSelectedItem().toString()) {
-            case "Creadas": TipoFecha="fecha_creada";
-            case "Enviadas": TipoFecha="fecha_salida";
-            case "Terminadas": TipoFecha="fecha_llegada";
-          }
+        String TipoFecha = null;
+        switch(this.cb_fechas.getSelectedItem().toString()) {
+          case "Creadas": TipoFecha="fecha_creada";
+          case "Enviadas": TipoFecha="fecha_salida";
+          case "Terminadas": TipoFecha="fecha_llegada";
+        }
         if(!this.tf_fechaini.getText().equals("") && !this.tf_fechafin.getText().equals("")) {
           t_datosencomienda.setModel(this.CRUDAsignar.mostrarDatosConFechas(estatus, codNucleo, this.tf_fechaini.getText(), this.tf_fechafin.getText(),TipoFecha));
         }
@@ -325,9 +325,8 @@ public class VEmpleadoAsignarEncom extends javax.swing.JFrame {
         if(!this.tf_fechaini.getText().equals("") && this.tf_fechafin.getText().equals("")) {
           t_datosencomienda.setModel(this.CRUDAsignar.mostrarDatosConInicio(estatus, codNucleo, this.tf_fechaini.getText(),TipoFecha));
         }
-        if(this.tf_fechaini.getText().equals("") && this.tf_fechafin.getText().equals("")) {
-          t_datosencomienda.setModel(this.CRUDAsignar.mostrarDatosSinFechas(estatus, codNucleo));
-        }
+      } else {
+        t_datosencomienda.setModel(this.CRUDAsignar.mostrarDatosSinFechas(estatus, codNucleo));
       }
     }
   }//GEN-LAST:event_btn_buscarActionPerformed
