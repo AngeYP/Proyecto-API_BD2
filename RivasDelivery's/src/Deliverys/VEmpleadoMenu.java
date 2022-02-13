@@ -283,7 +283,7 @@ public class VEmpleadoMenu extends javax.swing.JFrame {
   }//GEN-LAST:event_btn_encomiendasActionPerformed
 
   private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-    new VIniciarSesion().setVisible(true);
+    new VUsuarios().setVisible(true);
     this.dispose();
   }//GEN-LAST:event_btn_salirActionPerformed
 
