@@ -221,7 +221,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransNombre.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransNombre.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransNombre.setForeground(new java.awt.Color(34, 40, 49));
-        tf_TransNombre.setEnabled(false);
         jPanel4.add(tf_TransNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 320, 40));
 
         tf_TransTelefonoSecu.setBackground(new java.awt.Color(238, 238, 238));
@@ -264,7 +263,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransTelefono.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransTelefono.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransTelefono.setForeground(new java.awt.Color(34, 40, 49));
-        tf_TransTelefono.setEnabled(false);
         jPanel4.add(tf_TransTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 320, 40));
 
         jLabel9.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
@@ -309,7 +307,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransApellido.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransApellido.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransApellido.setForeground(new java.awt.Color(34, 40, 49));
-        tf_TransApellido.setEnabled(false);
         jPanel4.add(tf_TransApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 320, 40));
 
         tf_TransLicencia.setBackground(new java.awt.Color(238, 238, 238));
@@ -374,7 +371,6 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
         tf_TransCorreo.setBackground(new java.awt.Color(238, 238, 238));
         tf_TransCorreo.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         tf_TransCorreo.setForeground(new java.awt.Color(34, 40, 49));
-        tf_TransCorreo.setEnabled(false);
         jPanel4.add(tf_TransCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 320, 40));
 
         btn_vehiculos.setBackground(new java.awt.Color(253, 112, 20));
@@ -449,7 +445,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(914, 20, 110, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -542,7 +538,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
           Naci = 'E';
       }
 
-      if (this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci == ' ' && this.tf_TransCorreo.getText().equals("") && this.tf_TransIngreso.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransSaldo.getText().equals("") && this.tf_TransCantPedidos.getText().equals("")) {
+      if (this.tf_TransCedula.getText().equals("") || this.tf_TransNombre.getText().equals("") || this.tf_TransApellido.getText().equals("") || Naci == ' ' && this.tf_TransCorreo.getText().equals("") || this.tf_TransIngreso.getText().equals("") || this.tf_TransTelefono.getText().equals("") || this.tf_TransSaldo.getText().equals("") || this.tf_TransCantPedidos.getText().equals("")) {
           JOptionPane.showMessageDialog(null, "Llene todos los campos");
       } else {
           this.CRUDTransportista.insertarDatos(this.tf_TransCedula.getText(), Naci, this.tf_TransNombre.getText(), this.tf_TransApellido.getText(), this.tf_TransCorreo.getText(), this.tf_TransTelefono.getText(), this.tf_TransTelefonoSecu.getText(), this.tf_TransLicencia.getText(), this.ta_TransAntecedentes.getText(), this.datosBase.buscarNucleoEmp(cedula));
@@ -557,7 +553,7 @@ public class VEmpleadoTransportista extends javax.swing.JFrame {
       if (this.rb_TransExtranjero.isSelected()) {
           Naci = "E";
       }
-      if (this.tf_TransCedula.getText().equals("") && this.tf_TransNombre.getText().equals("") && this.tf_TransApellido.getText().equals("") && Naci == "" && this.tf_TransCorreo.getText().equals("") && this.tf_TransTelefono.getText().equals("") && this.tf_TransTelefonoSecu.getText().equals("") && this.tf_TransLicencia.getText().equals("") && this.ta_TransAntecedentes.getText().equals("")) {
+      if (this.tf_TransCedula.getText().equals("") || this.tf_TransNombre.getText().equals("") || this.tf_TransApellido.getText().equals("") || Naci == "" || this.tf_TransCorreo.getText().equals("") || this.tf_TransTelefono.getText().equals("") || this.tf_TransLicencia.getText().equals("") || this.ta_TransAntecedentes.getText().equals("")) {
           JOptionPane.showMessageDialog(null, "Llene todos los campos");
       } else {
           this.CRUDTransportista.actualizarDatos(this.tf_TransCedula.getText(), Naci, this.tf_TransNombre.getText(), this.tf_TransApellido.getText(), this.tf_TransCorreo.getText(), this.tf_TransTelefono.getText(), this.tf_TransTelefonoSecu.getText(), this.tf_TransLicencia.getText(), this.ta_TransAntecedentes.getText(), datosBase.buscarCodNucleo(this.comboNucleo.getSelectedItem().toString()));
