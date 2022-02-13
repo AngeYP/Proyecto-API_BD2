@@ -16,10 +16,12 @@ import javax.swing.table.DefaultTableModel;
 public class VTransportistaListaE extends javax.swing.JFrame {
     DefaultTableModel tableListiner;
     String id;
+    String codEncomienda;
 
   /**
    * Creates new form VTransportistaListaE
    */
+    
   public VTransportistaListaE() {
     initComponents();
     tableListiner=(DefaultTableModel)this.jTable1.getModel();
@@ -38,6 +40,8 @@ public class VTransportistaListaE extends javax.swing.JFrame {
           objeto[7]=String.valueOf(precio);
           tableListiner.addRow(objeto);
       }
+      
+      VTransportistaDatos.crud.comboboxVuelos(cb_codvuelos, VTransportistaDatos.ident);
   }
 
   /**
@@ -54,8 +58,9 @@ public class VTransportistaListaE extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Btn_Ingresar = new javax.swing.JButton();
+        cb_codvuelos = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(34, 40, 49));
         jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
@@ -90,9 +95,13 @@ public class VTransportistaListaE extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setEnabled(false);
         jTable1.setOpaque(false);
         jTable1.setSelectionForeground(new java.awt.Color(57, 62, 70));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -113,13 +122,29 @@ public class VTransportistaListaE extends javax.swing.JFrame {
         Btn_Ingresar.setText("Aceptar");
         Btn_Ingresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 112, 20)));
         Btn_Ingresar.setBorderPainted(false);
+        Btn_Ingresar.setEnabled(false);
         Btn_Ingresar.setFocusPainted(false);
         Btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_IngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 660, 140, 40));
+        jPanel1.add(Btn_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 660, 140, 40));
+
+        cb_codvuelos.setBackground(new java.awt.Color(238, 238, 238));
+        cb_codvuelos.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        cb_codvuelos.setForeground(new java.awt.Color(34, 40, 49));
+        cb_codvuelos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_codvuelosItemStateChanged(evt);
+            }
+        });
+        cb_codvuelos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_codvuelosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cb_codvuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 660, 320, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,9 +161,25 @@ public class VTransportistaListaE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   private void Btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IngresarActionPerformed
-
-      this.dispose();
+    VTransportistaDatos.crud.agregarVuelo(codEncomienda, VTransportistaDatos.ident, this.cb_codvuelos.getSelectedItem().toString());
   }//GEN-LAST:event_Btn_IngresarActionPerformed
+
+  private void cb_codvuelosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_codvuelosItemStateChanged
+    if(this.cb_codvuelos.getSelectedIndex()>0) {
+      this.Btn_Ingresar.setEnabled(true);
+    } else {
+      this.Btn_Ingresar.setEnabled(false);
+    }
+  }//GEN-LAST:event_cb_codvuelosItemStateChanged
+
+  private void cb_codvuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_codvuelosActionPerformed
+
+  }//GEN-LAST:event_cb_codvuelosActionPerformed
+
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    int filaSeleccionada = this.jTable1.rowAtPoint(evt.getPoint());
+    codEncomienda = this.jTable1.getValueAt(filaSeleccionada, 0).toString();
+  }//GEN-LAST:event_jTable1MouseClicked
 
   /**
    * @param args the command line arguments
@@ -177,6 +218,7 @@ public class VTransportistaListaE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ingresar;
+    private javax.swing.JComboBox<String> cb_codvuelos;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

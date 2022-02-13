@@ -8,6 +8,8 @@ package CRUD;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Noel Roberto
@@ -127,4 +129,33 @@ public class CRUDTransportistaDatos {
             return encomienda;
         }
     }
+    
+  public void comboboxVuelos(JComboBox cb, String CITransportista) {
+    try {
+      String SQL = "SELECT * FROM Vuelos WHERE identificacionT = ?";
+      PreparedStatement consulta = conexion.prepareStatement(SQL);
+      consulta.setString(1, CITransportista);
+      ResultSet resultado = consulta.executeQuery();
+      cb.addItem("Seleccione una opcion");
+      while (resultado.next()) {
+        cb.addItem(resultado.getString("cod_vuelos"));
+      }
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Fallo: "+ex.getMessage());
+    }
+  }
+  
+  public void agregarVuelo(String CodEncomienda, String CITransp, String CodVuelo) {
+    try {
+      String SQL = "UPDATE Encomiendas SET cod_vuelos=? WHERE cod_encomienda=? AND identificacionT=?";
+      PreparedStatement consulta = this.conexion.prepareStatement(SQL);
+      consulta.setString(1, CodVuelo);
+      consulta.setString(2, CodEncomienda);
+      consulta.setString(3, CITransp);
+      consulta.execute();
+      System.out.println("Registro editado exitosamente");
+    } catch (SQLException e) {
+      System.out.println("Error al editar el registro" + e.getMessage());
+    }
+  }
 }
